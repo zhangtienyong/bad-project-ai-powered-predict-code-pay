@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e8eaed;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 22px;
+}
+
+.navbar-nav {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.signin {
+    margin-right: 10px;
+}
