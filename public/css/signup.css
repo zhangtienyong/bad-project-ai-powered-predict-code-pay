@@ -1,0 +1,31 @@
+#big-container {
+    position: fixed; /* or absolute */
+    top: 20%;
+
+}
+
+.container {
+    width: 300px;
+}
+
+#local {
+    padding: 20px;
+    border: solid;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+.btn-dark {
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+    width: 300px;
+    position: relative;
+    right: 12px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    width: 257px;
+}
+
