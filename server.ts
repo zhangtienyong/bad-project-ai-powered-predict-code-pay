@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = 8080;
+const PORT = 3000;
 app.listen(PORT, () => {
   logger.info(`Server is listening at http://localhost:${PORT}`);
 });
