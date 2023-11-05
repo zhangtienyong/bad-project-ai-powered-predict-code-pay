@@ -10,7 +10,6 @@ declare global {
 const signInRoutes = Router();
 
 dotenv.config();
-console.log("13326")
 
 signInRoutes.get("/", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../public/html/signin.html"));
