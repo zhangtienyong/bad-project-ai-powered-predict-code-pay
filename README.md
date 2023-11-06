@@ -27,6 +27,16 @@ To get started with this project, follow these steps:
    - Navigate to the `web_application/` directory.
    - Check the `README.md` file within this directory for instructions on running the web application component.
 
+## Database Structure
+The project relies on a database for various functionalities. The database structure consists of the following elements:
+
+- **Image**: This is the project logo that you can find in the `data/database/image` directory. You can view it here: [bad-project-ai-powered-predict-code-pay.png](data/database/image/bad-project-ai-powered-predict-code-pay.png).
+
+- **SQL Scripts**: The SQL scripts used in the project can be found in the `data/database/sql` directory. These scripts may include tables, queries, and other database-related files.
+
+## Database Setup
+To set up the database for this project, you can use the SQL scripts located in the `data/database/sql` directory. Ensure that you have the required database management system installed, and execute the scripts as needed.
+
 ## Contributors
 - [Ziyuan](https://github.com/Zzzyyy2023) - Contributors
 - [Joe](https://github.com/uiophjkk) - Contributors

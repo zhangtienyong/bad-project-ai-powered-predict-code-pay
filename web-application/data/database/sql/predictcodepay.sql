@@ -8,6 +8,7 @@ CREATE TABLE Users (
     github_id INT,
     github_token VARCHAR(255),
     github_username VARCHAR(255),
+    profile_image VARCHAR(255),
     role VARCHAR(20) NOT NULL
 );
 
@@ -35,6 +36,12 @@ CREATE TABLE JobApplications (
     cv_pdf VARCHAR(255),
     developer_email VARCHAR(255),
     company_email VARCHAR(255)
+);
+
+CREATE TABLE UserJobApplications (
+    user_job_application_id SERIAL PRIMARY KEY,
+    developer_user_id INT REFERENCES Users(user_id),
+    job_application_id INT REFERENCES JobApplications(application_id)
 );
 
 CREATE TABLE DeveloperData (
