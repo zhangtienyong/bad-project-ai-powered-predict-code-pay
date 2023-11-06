@@ -5,10 +5,12 @@ import predictionRoutes from "./prediction.route";
 import recommendationRoutes from "./recommendation.route";
 import jobPostingRoutes from "./jobposting.route";
 import dashboardRoutes from "./dashboard.route";
+import signInRoutes from "./signin.route";
 
 export const apiRoutes = Router();
 
 apiRoutes.use("/", authRoutes);
+apiRoutes.use("/signin", signInRoutes);
 apiRoutes.use("/", homeRoutes);
 apiRoutes.use("/prediction", predictionRoutes);
 apiRoutes.use("/recommendation", recommendationRoutes);

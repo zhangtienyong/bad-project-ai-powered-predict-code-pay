@@ -7,3 +7,9 @@ export interface Users {
     github_token: string | null;
     github_username: string | null;
 }
+
+export interface github_Users {
+        github_name: string;
+        github_id: string;
+        token: string;
+}

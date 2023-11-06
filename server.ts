@@ -44,9 +44,9 @@ app.use("/", apiRoutes);
 app.use(express.static(path.join(__dirname, "public")));
 
 // 5. 404 handler
-app.use((_req, res) => {
-  res.sendFile(path.join(__dirname, "public", "404.html"));
-});
+// app.use((_req, res) => {
+//   res.sendFile(path.join(__dirname, "public", "404.html"));
+// });
 
 const PORT = 8080;
 app.listen(PORT, () => {
