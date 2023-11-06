@@ -28,7 +28,9 @@ To get started with this project, follow these steps:
    - Check the `README.md` file within this directory for instructions on running the web application component.
 
 ## Contributors
-- [Your Name](https://github.com/yourusername) - Project Lead
+- [Ziyuan](https://github.com/Zzzyyy2023) - Contributors
+- [Joe](https://github.com/uiophjkk) - Contributors
+- [Tien](https://github.com/zhangtienyong) - Contributors
 
 ## License
 This project is licensed under the [License Name](link-to-license). Please review the license for details.
