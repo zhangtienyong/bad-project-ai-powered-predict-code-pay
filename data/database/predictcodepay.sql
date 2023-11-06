@@ -1,14 +1,13 @@
 CREATE DATABASE predictcodepay;
 
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE Users (
+    user_id SERIAL PRIMARY KEY,
     username VARCHAR(255),
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    github_id VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255),
+    github_id INT,
     github_token VARCHAR(255),
     github_username VARCHAR(255),
-    profile_image VARCHAR(255),
     role VARCHAR(20) NOT NULL
 );
 
