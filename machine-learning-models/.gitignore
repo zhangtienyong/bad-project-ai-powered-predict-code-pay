@@ -1,0 +1,29 @@
+# Ignore machine learning models, data, and virtual environment files
+machine_learning_models/data/
+machine_learning_models/models/
+machine_learning_models/venv/
+
+# Ignore scikit-learn cache and compiled Python files
+__pycache__/
+.joblib/
+
+# Ignore Sanic-specific files and directories
+web_application/__pycache/
+web_application/venv/
+web_application/.vscode/
+web_application/.idea/
+
+# Ignore web application generated files and logs
+web_application/logs/
+web_application/static/uploads/
+
+# Ignore editor/IDE specific files
+.vscode/
+.idea/
+
+# Ignore general OS and IDE temporary files
+*.swp
+.DS_Store
+
+# Ignore Python virtual environment files
+venv/
