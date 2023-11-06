@@ -32,15 +32,9 @@ The project relies on a database for various functionalities. The database struc
 
 - **Image**: This is the project logo that you can find in the `data/database/image` directory. You can view it here: [bad-project-ai-powered-predict-code-pay.png](web-application/data/database/image/bad-project-ai-powered-predict-code-pay.png).
 
-- **SQL Scripts**: The SQL scripts used in the project can be found in the `data/database/sql` directory. These scripts may include tables, queries, and other database-related files.
+- **SQL Scripts Setup**: To set up the database for this project, you can use the SQL scripts located in the `web-application/data/database/sql` directory. Ensure that you have the required database management system installed, and execute the scripts as needed.
 
 ## Contributors
 - [Ziyuan](https://github.com/Zzzyyy2023) - Contributors
 - [Joe](https://github.com/uiophjkk) - Contributors
 - [Tien](https://github.com/zhangtienyong) - Contributors
-
-## License
-This project is licensed under the [License Name](link-to-license). Please review the license for details.
-
-## Acknowledgments
-We would like to express our gratitude to [mention any contributors or libraries] for their valuable contributions to this project.
