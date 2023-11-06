@@ -1,11 +1,11 @@
 import express from "express";
-import AuthController from "../web_application/controllers/auth.controller";
+import AuthController from "../controllers/auth.controller";
 import {AuthService}  from "../services/auth.service";
-import { Knex } from "knex";
+import { knex } from "../db";
 
 
 
-const authService = new AuthService(Knex);
+const authService = new AuthService(knex);
 const authController = new AuthController(authService);
 
 export const authRoutes = express.Router();

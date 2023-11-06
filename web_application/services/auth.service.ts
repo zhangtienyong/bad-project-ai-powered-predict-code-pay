@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import { Users } from "../models";
-import { checkPassword } from "../hash";
+import { checkPassword, hashPassword } from "../hash";
 
 export class AuthService {
     constructor(private knex: Knex) { }
@@ -17,25 +17,21 @@ export class AuthService {
     }
 
     async signup(username: string, email: string, password: string) {
-        const existingUserInfo = await this.knex
-            .select("email")
-            .from("users")
-            .where("email", email);
-
-        const existingUser = existingUserInfo.rows[0];
-        console.log(existingUserInfo);
+        const existingUser = await this.knex<Users>("users").where("email", email).first();
 
         if (existingUser) {
             return { result: false, message: "Email already exists" };
         }
         await this.knex
-        .insert({
-            username: "name", 
-            email: "email", 
-            password: "await hashPassword(password)"
-        })
-        .into("users")
-         return { result: true };
+            .insert({
+                username: username,
+                email: email,
+                password: await hashPassword(password)
+            })
+            .into("users")
+            .returning("id");
+
+        return { result: true };
     }
 }
 
