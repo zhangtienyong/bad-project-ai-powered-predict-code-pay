@@ -6,14 +6,15 @@ export async function seed(knex: Knex): Promise<void> {
     const hashedPassword=hashPassword("123")
 
     try {
-        await trx("users").del();
+        await trx("Users").del();
 
         // Inserts seed entries
-        await trx("users").insert([
+        await trx("Users").insert([
             {
                 username: "user1",
                 password: hashedPassword,
-                email: "123@gmail.com"
+                email: "123@gmail.com",
+                role: "employee"
             },
         ]);
     } catch (err) {

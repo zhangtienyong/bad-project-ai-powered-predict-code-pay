@@ -38,13 +38,13 @@ export default class AuthController {
 
 
   signup = async (req: Request, res: Response) => {
-    const { username, email, password, password_repeated } = req.body;
+    const { username, email, password, password_repeated, role } = req.body;
 
     try {
-      if (!username || !email || !password || !password_repeated) {
+      if (!username || !email || !password || !password_repeated || !role) {
         res
           .status(400)
-          .json({ success: false, message: "missing name, email or password" });
+          .json({ success: false, message: "missing name, email, password, or role" });
         return;
       }
 
@@ -55,7 +55,7 @@ export default class AuthController {
         return;
       }
       
-      await this.authService.signup(username, email, password);
+      await this.authService.signup(username, email, password, role);
 
       res.status(200).json({ message: "Signup successful" });
     } catch (error) {
