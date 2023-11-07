@@ -7,7 +7,7 @@ export class AuthService {
     constructor(private knex: Knex) { }
 
     async login(email: string, password: string) {
-        const user = await this.knex<Users>("Users").where("email", email).first();
+        const user = await this.knex<Users>("users").where("email", email).first();
         if (
             !user ||
             !(await checkPassword({ plainPassword: password, hashedPassword: user.password }))
@@ -33,16 +33,6 @@ export class AuthService {
             .into("users")
             .returning("id");
 
-        if (existingUser) {
-            return { result: false, message: "Email already exists" };
-        }
-        await this.knex
-        .insert({
-            username: "name", 
-            email: "email", 
-            password: "await hashPassword(password)"
-        })
-        .into("users")
          return { result: true };
     }
 }
