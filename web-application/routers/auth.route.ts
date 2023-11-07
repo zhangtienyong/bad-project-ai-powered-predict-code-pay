@@ -10,7 +10,12 @@ import express from "express";
 
 export const authRoutes = express.Router();
 
+<<<<<<< Updated upstream
 // authRoutes.post("/login", authController.login);
 // authRoutes.post("/signup", authController.signup)
+=======
+authRoutes.post("/signin", authController.login);
+authRoutes.post("/signup", authController.signup)
+>>>>>>> Stashed changes
 
 
