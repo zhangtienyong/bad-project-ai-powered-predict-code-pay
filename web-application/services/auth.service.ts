@@ -33,16 +33,6 @@ export class AuthService {
             .into("users")
             .returning("id");
 
-        if (existingUser) {
-            return { result: false, message: "Email already exists" };
-        }
-        await this.knex
-        .insert({
-            username: "name", 
-            email: "email", 
-            password: "await hashPassword(password)"
-        })
-        .into("users")
          return { result: true };
     }
 }
