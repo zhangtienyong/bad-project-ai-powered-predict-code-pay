@@ -46,15 +46,9 @@ app.use(express.static(path.join(__dirname, "public")))
 app.use(express.static(path.join(__dirname, "public", "html"), { extensions: ["html"] }));
 
 // 5. 404 handler
-<<<<<<< Updated upstream
-// app.use((_req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "404.html"));
-// });
-=======
 app.use((_req, res) => {
   res.sendFile(path.join(__dirname, "public", "html", "404.html"));
 });
->>>>>>> Stashed changes
 
 const PORT = 8080;
 app.listen(PORT, () => {

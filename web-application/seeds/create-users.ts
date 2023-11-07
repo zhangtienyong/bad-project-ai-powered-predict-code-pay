@@ -6,10 +6,10 @@ export async function seed(knex: Knex): Promise<void> {
     const hashedPassword=hashPassword("123")
 
     try {
-        await trx("Users").del();
+        await trx("users").del();
 
         // Inserts seed entries
-        await trx("Users").insert([
+        await trx("users").insert([
             {
                 username: "user1",
                 password: hashedPassword,

@@ -1,4 +1,3 @@
-// import fetch from 'node-fetch';
 import dotenv from "dotenv";
 import { knex } from "../db";
 import GithubService from '../services/github.service';
@@ -53,41 +52,6 @@ try {
     res.status(500).send('Internal Server Error');
 }
 });
-
-// signInRoutes.get('/user-data', async (req, res) => {
-//     const token = global.accessToken;
-    
-//     if (!token) {
-//         return res.status(400).json({ error: 'Missing access token' });
-//     }
-
-//     try {
-//         const response = await fetch('https://api.github.com/user', {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': `token ${token}`,
-//                 'User-Agent': 'Your-App-Name' 
-//             }
-//         });
-
-//         if (response.status === 200) {
-//             const userData = await response.json();
-            
-//             console.log(userData)
-//             return res.json(userData); 
-            
-//         } 
-
-        
-//         else {
-//             const errorData = await response.json();
-//             return res.status(response.status).json(errorData); 
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         return res.status(500).json({ error: 'Internal Server Error' }); 
-//     }
-// });
 
 signInRoutes.get('/auth', githubController.auth);
 signInRoutes.get('/oauth-callback', githubController.oauth_callback);
