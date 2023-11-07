@@ -4,27 +4,28 @@ import { github_Users } from "../models";
 export default class GithubService {
     constructor(private knex: Knex) { }
 
-    async user_data(github_name: string, github_id: string, token: string): Promise<void> {
+    async user_data(github_username: any, github_id: any, github_token: any): Promise<github_Users> {
         const user = {
-            github_name: github_name,
+            username: github_username,
+            github_username: github_username,
             github_id: github_id,
-            token: token
+            github_token: github_token
         };
 
         try {
-            await this.knex.transaction(async (trx) => {
+            return this.knex.transaction(async (trx) => {
                 const insertedIds = await trx("users")
                     .insert(user)
                     .returning("id");
 
-                
                 await trx.commit();
 
                 if (insertedIds.length > 0) {
                     const userData: github_Users = {
-                        github_name: github_name,
+                        username: github_username,
+                        github_username: github_username,
                         github_id: github_id,
-                        token: token
+                        github_token: github_token
                     };
 
                     return userData;
@@ -37,3 +38,4 @@ export default class GithubService {
         }
     }
 }
+

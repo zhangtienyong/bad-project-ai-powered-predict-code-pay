@@ -58,11 +58,12 @@ user_data = async (req: Request, res: Response) => {
         });
 
         if (response.status === 200) {
-            const isExists = await this.githubService.user_data("james", "123","1");
-            res.json({ success: true, isExists });
-            const userData = await response.json();
-            console.log(userData)
-            return res.json(userData); 
+        const userData = await response.json();
+        const github_username = userData.login;
+        const github_id = userData.id;
+        const github_token = token;
+        await this.githubService.user_data(github_username, github_id,github_token);
+        return res.json(userData);
             
         } 
 
@@ -74,8 +75,12 @@ user_data = async (req: Request, res: Response) => {
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: 'Internal Server Error' }); 
-    }};
+    }
+
+           
+
+};
+
 
 
 }
-
