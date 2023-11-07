@@ -13,6 +13,7 @@ export default class AuthController {
 
       const { email, password } = req.body;
       const result = await this.authService.login(email, password);
+      console.log(result.user)
 
       if (!result.result) {
         res.status(401).json({ error: "Wrong Username/Password" });
@@ -24,6 +25,13 @@ export default class AuthController {
         return;
       }
 
+      req.session.user = {
+        email: result.user?.email!,
+        userId: result.user?.user_id!,
+        github_id: result.user?.github_id!,
+        github_username: result.user?.github_username!,
+        role: result.user?.role!
+      };
       res.json({
         success: true,
         message: "login success",
