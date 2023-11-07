@@ -20,41 +20,11 @@ signInRoutes.get("/", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../public/html/signin.html"));
 });
 
-signInRoutes.get('/auth', (req, res) => {
-    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}`);
-});
-
-signInRoutes.get('/oauth-callback', async ({ query: { code } }, res) => {
-    const body = {
-        client_id: process.env.CLIENT_ID,
-        client_secret: process.env.CLIENT_SECRET,
-        code,
-        redirect_uri: `http://localhost:${process.env.PORT}/signin/oauth-callback`
-    };
-
-    const opts = {
-        method: 'POST',
-        headers: { 'accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-    };
-    console.log(opts);
-
-try {
-    const response = await fetch('https://github.com/login/oauth/access_token', opts);
-    const data = await response.json();
-    console.log(data);
-    const token = data.access_token;
-    global.accessToken = token;
-    res.redirect(`/?token=${token}`);
-    return token;
-} catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-}
-});
-
-signInRoutes.get('/auth', githubController.auth);
-signInRoutes.get('/oauth-callback', githubController.oauth_callback);
-signInRoutes.get('/user-data', githubController.user_data);
+signInRoutes.get('/employee', githubController.employee);
+signInRoutes.get('/employer', githubController.employer);
+signInRoutes.get('/employee_callback', githubController.employee_callback);
+signInRoutes.get('/employer_callback', githubController.employer_callback);
+signInRoutes.get('/employee_user_data', githubController.employee_user_data);
+signInRoutes.get('/employer_user_data', githubController.employer_user_data);
 
 export default signInRoutes;

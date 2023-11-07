@@ -7,7 +7,7 @@ export class AuthService {
     constructor(private knex: Knex) { }
 
     async login(email: string, password: string) {
-        const user = await this.knex<Users>("Users").where("email", email).first();
+        const user = await this.knex<Users>("users").where("email", email).first();
         if (
             !user ||
             !(await checkPassword({ plainPassword: password, hashedPassword: user.password }))

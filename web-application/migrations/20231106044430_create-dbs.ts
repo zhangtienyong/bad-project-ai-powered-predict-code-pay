@@ -7,7 +7,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string("username").notNullable().unique();
         table.string("email").unique();
         table.string("password")
-        table.integer("github_id");
+        table.integer("github_id").unique();;
         table.string("github_token");
         table.string("github_username");
         table.string("role")
