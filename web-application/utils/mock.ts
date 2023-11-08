@@ -1,6 +1,12 @@
 import type {Request, Response} from "express"
 
-export const getRequest = () => ({params: {}, query: {}, body: {}, session: {}}) as Request
+export const getRequest = () => 
+({
+    params: {}, 
+    query: {}, 
+    body: {}, 
+    session: {}
+}) as Request;
 
 export const getResponse = () => {
     const res = {

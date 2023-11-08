@@ -3,7 +3,7 @@ import { Users } from "../models";
 import { checkPassword } from "../hash";
 import { hashPassword } from "../hash";
 
-export class AuthService {
+export default class AuthService {
     constructor(private knex: Knex) { }
 
     async login(email: string, password: string) {
