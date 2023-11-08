@@ -30,38 +30,38 @@ describe("Test AuthController", () => {
           expect(res.json).toHaveBeenCalledWith({ error: 'Wrong Username/Password' });
         });
     
-        // it.skip('should return 403 status and error message if user is already logged in', async () => {
-        //   req.body = { email: 'test@example.com', password: 'password' };
-        //   req.session = { user: {}};
-        //   authService.login = jest.fn().mockResolvedValue({ result: true });
+        it('should return 403 status and error message if user is already logged in', async () => {
+          req.body = { email: 'test@example.com', password: 'password' };
+          req.session.user = {email: 'test@example.com', userId: 1, github_id: 'github123', github_username: "any", role: "any" };
+          authService.login = jest.fn().mockResolvedValue({ result: true });
     
-        //   await authController.login(req, res);
+          await authController.login(req, res);
     
-        //   expect(res.status).toHaveBeenCalledWith(403);
-        //   expect(res.json).toHaveBeenCalledWith({ error: 'Already logged in' });
-        // });
+          expect(res.status).toHaveBeenCalledWith(403);
+          expect(res.json).toHaveBeenCalledWith({ error: 'Already logged in' });
+        });
     
-        // it.skip('should set session user and return success message for valid login', async () => {
-        //   const user = {
-        //     email: 'test@example.com',
-        //     user_id: 123,
-        //     github_id: 'github123',
-        //     github_username: 'testuser',
-        //     role: 'user',
-        //   };
-        //   req.body = { email: 'test@example.com', password: 'password' };
-        //   req.session = {};
-        //   authService.login = jest.fn().mockResolvedValue({ result: true, user });
+        it('should set session user and return success message for valid login', async () => {
+          const user = {
+            email: 'test@example.com',
+            userId: 123,
+            github_id: 'github123',
+            github_username: 'testuser',
+            role: 'user',
+          };
+          req.body = { email: 'test@example.com', password: 'password' };
+          // req.session.user = {email: 'test@example.com', userId: 123, github_id: 'github123', github_username: "testuser", role: "user" };
+          authService.login = jest.fn().mockResolvedValue({ result: true, user: {...user, user_id: user.userId} });
     
-        //   await authController.login(req, res);
-    
-        //   expect(req.session.user).toEqual(user);
-        //   expect(res.json).toHaveBeenCalledWith({
-        //     success: true,
-        //     message: 'login success',
-        //     session: req.session.user,
-        //   });
-        // });
+          await authController.login(req, res);
+          
+          expect(req.session.user).toEqual(user);
+          expect(res.json).toHaveBeenCalledWith({
+            success: true,
+            message: 'login success',
+            session: req.session.user,
+          });
+        });
     
         it('should return 500 status and error message for internal server error', async () => {
           req.body = { email: 'test@example.com', password: 'password' };
