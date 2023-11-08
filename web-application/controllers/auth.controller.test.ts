@@ -73,7 +73,77 @@ describe("Test AuthController", () => {
           expect(res.json).toHaveBeenCalledWith({ message: 'internal server error' });
         });
       });
-   
-
+      
+      describe('signup', () => {
+        it('should return 400 status and error message for missing required fields', async () => {
+          req.body = {};
+          authService.signup = jest.fn();
+    
+          await authController.signup(req, res);
+    
+          expect(res.status).toHaveBeenCalledWith(400);
+          expect(res.json).toHaveBeenCalledWith({
+            success: false,
+            message: 'missing name, email, password, or role',
+          });
+        });
+    
+        it('should return 406 status and error message for wrong repeated password', async () => {
+          req.body = {
+            username: 'testuser',
+            email: 'test@example.com',
+            password: 'password',
+            password_repeated: 'wrongpassword',
+            role: 'user',
+          };
+          authService.signup = jest.fn();
+    
+          await authController.signup(req, res);
+    
+          expect(res.status).toHaveBeenCalledWith(406);
+          expect(res.json).toHaveBeenCalledWith({
+            success: false,
+            message: 'wrong repeated password',
+          });
+        });
+    
+        it('should call authService.signup and return success message for valid signup', async () => {
+          req.body = {
+            username: 'testuser',
+            email: 'test@example.com',
+            password: 'password',
+            password_repeated: 'password',
+            role: 'user',
+          };
+          authService.signup = jest.fn();
+    
+          await authController.signup(req, res);
+    
+          expect(authService.signup).toHaveBeenCalledWith(
+            'testuser',
+            'test@example.com',
+            'password',
+            'user'
+          );
+          expect(res.status).toHaveBeenCalledWith(200);
+          expect(res.json).toHaveBeenCalledWith({ message: 'Signup successful' });
+        });
+    
+        it('should return 500 status and error message for internal server error during signup', async () => {
+          req.body = {
+            username: 'testuser',
+            email: 'test@example.com',
+            password: 'password',
+            password_repeated: 'password',
+            role: 'user',
+          };
+          authService.signup = jest.fn().mockRejectedValue(new Error('Internal server error'));
+    
+          await authController.signup(req, res);
+    
+          expect(res.status).toHaveBeenCalledWith(500);
+          expect(res.json).toHaveBeenCalledWith({ error: 'An error occurred during signup'})
+        })
+      })
 })
 
