@@ -12,5 +12,6 @@ export const authRoutes = express.Router();
 
 authRoutes.post("/signin", authController.login);
 authRoutes.post("/signup", authController.signup)
+authRoutes.post("/logout", authController.logout)
 
 
