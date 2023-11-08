@@ -3,7 +3,7 @@ export interface Users {
     username: string;
     email: string;
     password: string;
-    github_id: number | null;
+    github_id: string | null;
     github_token: string | null;
     github_username: string | null;
     role: string

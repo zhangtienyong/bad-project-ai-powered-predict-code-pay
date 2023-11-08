@@ -28,7 +28,7 @@ declare module "express-session" {
     user: { 
       email: string; 
       userId: number;  
-      github_id: number;
+      github_id: string;
       github_username: string,
       role: string,
     };
