@@ -4,6 +4,7 @@ import homeRoutes from "./home.route";
 import predictionRoutes from "./prediction.route";
 import recommendationRoutes from "./recommendation.route";
 import jobPostingRoutes from "./jobposting.route";
+import jobBoardsRoutes from "./jobboards.route";
 import dashboardRoutes from "./dashboard.route";
 import signInRoutes from "./signin.route";
 
@@ -15,4 +16,5 @@ apiRoutes.use("/", homeRoutes);
 apiRoutes.use("/prediction", predictionRoutes);
 apiRoutes.use("/recommendation", recommendationRoutes);
 apiRoutes.use("/jobs", jobPostingRoutes);
+apiRoutes.use("/jobboards", jobBoardsRoutes);
 apiRoutes.use("/dashboard", dashboardRoutes);
