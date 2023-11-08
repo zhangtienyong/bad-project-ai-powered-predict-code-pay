@@ -44,6 +44,13 @@ export default class AuthController {
     }
   }
 
+  logout = async (req: Request, res: Response) => {
+    console.log("logout");
+    if (req.session) {
+      delete req.session.user;
+    }
+    res.redirect('/index.html')
+  }
 
   signup = async (req: Request, res: Response) => {
     const { username, email, password, password_repeated, role } = req.body;
