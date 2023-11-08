@@ -36,7 +36,7 @@ CREATE TABLE salary_predictions (
 
 CREATE TABLE skill_recommendations (
     recommendation_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(user_id),
+    data_id INT REFERENCES developer_data(data_id),
     programming_language_recommendation VARCHAR(255),
     database_recommendation VARCHAR(255),
     web_framework_recommendation VARCHAR(255),
@@ -53,7 +53,8 @@ CREATE TABLE company (
     website VARCHAR(255),
     email VARCHAR(255),
     phone VARCHAR(255),
-    location VARCHAR(255)
+    location VARCHAR(255),
+    about VARCHAR(255)
 );
 
 CREATE TABLE jobs (
@@ -67,6 +68,7 @@ CREATE TABLE jobs (
     responsibilities TEXT,
     qualifications TEXT,
     skills TEXT
+    job_date TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE job_applications (
@@ -75,32 +77,5 @@ CREATE TABLE job_applications (
     user_id INT REFERENCES users(user_id),
     cv_pdf BYTEA,
     application_date TIMESTAMPTZ DEFAULT NOW(),
-    status VARCHAR(20) DEFAULT 'Pending',
-    employer_email VARCHAR(255)
+    status VARCHAR(20) DEFAULT 'Pending'
 );
-
---Users and Company (One-to-One)
---A user can have one associated company if they have the "employer" role.
---A company can have only one associated user (the owner/employer).
-
---Company and Jobs (One-to-Many)
---A company can create multiple job postings.
---Each job posting (in the "jobs" table) belongs to one specific company.
-
---Jobs and Job Applications (One-to-Many)
---Each job posting can receive multiple job applications.
---Each job application (in the "job_applications" table) is associated with a specific job posting.
-
---Users and Developer Data (One-to-One)
---A user can provide developer data if they have the "developer" role.
---Each user's developer data is uniquely linked to their user profile.
-
---Developer Data and Salary Predictions (One-to-Many)
---A developer can have multiple salary predictions based on their input data.
---Each salary prediction is associated with a specific set of developer data.
-
---Users and Skill Recommendations (One-to-Many)
---A user can provide skill recommendations if they have the "developer" role.
---Each user can give multiple skill recommendations, and each recommendation is associated with a specific user.
-
---**Employers can create companies and job postings, and developers can provide data for salary predictions and give skill recommendations.
