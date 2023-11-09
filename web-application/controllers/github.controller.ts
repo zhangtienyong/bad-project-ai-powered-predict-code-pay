@@ -97,6 +97,13 @@ employee_user_data = async (req: Request, res: Response) => {
         const github_id = userData.id;
         const github_token = token;
         await this.githubService.employee_user_data(github_username,github_id,github_token);
+        const githubUserData = {
+            github_id: userData.id, 
+            github_username: userData.login, 
+            role: 'employee', 
+          };   
+          req.session.user = githubUserData;
+
         return res.redirect(`/?token=${token}`);
         } 
 
@@ -136,7 +143,12 @@ employer_user_data = async (req: Request, res: Response) => {
         const github_id = userData.id;
         const github_token = token;
         await this.githubService.employer_user_data(github_username, github_id,github_token);
-        // return res.status(200).json({ success: 'success' });
+        const githubUserData = {
+            github_id: userData.id, 
+            github_username: userData.login, 
+            role: 'employer', 
+          };   
+          req.session.user = githubUserData;
         return res.redirect(`/?token=${token}`);
             
         } 
@@ -153,6 +165,16 @@ employer_user_data = async (req: Request, res: Response) => {
         
 
 };
+
+github_callback = async (req: Request, res: Response) => { 
+    const githubUserData = {
+      github_id: '123', 
+      github_username: 'example_user', 
+      role: 'employee', 
+    };   
+    req.session.user = githubUserData;
+    res.redirect('/'); 
+}
 
 
 }

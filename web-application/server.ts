@@ -26,11 +26,11 @@ app.use(
 declare module "express-session" {
   interface SessionData {
     user: { 
-      email: string; 
-      userId: number;  
-      github_id: string;
-      github_username: string,
-      role: string,
+      email?: string; 
+      userId?: number;  
+      github_id?: string;
+      github_username?: string,
+      role?: string,
     };
 
   }

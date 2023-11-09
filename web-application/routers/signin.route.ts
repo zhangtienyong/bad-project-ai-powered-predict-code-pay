@@ -26,5 +26,13 @@ signInRoutes.get('/employee_callback', githubController.employee_callback);
 signInRoutes.get('/employer_callback', githubController.employer_callback);
 signInRoutes.get('/employee_user_data', githubController.employee_user_data);
 signInRoutes.get('/employer_user_data', githubController.employer_user_data);
+signInRoutes.get('/github-callback', githubController.github_callback);
+signInRoutes.get('/1', (req, res) => {
+  // Access GitHub user data from the session.
+  const githubUserData = req.session.user;
+
+  // Use githubUserData as needed, e.g., to display user information.
+  console.log(githubUserData)
+});
 
 export default signInRoutes;
