@@ -80,6 +80,20 @@ export default class AuthController {
     return true;
   }
 
+  userInform = (req: Request, res: Response) => {
+    const userSessionData = req.session.user;
+
+    if (userSessionData) {
+        // User is authenticated
+        console.log(userSessionData)
+        res.status(200).json({ user: userSessionData });
+    } else {
+        // User is not authenticated
+        console.log(userSessionData)
+        res.status(401).json({ error: 'User not authenticated' });
+    }
+};
+
 }
 
 

@@ -166,15 +166,7 @@ employer_user_data = async (req: Request, res: Response) => {
 
 };
 
-github_callback = async (req: Request, res: Response) => { 
-    const githubUserData = {
-      github_id: '123', 
-      github_username: 'example_user', 
-      role: 'employee', 
-    };   
-    req.session.user = githubUserData;
-    res.redirect('/'); 
-}
+
 
 
 }
