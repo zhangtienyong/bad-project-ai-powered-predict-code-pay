@@ -9,4 +9,4 @@ const jobPostingController = new JobPostingController(jobPostingService);
 export const jobPostingRoutes = express.Router();
 
 
-jobPostingRoutes.post("/jobPosting", jobPostingController.jobPosting);
+jobPostingRoutes.post("/jobposting", jobPostingController.jobPosting);
