@@ -50,7 +50,6 @@ describe("Test AuthController", () => {
             role: 'user',
           };
           req.body = { email: 'test@example.com', password: 'password' };
-          // req.session.user = {email: 'test@example.com', userId: 123, github_id: 'github123', github_username: "testuser", role: "user" };
           authService.login = jest.fn().mockResolvedValue({ result: true, user: {...user, user_id: user.userId} });
     
           await authController.login(req, res);
