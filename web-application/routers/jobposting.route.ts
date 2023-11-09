@@ -1,10 +1,12 @@
-import { Request, Response, Router } from "express";
-import path from "path";
+import express from "express";
+import JobPostingController from "../controllers/jobposting.controler";
+import JobPostingService from "../services/jobposting.service";
+import { knex } from "../db"
 
-const jobPostingRoutes = Router();
+const jobPostingService = new JobPostingService(knex);
+const jobPostingController = new JobPostingController(jobPostingService);
 
-jobPostingRoutes.get("/", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../public/html/jobposting.html"));
-});
+export const jobPostingRoutes = express.Router();
 
-export default jobPostingRoutes;
+
+jobPostingRoutes.post("/jobPosting", jobPostingController.jobPosting);
