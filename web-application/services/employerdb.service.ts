@@ -8,21 +8,23 @@ export default class EmployerDbService {
 
     async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string)
     {
-        const companyForm = await this.knex<any>("company").where("").first();
+        const companyForm = await this.knex<any>("company").where("company_name", company).first();
 
         if (companyForm) {
-            return { result: false, message: "already exists" };
+            return { result: false, message: "error" };
         }
         await this.knex
             .insert({
-                company: company,
+                company_name: company,
                 about: about,
                 industry: industry,
                 website: website,
                 email: email,
-                size: size,
+                company_size: size,
                 phone: phone,
-                location: location
+                location: location,
+                user_id: "1",
+                logo: "2"
             })
             .into("company")
             .returning("id");

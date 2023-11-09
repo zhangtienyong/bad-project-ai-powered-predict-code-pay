@@ -17,6 +17,6 @@ dashboardRoutes.get("/employer", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../public/html/employer_dashboard.html"));
 });
 
-dashboardRoutes.get("/employer/company",employerDbController.edit);
+dashboardRoutes.post("/employer/company",employerDbController.edit);
 
 export default dashboardRoutes;

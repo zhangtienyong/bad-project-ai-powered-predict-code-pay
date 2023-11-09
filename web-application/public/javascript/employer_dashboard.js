@@ -2,6 +2,25 @@ window.onload = () => {
   edit_company();
 };
 
+
+// async function getUserInform(){
+//     const res = await fetch("/userInform", {
+//       method: "GET"
+//     })
+//     if (res.ok) {
+//       const user = req.session.user
+//       const res2 = await fetch("/userDatabase", {
+//         method: "GET"
+//       })
+//       if (res2.ok) {
+
+//     }
+    
+
+//   }
+
+
+
 async function edit_company() {
   document.querySelector("#settingsForm").addEventListener("submit", async (e) => {
     e.preventDefault();
