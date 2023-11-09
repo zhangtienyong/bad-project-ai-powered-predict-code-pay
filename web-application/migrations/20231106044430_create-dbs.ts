@@ -28,6 +28,7 @@ export async function up(knex: Knex): Promise<void> {
         table.bigint("database");
         table.bigint("web_framework");
         table.bigint("cloud_platform");
+        table.integer("age").notNullable();
         table.timestamps(false, true);
     })
 
