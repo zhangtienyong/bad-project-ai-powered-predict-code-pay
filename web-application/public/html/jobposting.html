@@ -51,7 +51,7 @@
     <form class="row g-3">
       <div class="col-md-6">
         <label for="jobTitle" class="form-label">Job Title</label>
-        <input type="jobTitle" class="form-control" id="jobTitle">
+        <input type="jobTitle" class="form-control" id="jobTitle" placeholder="Enter job title">
       </div>
       <div class="col-md-6">
         <label for="experienceLevel" class="form-label">Experience Level</label>
@@ -82,19 +82,25 @@
       </div>
       <div class="col-12">
         <label for="jobDescription" class="form-label">Job Description</label>
-        <textarea  type="text" class="form-control" id="jobDescription" rows="3"></textarea>
+        <textarea type="text" class="form-control" id="jobDescription" rows="3" placeholder="Enter job description"></textarea>
       </div>
       <div class="col-12">
         <label for="responsibilities" class="form-label">Responsibilities</label>
-        <textarea type="text" class="form-control" id="responsibilities" rows="3"></textarea>
+        <textarea type="text" class="form-control" id="responsibilities" rows="3" placeholder="Enter responsibilities"></textarea>
       </div>
       <div class="col-12">
         <label for="qualifications" class="form-label">Qualifications</label>
-        <textarea type="text" class="form-control" id="qualifications" rows="3"></textarea>
+        <textarea type="text" class="form-control" id="qualifications" rows="3" placeholder="Enter qualifications"></textarea>
       </div>
-     
-      
-      
+      <div class="col-6">
+        <label for="qualifications" class="form-label">Skills</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter essential skills" aria-label="Recipient's username"
+            aria-describedby="button-addon2" data-role="tagsinput">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
+          
+        </div>
+      </div>
       <div class="col-12">
         <button type="submit" class="btn btn-outline-dark">Post Job</button>
       </div>

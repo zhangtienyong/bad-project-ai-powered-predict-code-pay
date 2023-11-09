@@ -89,7 +89,7 @@ export async function up(knex: Knex): Promise<void> {
         table.foreign("user_id").references("users.id").onDelete("CASCADE");
         table.string("cv_pdf").notNullable();
         table.timestamps(false, true);
-        table.string("status").notNullable();
+        table.string('status').defaultTo('Pending').notNullable();
     });
 }
 
