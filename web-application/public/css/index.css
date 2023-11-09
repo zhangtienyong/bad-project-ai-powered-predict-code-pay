@@ -1,20 +1,63 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #e8eaed;
+    background-color: #f1f5f9;
 }
 
 /* Navbar */
-.navbar-brand {
-    font-size: 22px;
+.nav-tab {
+    width: 100%;
+    height: 8px;
+    background-color: #00e5b7;
+}
+
+.navbar {
+    margin: 24px 8px 0px;
+    padding: 16px 32px;
 }
 
 .navbar-nav {
     margin: auto;
-    display: flex;
-    justify-content: center;
+}
+
+.nav-item.nav-link.active {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
 }
 
 .signin {
     margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #6366f1;
+    border-color: #6366f1;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-brand .code-pay {
+    color: #828587;
+    font-weight: lighter;
+}
+
+.navbar-nav a {
+    font-weight: bold;
+}
+
+.btn-outline-light.signin {
+    font-weight: bold;
+    color: #a3a7a9;
+}
+
+.btn-primary.signup {
+    font-weight: bold;
 }

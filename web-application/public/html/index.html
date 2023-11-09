@@ -20,35 +20,36 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="../images/machine-learning.png" width="30" height="30" class="d-inline-block align-top" alt="Logo-Image">
-                    Predict Code Pay
-                </a>
-                <button class="navbar-toggler" type="button" 
-                    data-toggle="collapse" data-target="#navbarNavAltMarkup" 
-                    aria-controls="navbarNavAltMarkup" 
-                    aria-expanded="false" 
-                    aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="/prediction">Predicting Dev Salaries</a>
-                    <a class="nav-item nav-link" href="/recommendation">Skill Enhancement</a>
-                    <a class="nav-item nav-link" href="/jobboards">Job Boards</a>
-                  </div>
-                  <a href="/employee_signin" class="btn btn-outline-primary signin">Employee sign in</a>
-                  <a href="/employer_signin" class="btn btn-primary signup">Employer sign in</a>
-                </div>
+        <div class="nav-tab"></div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <img src="../images/machine-learning.png" width="30" height="30" class="d-inline-block align-top" alt="Logo-Image">
+              Predict <span class="code-pay">Code Pay</span>
+          </a>          
+          <button class="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+            aria-controls="navbarNavAltMarkup" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="/prediction">Predicting Dev Salaries</a>
+              <a class="nav-item nav-link" href="/recommendation">Skill Enhancement</a>
+              <a class="nav-item nav-link" href="/jobboards">Job Boards</a>
             </div>
+              <a href="/employee_signin" class="btn btn-outline-light signin">Developer Sign in</a>
+              <a href="/employer_signin" class="btn btn-primary signup">Employer Sign in</a>
+            </div>
+          </div>
           </nav>
     </header>
 
     <!-- test -->
-    <a href="/employer_dashboard" class="btn btn-primary signup">Employer dashboard</a>
+    <!-- <a href="/employer_dashboard" class="btn btn-primary signup">Employer dashboard</a> -->
 
     <!-- Bootstrap and Custom JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
