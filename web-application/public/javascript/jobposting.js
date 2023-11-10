@@ -50,11 +50,11 @@ async function jobPosting() {
     document.querySelector("#jobposting")
         .addEventListener("submit", async (e) => {
             e.preventDefault();
-            const jobTitle = document.querySelector("#jobTitle").value;
-            const experienceLevel = document.querySelector("#experienceLevel").value;
-            const workPlaceType = document.querySelector("#workPlace").value;
-            const employmentType = document.querySelector("#employmentType").value;;
-            const jobDescription = document.querySelector("#jobDescription").value;
+            const job_title = document.querySelector("#jobTitle").value;
+            const experience_level = document.querySelector("#experienceLevel").value;
+            const work_place = document.querySelector("#workPlace").value;
+            const employment_type = document.querySelector("#employmentType").value;;
+            const job_description = document.querySelector("#jobDescription").value;
             const responsibilities = document.querySelector("#responsibilities").value;
             const qualifications = document.querySelector("#qualifications").value;
 
@@ -62,14 +62,15 @@ async function jobPosting() {
             const tagValues = Array.from(tagElements).map(tag => tag.textContent);
             const skills = tagValues;
 
+            
             const res = await fetch("/jobposting", {
                 method: "POST",
                 body: JSON.stringify({
-                    jobTitle,
-                    experienceLevel,
-                    workPlaceType,
-                    employmentType,
-                    jobDescription,
+                    job_title,
+                    experience_level,
+                    work_place,
+                    employment_type,
+                    job_description,
                     responsibilities,
                     qualifications,
                     skills
