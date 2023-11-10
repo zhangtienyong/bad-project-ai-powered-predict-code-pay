@@ -105,7 +105,7 @@ employee_user_data = async (req: Request, res: Response) => {
           };   
           req.session.user = githubUserData;
 
-        return res.redirect(`/?token=${token}`);
+        return res.redirect(`/developer_dashboard?token=${token}`);
         } 
 
         
@@ -151,7 +151,7 @@ employer_user_data = async (req: Request, res: Response) => {
             role: 'employer', 
           };   
           req.session.user = githubUserData;
-        return res.redirect(`/?token=${token}`);
+        return res.redirect(`/employer_dashboard?token=${token}`);
             
         } 
 

@@ -49,7 +49,7 @@ export default class EmployerDbService {
         }
       }
 
-      async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string)
+      async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string, id: number)
       {
           const companyForm = await this.knex<any>("company").where("company_name", company).first();
   
@@ -66,7 +66,7 @@ export default class EmployerDbService {
                   company_size: size,
                   phone: phone,
                   location: location,
-                  user_id: 1,
+                  user_id: id,
                   logo: "2"
               })
               .into("company")
