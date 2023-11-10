@@ -27,11 +27,12 @@ export default class AuthController {
 
       req.session.user = {
         email: result.user?.email!,
-        userId: result.user?.user_id!,
+        user_id: result.user?.id,
         github_id: result.user?.github_id!,
         github_username: result.user?.github_username!,
         role: result.user?.role!
       };
+      console.log(req.session.user)
       res.json({
         success: true,
         message: "login success",
@@ -85,12 +86,12 @@ export default class AuthController {
 
     if (userSessionData) {
         // User is authenticated
-        console.log(userSessionData)
+        // console.log(userSessionData)
         res.status(200).json({ user: userSessionData });
     } else {
         // User is not authenticated
-        console.log(userSessionData)
-        res.status(201).json({ error: 'User not authenticated' });
+        // console.log(userSessionData)
+        res.status(401).json({ error: 'User not authenticated' });
     }
 };
 

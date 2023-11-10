@@ -58,3 +58,14 @@ body {
     font-weight: bold;
 }
 
+#jobboards-container{
+    position: relative;
+    left: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center; 
+}
+
+.card{
+    margin: 20px;
+}
