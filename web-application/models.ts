@@ -10,8 +10,10 @@ export interface Users {
 }
 
 export interface github_Users {
-        username: string,
+        username: string;
         github_username: string;
+        id: string;
         github_id: string;
         github_token: string;
+        role: string;
 }

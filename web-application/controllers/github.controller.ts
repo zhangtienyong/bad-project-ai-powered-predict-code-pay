@@ -98,7 +98,8 @@ employee_user_data = async (req: Request, res: Response) => {
         const github_token = token;
         await this.githubService.employee_user_data(github_username,github_id,github_token);
         const githubUserData = {
-            github_id: userData.id, 
+            github_id: userData.id,
+            user_id: userData.id,
             github_username: userData.login, 
             role: 'employee', 
           };   
@@ -144,7 +145,8 @@ employer_user_data = async (req: Request, res: Response) => {
         const github_token = token;
         await this.githubService.employer_user_data(github_username, github_id,github_token);
         const githubUserData = {
-            github_id: userData.id, 
+            github_id: userData.id,
+            user_id: userData.id,
             github_username: userData.login, 
             role: 'employer', 
           };   
@@ -165,8 +167,5 @@ employer_user_data = async (req: Request, res: Response) => {
         
 
 };
-
-
-
 
 }

@@ -5,8 +5,9 @@ export default class EmployerDbController {
     constructor(private employerDbService: EmployerDbService) { }
 
 
-    edit = async (req: Request, res: Response) => {       
-            const { company, about, industry, website, email, size, phone, location } = req.body;
+    edit = async (req: Request, res: Response) => { 
+                  
+            const { company, about, industry, website, email, size, phone, location} = req.body;
 
             try {
                 await this.employerDbService.edit(company, about, industry, website, email, size, phone, location);
@@ -18,24 +19,6 @@ export default class EmployerDbController {
             }
         }
 
-
-    // getUserDetails = async (req: Request, res: Response) => {
-    //     const user = req.session.user
-    //     if (!user) {
-    //         console.log(`you are not logged in`);
-    //     }  else if (user) {
-    //         if (user.github_id) {
-    //             const ID :string = user.github_id;
-    //             console.log("GithubLogin", ID);
-    //             const result = await this.employerDbService.getUserDetails(ID);
-    //             console.log(JSON.stringify(result))
-    //         } else if (user.email) {
-    //             const email :string = user.email;
-    //             console.log("login", email);
-    //             const result = await this.employerDbService.getUserDetails(email);
-    //             console.log(JSON.stringify(result))
-    //         }}        
-    //     }
 
     getUserDetails = async (req: Request, res: Response) => {
         const user = req.session.user;
