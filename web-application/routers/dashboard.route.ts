@@ -18,5 +18,6 @@ dashboardRoutes.get("/employer", (req: Request, res: Response) => {
 });
 
 dashboardRoutes.post("/employer/company",employerDbController.edit);
+dashboardRoutes.get("/employer/company/details",employerDbController.getUserDetails);
 
 export default dashboardRoutes;
