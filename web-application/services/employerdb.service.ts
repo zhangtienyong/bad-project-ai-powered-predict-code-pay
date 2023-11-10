@@ -32,5 +32,24 @@ export default class EmployerDbService {
          return { result: true };
     }
 
+    async getUserDetails(userInform: any) {
+        try {
+          const user = await this.knex("users")
+            .select("*")
+            .where((builder) => {
+              builder.where({ github_id: userInform }).orWhere({ email: userInform });
+            })
+            .first();
+      
+          if (user) {
+            return user;
+          } else {
+            throw new Error("User not found");
+          }
+        } catch (error) {
+          throw error;
+        }
+      }
+    
 
 }

@@ -90,7 +90,7 @@ export default class AuthController {
     } else {
         // User is not authenticated
         console.log(userSessionData)
-        res.status(401).json({ error: 'User not authenticated' });
+        res.status(201).json({ error: 'User not authenticated' });
     }
 };
 

@@ -1,9 +1,4 @@
-// const employerLoginButton = document.getElementById('employer-login-button');
-// employerLoginButton.addEventListener('click', () => {
-//     window.location.href = '/signin/employer'; 
-// });
-
-const employeeLoginButton = document.getElementById('employee-login-button');
+const employeeLoginButton = document.getElementById('employer-login-button');
 
 employeeLoginButton.addEventListener('click', async () => {
     try {
@@ -16,7 +11,7 @@ employeeLoginButton.addEventListener('click', async () => {
             window.location.href = '/'; 
         } else {
             
-            window.location.href = '/signin/employee';
+            window.location.href = '/signin/employer';
         }
     } catch (error) {
         console.error("Error:", error);

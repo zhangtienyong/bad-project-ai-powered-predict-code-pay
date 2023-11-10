@@ -1,25 +1,28 @@
 window.onload = () => {
   edit_company();
+  getUserDetails();
+  test();
 };
 
 
-// async function getUserInform(){
-//     const res = await fetch("/userInform", {
-//       method: "GET"
-//     })
-//     if (res.ok) {
-//       const user = req.session.user
-//       const res2 = await fetch("/userDatabase", {
-//         method: "GET"
-//       })
-//       if (res2.ok) {
+async function getUserDetails() {
+  try {
+    const res = await fetch("/dashboard/employer/company/details", {
+      method: "GET",
+    });
 
-//     }
-    
+    if (res.ok) {
+      const data = await res.json();
+      console.log("hi",data); 
+      global.data = data;
 
-//   }
-
-
+    } else {
+      console.error('Error:', res.status);
+    }
+  } catch (error) {
+    console.error('Fetch Error:', error);
+  }
+}
 
 async function edit_company() {
   document.querySelector("#settingsForm").addEventListener("submit", async (e) => {
@@ -63,3 +66,8 @@ async function edit_company() {
 }
 
   
+function test(){
+     const userNameElement = document.querySelector("#userName")
+      userNameElement.textContent = 'NewUserName';
+    
+}
