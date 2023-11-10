@@ -2,24 +2,21 @@ window.onload = () => {
   edit_company();
 };
 
-
-// async function getUserInform(){
-//     const res = await fetch("/userInform", {
-//       method: "GET"
-//     })
+// async function getUserDetails() {
+//   try {
+//     const res = await fetch("/dashboard/employer/company/details", {
+//       method: "GET",
+//     });
 //     if (res.ok) {
-//       const user = req.session.user
-//       const res2 = await fetch("/userDatabase", {
-//         method: "GET"
-//       })
-//       if (res2.ok) {
-
+//       const data = await res.json();
+//       console.log(data);
+//     } else {
+//       console.error('Error:', res.status);
 //     }
-    
-
+//   } catch (error) {
+//     console.error('Fetch Error:', error);
 //   }
-
-
+// }
 
 async function edit_company() {
   document.querySelector("#settingsForm").addEventListener("submit", async (e) => {
@@ -62,4 +59,4 @@ async function edit_company() {
   });
 }
 
-  
+

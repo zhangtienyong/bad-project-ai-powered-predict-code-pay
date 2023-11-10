@@ -1,5 +1,5 @@
 export interface Users {
-    user_id: number;
+    id: number;
     username: string;
     email: string;
     password: string;
@@ -10,8 +10,24 @@ export interface Users {
 }
 
 export interface github_Users {
-        username: string,
+        username: string;
         github_username: string;
+        id: string;
         github_id: string;
         github_token: string;
+        role: string;
+}
+
+export interface Company {
+    company_id: number;
+    user_id: number;
+    company_name: string;
+    logo: string;
+    industry: string;
+    company_size: string;
+    website: string;
+    email: string;
+    phone: string;
+    location: string;
+    about: string;
 }

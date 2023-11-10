@@ -26,14 +26,13 @@ window.onload = () => {
         form.reset();
   
         let json = await res.json();
-        console.log(json.is_admin);
+        console.log(json.session.role);
         if (res.ok) {
-          // if (!json.session.is_admin) {
-          //   window.location.href = "http://localhost:8080";
-          // } else {
-          //   window.location.href = "http://localhost:8080/adminDelete.html";
-          // }
-          Swal.fire("Signin successfully!!!");
+          if (json.session.role === "developer") {
+            window.location.href = "http://localhost:8080/developer_dashboard.html";
+          } else if (json.session.role === "employer") {
+            window.location.href = "http://localhost:8080/employer_dashboard.html";
+          }
         } else {
           if (res.status === 401) {
             Swal.fire("Wrong Username/Password!!!");

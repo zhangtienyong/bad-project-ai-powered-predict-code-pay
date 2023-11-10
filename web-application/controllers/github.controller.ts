@@ -98,13 +98,14 @@ employee_user_data = async (req: Request, res: Response) => {
         const github_token = token;
         await this.githubService.employee_user_data(github_username,github_id,github_token);
         const githubUserData = {
-            github_id: userData.id, 
+            github_id: userData.id,
+            user_id: userData.id,
             github_username: userData.login, 
             role: 'employee', 
           };   
           req.session.user = githubUserData;
 
-        return res.redirect(`/?token=${token}`);
+        return res.redirect(`/developer_dashboard?token=${token}`);
         } 
 
         
@@ -144,12 +145,13 @@ employer_user_data = async (req: Request, res: Response) => {
         const github_token = token;
         await this.githubService.employer_user_data(github_username, github_id,github_token);
         const githubUserData = {
-            github_id: userData.id, 
+            github_id: userData.id,
+            user_id: userData.id,
             github_username: userData.login, 
             role: 'employer', 
           };   
           req.session.user = githubUserData;
-        return res.redirect(`/?token=${token}`);
+        return res.redirect(`/employer_dashboard?token=${token}`);
             
         } 
 
@@ -165,8 +167,5 @@ employer_user_data = async (req: Request, res: Response) => {
         
 
 };
-
-
-
 
 }

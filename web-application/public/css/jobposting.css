@@ -58,3 +58,28 @@ body {
     font-weight: bold;
 }
 
+#jobposting-container {
+    width: auto;
+}
+
+#skills-container {
+    width: 100%;
+    
+}
+
+#skills-container .tag {
+    display: inline-block;
+    padding: 3px 12px;
+    font-size: 13px;
+    background: rgba(11, 97, 110, 0.161);
+    margin: 3px;
+    border-radius: 5px;
+    text-transform: lowercase;
+    cursor: default;
+}
+
+#skills-container .tag .tag-close {
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 10px;
+}

@@ -27,7 +27,7 @@ declare module "express-session" {
   interface SessionData {
     user: { 
       email?: string; 
-      userId?: number;  
+      user_id?: number;  
       github_id?: string;
       github_username?: string,
       role?: string,

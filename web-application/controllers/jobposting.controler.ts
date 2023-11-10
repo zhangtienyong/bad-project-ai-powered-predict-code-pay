@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import JobPostingService from "../services/jobposting.service";
 
 
+
 export default class JobPostingController {
     constructor(private jobPostingService: JobPostingService) { }
 
@@ -10,8 +11,13 @@ export default class JobPostingController {
 
         try {
 
-            const { company_id, job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, skills } = req.body;
-            await this.jobPostingService.jobPosting(company_id, job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, skills);
+            const { job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, skills } = req.body;
+    
+            const loginUser = req.session.user;
+            const loginUserId = loginUser?.user_id!;
+           
+
+            await this.jobPostingService.jobPosting(loginUserId, job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, skills);
 
         } catch (err) {
             console.error(err.message);

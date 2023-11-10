@@ -32,7 +32,7 @@ describe("Test AuthController", () => {
     
         it('should return 403 status and error message if user is already logged in', async () => {
           req.body = { email: 'test@example.com', password: 'password' };
-          req.session.user = {email: 'test@example.com', userId: 1, github_id: 'github123', github_username: "any", role: "any" };
+          req.session.user = {email: 'test@example.com', user_id: 1, github_id: 'github123', github_username: "any", role: "any" };
           authService.login = jest.fn().mockResolvedValue({ result: true });
     
           await authController.login(req, res);
@@ -44,13 +44,13 @@ describe("Test AuthController", () => {
         it('should set session user and return success message for valid login', async () => {
           const user = {
             email: 'test@example.com',
-            userId: 123,
+            user_id: 123,
             github_id: 'github123',
             github_username: 'testuser',
             role: 'user',
           };
           req.body = { email: 'test@example.com', password: 'password' };
-          authService.login = jest.fn().mockResolvedValue({ result: true, user: {...user, user_id: user.userId} });
+          authService.login = jest.fn().mockResolvedValue({ result: true });
     
           await authController.login(req, res);
           
