@@ -24,11 +24,20 @@ export async function seed(knex: Knex): Promise<void> {
                 github_id: "aaa",
                 github_token: "aaa",
                 github_username: "aaa",
-                role: '"aaa"',
+                role: "employer",
+            },
+            {
+                username: "bbb",
+                email: "bbb@gmail.com",
+                password: await hashPassword("aaa"),
+                github_id: "bbb",
+                github_token: "aaa",
+                github_username: "aaa",
+                role: "developer",
             },
         ]).returning("id");
 
-        const [aaa] = users
+        const [aaa, bbb] = users
 
         // Generate random data for 'developer_data' table
         const developer_data = await trx('developer_data').insert([
@@ -46,6 +55,21 @@ export async function seed(knex: Knex): Promise<void> {
                 cloud_platform: BigInt(333),
                 age: 999,
             },
+            {
+                user_id: bbb.id,
+                education_level: "aaa",
+                country: "aaa",
+                years_of_coding: 999,
+                years_of_employment: 999,
+                learning_source: "aaa",
+                developer_type: "aaa",
+                programming_language: "aaa",
+                database: BigInt(333),
+                web_framework: BigInt(333),
+                cloud_platform: BigInt(333),
+                age: 999,
+            }
+
         ]).returning("id");
 
         const [developer_data_id] = developer_data
