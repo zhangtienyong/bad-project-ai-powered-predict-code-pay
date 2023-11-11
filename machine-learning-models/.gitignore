@@ -27,3 +27,6 @@ web_application/static/uploads/
 
 # Ignore Python virtual environment files
 venv/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
