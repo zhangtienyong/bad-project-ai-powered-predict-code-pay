@@ -17,13 +17,6 @@ export default class AuthService {
         return { result: true, user };
     }
 
-    // async getUserInfo(email: string) {
-        
-    //     const user = await this.knex<Users>("users").where("email", email).first();
-    //     const userId = user.id
-
-    // }
-
 
     async signup(username: string, email: string, password: string, role: string) {
         const existingUser = await this.knex<Users>("users").where("email", email).first();

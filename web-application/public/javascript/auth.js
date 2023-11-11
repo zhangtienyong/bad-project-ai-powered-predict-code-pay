@@ -26,7 +26,6 @@ window.onload = () => {
         form.reset();
   
         let json = await res.json();
-        console.log(json.session.role);
         if (res.ok) {
           if (json.session.role === "developer") {
             window.location.href = "http://localhost:8080/developer_dashboard.html";
