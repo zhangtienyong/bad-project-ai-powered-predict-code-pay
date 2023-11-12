@@ -132,17 +132,33 @@ export async function seed(knex: Knex): Promise<void> {
                 types: "programming_language",
             },
             {
+                name: "bbb",
+                types: "programming_language",
+            },
+            {
+                name: "ccc",
+                types: "database",
+            },
+            {
                 name: "ddd",
                 types: "database",
+            },
+            {
+                name: "eee",
+                types: "web_framework",
             },
             {
                 name: "bbb",
                 types: "web_framework",
             },
             {
-                name: "ccc",
+                name: "fff",
                 types: "cloud_platform",
             },
+            {
+                name: "ggg",
+                types: "cloud_platform",
+            }
         ]).returning("id");
 
        await trx("job_skills").insert([

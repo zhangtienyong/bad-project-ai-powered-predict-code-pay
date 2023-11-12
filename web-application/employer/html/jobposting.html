@@ -97,35 +97,54 @@
       </div>
       <label for="skills">Required Skills</label>
       <div class="col-md-6">
-        <label for="programmingLangauage" class="form-label">Programming Language</label>
-        <select class="form-select" aria-label="Default select example" id="programmingLangauage">
+        <label for="programmingLanguage" class="form-label">Programming Language</label>
+        <select class="form-select" aria-label="Default select example" id="programmingLanguage">
           <option selected>Programming Language Select</option>
-          <option value="onSite">On Site</option>
-          <option value="Remote">Remote</option>
+          <!-- <option value="onSite">On Site</option>
+          <option value="Remote">Remote</option> -->
+
+          <template id="list-programmingLanguage">
+            <option class="programmingLanguage"></option>
+          </template>
+
         </select>
       </div>
+
+     
+
       <div class="col-md-6">
         <label for="database" class="form-label">Database</label>
         <select class="form-select" aria-label="Default select example" id="database">
           <option selected>Database Select</option>
-          <option value="onSite">On Site</option>
-          <option value="Remote">Remote</option>
+ 
+          <template id="list-database">
+            <option class="database"></option>
+          </template>
+
         </select>
       </div>
+
       <div class="col-md-6">
         <label for="webFramework" class="form-label">Web Framework</label>
         <select class="form-select" aria-label="Default select example" id="webFramework">
           <option selected>Web Framework Select</option>
-          <option value="onSite">On Site</option>
-          <option value="Remote">Remote</option>
+
+          <template id="list-webFramework">
+            <option class="webFramework"></option>
+          </template>
+
         </select>
       </div>
+
       <div class="col-md-6">
         <label for="cloudPlatform" class="form-label">Cloud Platform</label>
         <select class="form-select" aria-label="Default select example" id="cloudPlatform">
           <option selected>Cloud Platform Select</option>
-          <option value="onSite">On Site</option>
-          <option value="Remote">Remote</option>
+
+          <template id="list-cloudPlatform">
+            <option class="cloudPlatform"></option>
+          </template>
+
         </select>
       </div>
 

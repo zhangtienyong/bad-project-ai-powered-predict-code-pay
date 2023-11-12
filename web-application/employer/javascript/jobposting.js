@@ -1,49 +1,51 @@
 window.onload = () => {
-    addSkills()
+    listSkills()
     jobPosting()
 }
 
-async function addSkills() {
-    const addSkillButton = document.querySelector('#skill-button');
-    addSkillButton.addEventListener('click', () => {
+async function listSkills() {
+    const resp= await fetch("/jobposting");
+    const skills = await resp.json();
+    console.log(skills);
+    const programming_language_skills = skills.result.programming_language_skills
+    const database_skills = skills.result.database_skills
+    const cloud_platform_skills = skills.result.cloud_platform_skills
+    const web_framework_skills = skills.result.web_framework_skills
 
-        const input = document.querySelector('#skills');
-        const skillsContainer = document.querySelector('#skills-container');
-        const color = 'black';
-        const value = input.value;
 
-        if (value.trim() === '') {
-            console.log('Input value is empty!');
-            return;
-        }
+    const selectEle1 = document.querySelector("#programmingLanguage");
+    const listEle1 = document.querySelector("#list-programmingLanguage");
 
-        const existingTags = Array.from(skillsContainer.querySelectorAll('.tag-text'));
-        const isDuplicate = existingTags.some(tag => tag.textContent === value);
+    for (const programming_language_skill of programming_language_skills) {
+        const listClone1 = listEle1.content.cloneNode(true);
+        listClone1.querySelector(".programmingLanguage").textContent = programming_language_skill;
+        selectEle1.appendChild(listClone1);
 
-        if (isDuplicate) {
-            console.log('Duplicate skill tag!');
-            return;
-        }
+    };
 
-        const spanElement = document.createElement('span');
+    const selectEle2 = document.querySelector("#database");
+    const listEle2 = document.querySelector("#list-database");
+    for (const database_skill of database_skills) {
+        const listClone2 = listEle2.content.cloneNode(true);
+        listClone2.querySelector(".database").textContent = database_skill;
+        selectEle2.appendChild(listClone2);
+    };
 
-        spanElement.innerHTML = `
-                <span class="tag-text">${value}</span>
-                <span class="tag-close"> x </span>
-                `
-        spanElement.classList.add('tag');
-        spanElement.style.backgroundColor = color.background;
-        spanElement.style.color = color.font;
+    const selectEle3 = document.querySelector("#cloudPlatform");
+    const listEle3 = document.querySelector("#list-cloudPlatform");
+    for (const cloud_platform_skill of cloud_platform_skills) {
+        const listClone3 = listEle3.content.cloneNode(true);
+        listClone3.querySelector(".cloudPlatform").textContent = cloud_platform_skill;
+        selectEle3.appendChild(listClone3);
+    };
 
-        const closeButton = spanElement.querySelector('.tag-close');
-        closeButton.addEventListener('click', () => {
-            spanElement.remove();
-        });
-
-        skillsContainer.appendChild(spanElement);
-        input.value = '';
-
-    });
+    const selectEle4 = document.querySelector("#webFramework");
+    const listEle4 = document.querySelector("#list-webFramework");
+    for (const web_framework_skill of web_framework_skills) {
+        const listClone4 = listEle4.content.cloneNode(true);
+        listClone4.querySelector(".webFramework").textContent = web_framework_skill;
+        selectEle4.appendChild(listClone4);
+    }
 }
 
 async function jobPosting() {
@@ -57,11 +59,11 @@ async function jobPosting() {
             const job_description = document.querySelector("#jobDescription").value;
             const responsibilities = document.querySelector("#responsibilities").value;
             const qualifications = document.querySelector("#qualifications").value;
-
-            const tagElements = document.querySelectorAll('.tag-text');
-            const tagValues = Array.from(tagElements).map(tag => tag.textContent);
-            const skills = tagValues;
-
+            const programming_language_skills = document.querySelector('#programmingLanguage').value
+            const database_skills = document.querySelector('#database').value
+            const cloud_platform_skills = document.querySelector('#cloudPlatform').value
+            const web_framework_skills = document.querySelector('#webFramework').value
+   
             
             const res = await fetch("/jobposting", {
                 method: "POST",
@@ -73,7 +75,7 @@ async function jobPosting() {
                     job_description,
                     responsibilities,
                     qualifications,
-                    skills
+    
                 }),
                 headers: {
                     "Content-type": "application/json",
