@@ -49,10 +49,6 @@ export async function seed(knex: Knex): Promise<void> {
                 years_of_employment: 999,
                 learning_source: "aaa",
                 developer_type: "aaa",
-                programming_language: "aaa",
-                database: BigInt(333),
-                web_framework: BigInt(333),
-                cloud_platform: BigInt(333),
                 age: 999,
             },
             {
@@ -63,10 +59,6 @@ export async function seed(knex: Knex): Promise<void> {
                 years_of_employment: 999,
                 learning_source: "aaa",
                 developer_type: "aaa",
-                programming_language: "aaa",
-                database: BigInt(333),
-                web_framework: BigInt(333),
-                cloud_platform: BigInt(333),
                 age: 999,
             }
 
@@ -121,7 +113,6 @@ export async function seed(knex: Knex): Promise<void> {
                 experience_level: "aaa",
                 responsibilities: "aaa",
                 qualifications: "aaa",
-                skills: "aaa",
             },
         ]).returning("id");
         const [job_id] = jobs
@@ -132,6 +123,63 @@ export async function seed(knex: Knex): Promise<void> {
                 user_id: aaa.id,
                 cv_pdf: "aaa",
                 status: 'Pending',
+            },
+        ]).returning("id");
+
+        const skills = await trx("skills").insert([
+            {
+                name: "aaa",
+                types: "programming_language",
+            },
+            {
+                name: "ddd",
+                types: "database",
+            },
+            {
+                name: "bbb",
+                types: "web_framework",
+            },
+            {
+                name: "ccc",
+                types: "cloud_platform",
+            },
+        ]).returning("id");
+
+       await trx("job_skills").insert([
+            {
+                job_id: job_id.id,
+                skills_id: skills[0].id,
+            },
+            {
+                job_id: job_id.id,
+                skills_id: skills[1].id,
+            },
+            {
+                job_id: job_id.id,
+                skills_id: skills[2].id,
+            },
+            {
+                job_id: job_id.id,
+                skills_id: skills[3].id,
+            },
+        ]).returning("id");
+
+        await trx("developer_skills").insert([
+            {
+                data_id: developer_data_id.id,
+                skills_id: skills[0].id,
+            },
+            {
+                data_id: developer_data_id.id,
+                skills_id: skills[1].id,
+            },
+            {
+                data_id: developer_data_id.id,
+                skills_id: skills[2].id,
+            },
+            {
+                data_id: developer_data_id.id,
+                skills_id: skills[3].id,
             },
         ]).returning("id");
 
