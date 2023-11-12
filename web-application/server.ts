@@ -3,7 +3,7 @@ import path from "path";
 import expressSession from "express-session";
 import { apiRoutes } from "./routers/routes";
 import logger from "./utils/logger";
-
+// import { isDeveloperLoggedIn, isEmployerLoggedIn } from "./guard";
 
 const app = express();
 
@@ -44,6 +44,20 @@ app.use(apiRoutes);
 // 4. serve files
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.static(path.join(__dirname, "public", "html"), { extensions: ["html"] }));
+
+//uncomment below line to serve static files from the root of the project after finish the rest of the features
+// app.use(isEmployerLoggedIn, express.static(path.join(__dirname, "employer")))
+// app.use(isEmployerLoggedIn, express.static(path.join(__dirname, "employer", "html"), { extensions: ["html"] }));
+
+// app.use(isDeveloperLoggedIn, express.static(path.join(__dirname, "developer")))
+// app.use(isDeveloperLoggedIn, express.static(path.join(__dirname, "developer", "html"), { extensions: ["html"] }));
+
+app.use(express.static(path.join(__dirname, "employer")))
+app.use(express.static(path.join(__dirname, "employer", "html"), { extensions: ["html"] }));
+
+app.use(express.static(path.join(__dirname, "developer")))
+app.use(express.static(path.join(__dirname, "developer", "html"), { extensions: ["html"] }));
+
 
 // 5. 404 handler
 app.use((_req, res) => {

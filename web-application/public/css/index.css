@@ -147,7 +147,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
     border-radius: 8px;
-    padding: 16px 24px;
+    padding: 16px 16px;
 }
 
 .custom-card:hover {

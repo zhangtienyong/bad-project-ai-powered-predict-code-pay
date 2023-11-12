@@ -32,7 +32,7 @@ export default class AuthController {
         github_username: result.user?.github_username!,
         role: result.user?.role!
       };
-
+      console.log(req.session.user)
       res.json({
         success: true,
         message: "login success",
