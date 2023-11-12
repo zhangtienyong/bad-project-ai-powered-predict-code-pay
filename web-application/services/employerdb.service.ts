@@ -4,43 +4,15 @@ export default class EmployerDbService {
     constructor(private knex: Knex) { }
 
 
-    // async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string)
-    // {
-    //     const companyForm = await this.knex<any>("company").where("company_name", company).first();
-
-    //     if (companyForm) {
-    //         return { result: false, message: "error" };
-    //     }
-    //     await this.knex
-    //         .insert({
-    //             company_name: company,
-    //             about: about,
-    //             industry: industry,
-    //             website: website,
-    //             email: email,
-    //             company_size: size,
-    //             phone: phone,
-    //             location: location,
-    //             user_id: 1,
-    //             logo: "2"
-    //         })
-    //         .into("company")
-    //         .returning("id");
-
-    //      return { result: true };
-    // }
-
-    async getUserDetails(userInform: any) {
+    async getUserDetails(ID: any) {
         try {
-          const user = await this.knex("users")
+          const company = await this.knex("company")
             .select("*")
-            .where((builder) => {
-              builder.where({ github_id: userInform }).orWhere({ email: userInform });
-            })
+            .where("user_id", ID)
             .first();
       
-          if (user) {
-            return user;
+          if (company) {
+            return company;
           } else {
             throw new Error("User not found");
           }
@@ -49,31 +21,64 @@ export default class EmployerDbService {
         }
       }
 
-      async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string, id: number)
-      {
-          const companyForm = await this.knex<any>("company").where("company_name", company).first();
-  
-          if (companyForm) {
-              return { result: false, message: "error" };
-          }
-          await this.knex
-              .insert({
-                  company_name: company,
-                  about: about,
-                  industry: industry,
-                  website: website,
-                  email: email,
-                  company_size: size,
-                  phone: phone,
-                  location: location,
-                  user_id: id,
-                  logo: "2"
-              })
-              .into("company")
-              .returning("id");
-  
-           return { result: true };
-      }
+      async edit(company: any, about: any, industry: any, website: any, email: any, size: any, phone: any, location: any, id: number, file: any) {
+        const Company ={         
+            company_name: company,
+            about: about,
+            industry: industry,
+            website: website,
+            email: email,
+            company_size: size,
+            phone: phone,
+            location: location,
+            user_id: id,
+            logo: file,  
+        }
+        const existingCompany = await this.knex<any>("company").where("user_id", id).first();
     
+        if (existingCompany) {
+            await this.knex("company")
+                .where("user_id", id)
+                .update(Company);
+    
+            return { result: true, message: "Company updated successfully" };
+        } else {
+            await this.knex
+                .insert(Company)
+                .into("company")
+                .returning("id");
+    
+            return { result: true, message: "Company inserted successfully" };
+        }
+    }
+    
+    async getJob(id: number) {
+      try {
+        const pageSize = 4
+        const page = 1
+        const company = await this.knex("company")
+          .select("id", "user_id")
+          .where("user_id", id)
+          .first();
+    
+        if (company) {
+          const offset = (page - 1) * pageSize;
+    
+          const jobs = await this.knex("jobs")
+            .select("*")
+            .where("company_id", company.id)
+            .limit(pageSize)
+            .offset(offset);
+    
+          return jobs;
+        } else {
+          throw new Error("Company not found for the given user");
+        }
+      } catch (error) {
+        throw error;
+      }
+    }
+
 
 }
+

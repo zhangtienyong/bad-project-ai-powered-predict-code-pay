@@ -1,0 +1,16 @@
+insert into jobs (company_id,job_title,work_place,employment_type,job_description,experience_level,responsibilities,qualifications,skills,created_at,updated_at) Values 
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(1,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()'),
+(2,'ab','hk','type','hi','Lv100','cc','qualifications','skills','now()','now()');

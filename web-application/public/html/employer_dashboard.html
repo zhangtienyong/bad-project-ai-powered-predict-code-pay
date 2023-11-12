@@ -51,26 +51,28 @@
     <!-- main -->
 
     <div class="container">
-      <div class="row ">
-        <div class="col">
-          <img src="../images/logo.jpg"  class="logo" alt="Logo-Image">
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>Company Name</p>
-                <p>About</p>
-                <p>Industry</p>
-                <p>Website</p>
-                <p>Email</p>
-                <p>Company Size</p>
-                <P>Phone</P>
-                <p>Location</p>
-              </blockquote>
-            </div>
+      <div class="row">
+          <div class="col">
+              <img id="companyLogo" src="../images/logo.jpg" class="logo" alt="Logo-Image">
           </div>
-    </div>
+          <div class="col-6">
+              <div class="card">
+                  <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                          <p id="companyName">Company Name</p>
+                          <p id="about">About</p>
+                          <p id="industry">Industry</p>
+                          <p id="website">Website</p>
+                          <p id="email">Email</p>
+                          <p id="companySize">Company Size</p>
+                          <p id="phone">Phone</p>
+                          <p id="location">Location</p>
+                      </blockquote>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
     <div class="col-1">
       <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
@@ -80,31 +82,10 @@
   </div>
 </div>
 
-    <ul class="list-group">
-      <li class="list-group-item">
-        <div>Job Posted</div>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Edit</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Edit</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Edit</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Edit</button>
-        <button type="button" class="btn btn-success">Delete</button>
-      </li>
-    </ul>
+<div class="job-container">
+          
+           
+</div>
 
     <nav aria-label="Page navigation">
       <ul class="pagination">
@@ -176,14 +157,14 @@
                       </div>
                       
                       <div class="row mt-3">
-                          <div class="col-md-12"><label class="labels">Company</label><input type="text" class="form-control" name="company" placeholder="Company name" value=""></div>
-                          <div class="col-md-12"><label class="labels">About</label><input type="text" class="form-control" name="about" placeholder="About" value=""></div>
-                          <div class="col-md-12"><label class="labels">Industry</label><input type="text" class="form-control" name="industry" placeholder="Industry" value=""></div>
-                          <div class="col-md-12"><label class="labels">Website</label><input type="text" class="form-control" name="website" placeholder="Website" value=""></div>
-                          <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" name="email" placeholder="Email" value=""></div>
-                          <div class="col-md-12"><label class="labels">Company Size</label><input type="text" class="form-control" name="size" placeholder="Company Size" value=""></div>
-                          <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" name="phone" placeholder="Phone" value=""></div>
-                          <div class="col-md-12"><label class="labels">Location</label><input type="text" class="form-control" name="location" placeholder="Location" value=""></div>
+                          <div class="col-md-12"><label class="labels">Company</label><input type="text" class="form-control" name="company" placeholder="Company name" required ></div>
+                          <div class="col-md-12"><label class="labels">About</label><input type="text" class="form-control" name="about" placeholder="About" required></div>
+                          <div class="col-md-12"><label class="labels">Industry</label><input type="text" class="form-control" name="industry" placeholder="Industry" required ></div>
+                          <div class="col-md-12"><label class="labels">Website</label><input type="text" class="form-control" name="website" placeholder="Website" required ></div>
+                          <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" name="email" placeholder="Email" required></div>
+                          <div class="col-md-12"><label class="labels">Company Size</label><input type="text" class="form-control" name="size" placeholder="Company Size" required></div>
+                          <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" name="phone" placeholder="Phone" required></div>
+                          <div class="col-md-12"><label class="labels">Location</label><input type="text" class="form-control" name="location" placeholder="Location" required></div>
                       </div>
                       
                       
@@ -191,7 +172,10 @@
               </div>
               <div class="col-md-4">
                   <div class="p-3 py-5">
-                      <div class="d-flex justify-content-between align-items-center experience"><span>Image</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;<input type="file" id="imageInput" accept="image/*">upload</span></div><br>          
+                      <div class="d-flex justify-content-between align-items-center experience"><span>Image</span></div>
+                      <div>
+                        <input type="file" name="image" id="">
+                    </div>     
                   </div>
               </div>
             </form>
@@ -220,3 +204,16 @@
     <script src="../javascript/employer_dashboard.js"></script>
 </body>
 </html>
+
+
+<template id="job-template">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div>Job Posted</div>
+    </li>
+    <li class="list-group-item">
+      <div class="job-title">Job title, Job date</div>
+      <button type="button" class="btn btn-success">Edit</button>
+      <button type="button" class="btn btn-success">Delete</button>
+    </li>
+</template>
