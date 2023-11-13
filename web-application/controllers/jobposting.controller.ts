@@ -30,13 +30,26 @@ export default class JobPostingController {
 
         try {
 
-            const { job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, skills } = req.body;
+            const { 
+                job_title,
+                    experience_level,
+                    work_place,
+                    employment_type,
+                    job_description,
+                    responsibilities,
+                    qualifications,
+                    programming_language_skills,
+                    database_skills,
+                    cloud_platform_skills,
+                    web_framework_skills,
+              
+            } = req.body;
     
             const loginUser = req.session.user;
             const loginUserId = loginUser?.user_id!;
            
 
-            await this.jobPostingService.jobPosting(loginUserId, job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, skills);
+            await this.jobPostingService.jobPosting(loginUserId, job_title, work_place, employment_type, job_description, experience_level, responsibilities, qualifications, programming_language_skills,database_skills, cloud_platform_skills, web_framework_skills);
 
         } catch (err) {
             console.error(err.message);

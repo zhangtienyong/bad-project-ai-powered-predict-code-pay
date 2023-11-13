@@ -16,8 +16,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="correct-integrity-value-goes-here" crossorigin="anonymous" referrerpolicy="no-referrer">
 
+  <!-- Include Twitter Bootstrap and jQuery: -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../css/jobposting.css">
+  <link rel="stylesheet" href="../css/multi-select-tag.css">
+  <link rel="stylesheet" href="../css/test.css">
 </head>
 
 <body>
@@ -27,7 +33,8 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          <img src="../images/machine-learning.png" width="30" height="30" class="d-inline-block align-top" alt="Logo-Image">
+          <img src="../images/machine-learning.png" width="30" height="30" class="d-inline-block align-top"
+            alt="Logo-Image">
           Predict <span class="code-pay">Code Pay</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -96,12 +103,118 @@
           placeholder="Enter qualifications"></textarea>
       </div>
       <label for="skills">Required Skills</label>
+
       <div class="col-md-6">
         <label for="programmingLanguage" class="form-label">Programming Language</label>
+        <div class="container" id="programmingLanguage">
+          <div class="select-btn" id="programmingLanguage-select-btn">
+            <span class="btn-text">Select Programming Language</span>
+            <span class="arrow-dwn">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </div>
+
+          <ul class="list-items" id="programmingLanguage-list-item">
+          </ul>
+
+          <template id="list-programmingLanguage">
+              <li class="item" id="programmingLanguage-item">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="programmingLanguage-item-text">HTML & CSS</span>
+              </li>
+          </template>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <label for="database" class="form-label">Database</label>
+
+        <div class="container" id="database">
+          <div class="select-btn" id="database-select-btn">
+            <span class="btn-text">Select Database</span>
+            <span class="arrow-dwn">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </div>
+
+          <ul class="list-items" id="database-list-items">
+          </ul>
+
+          <template id="list-database">
+              <li class="item" id="database-item">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="database-item-text">HTML & CSS</span>
+              </li>
+          </template>
+        </div>
+      </div>
+
+      
+       <div class="col-md-6">
+        <label for="webFramework" class="form-label">Web Framework</label>
+
+        <div class="container" id="webFramework">
+          <div class="select-btn" id="webFramework-select-btn">
+            <span class="btn-text">Select Web Framework</span>
+            <span class="arrow-dwn">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </div>
+
+          <ul class="list-items" id="webFramework-list-items">
+          </ul>
+
+          <template id="list-webFramework">
+              <li class="item" id="webFramework-item">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="webFramework-item-text">HTML & CSS</span>
+              </li>
+          </template>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <label for="cloudPlatform" class="form-label">Cloud Platform</label>
+
+        <div class="container" id="cloudPlatform">
+          <div class="select-btn" id="cloudPlatform-select-btn">
+            <span class="btn-text">Select Cloud Platform</span>
+            <span class="arrow-dwn">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </div>
+
+          <ul class="list-items" id="cloudPlatform-list-items">
+          </ul>
+
+          <template id="list-cloudPlatform">
+              <li class="item" id="cloudPlatform-item">
+                <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="cloudPlatform-item-text">HTML & CSS</span>
+              </li>
+          </template>
+        </div>
+      </div> 
+       
+
+
+      <!-- <div class="col-md-6">
+        <label for="programmingLanguage" class="form-label">Programming Language</label>
+
         <select class="form-select" aria-label="Default select example" id="programmingLanguage">
           <option selected>Programming Language Select</option>
-          <!-- <option value="onSite">On Site</option>
-          <option value="Remote">Remote</option> -->
+          <option value="onSite">On Site</option>
+          <option value="Remote">Remote</option>
+
 
           <template id="list-programmingLanguage">
             <option class="programmingLanguage"></option>
@@ -110,21 +223,19 @@
         </select>
       </div>
 
-     
-
       <div class="col-md-6">
         <label for="database" class="form-label">Database</label>
         <select class="form-select" aria-label="Default select example" id="database">
           <option selected>Database Select</option>
- 
+
           <template id="list-database">
             <option class="database"></option>
           </template>
 
         </select>
       </div>
-
-      <div class="col-md-6">
+ -->
+      <!-- <div class="col-md-6">
         <label for="webFramework" class="form-label">Web Framework</label>
         <select class="form-select" aria-label="Default select example" id="webFramework">
           <option selected>Web Framework Select</option>
@@ -134,11 +245,11 @@
           </template>
 
         </select>
-      </div>
+      </div> -->
 
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <label for="cloudPlatform" class="form-label">Cloud Platform</label>
-        <select class="form-select" aria-label="Default select example" id="cloudPlatform">
+        <select class="form-select" aria-label="Default select example" id="cloudPlatform" multiple>
           <option selected>Cloud Platform Select</option>
 
           <template id="list-cloudPlatform">
@@ -146,7 +257,7 @@
           </template>
 
         </select>
-      </div>
+      </div> -->
 
       <div class="col-12">
         <button type="submit" class="btn btn-outline-dark">Post Job</button>
@@ -154,9 +265,6 @@
     </form>
 
   </div>
-
-
-
 
   <!-- Bootstrap and Custom JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -168,10 +276,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   <!-- Custom JavaScript -->
   <script src="../javascript/jobposting.js"></script>
+  <script src="../javascript/multi-select-tag.js"></script>
+  <script src="../javascript/test.js"></script>
 </body>
 
 </html>
