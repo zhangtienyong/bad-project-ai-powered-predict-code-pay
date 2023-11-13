@@ -55,7 +55,7 @@ export async function up(knex: Knex): Promise<void> {
         table.integer("user_id").notNullable().unsigned();
         table.foreign("user_id").references("users.id").onDelete("CASCADE");
         table.string("company_name").notNullable();
-        table.string("logo").notNullable();
+        table.string("logo");
         table.string("industry").notNullable();
         table.string("company_size").notNullable();
         table.string("website").notNullable();

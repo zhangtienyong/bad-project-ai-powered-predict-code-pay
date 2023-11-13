@@ -31,3 +31,22 @@
     width: 257px;
 }
 
+#employer-login-button {
+    width: 257px;
+    height: 37px;
+    margin: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#employee-login-button {
+    width: 257px;
+    height: 37px;
+    margin: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

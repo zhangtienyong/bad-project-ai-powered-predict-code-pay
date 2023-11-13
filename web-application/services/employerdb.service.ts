@@ -1,79 +1,172 @@
 import { Knex } from "knex";
 
 export default class EmployerDbService {
-    constructor(private knex: Knex) { }
+  constructor(private knex: Knex) { }
 
 
-    // async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string)
-    // {
-    //     const companyForm = await this.knex<any>("company").where("company_name", company).first();
+  async getUserDetails(ID: any) {
+    try {
+      const company = await this.knex("company")
+        .select("*")
+        .where("user_id", ID)
+        .first();
 
-    //     if (companyForm) {
-    //         return { result: false, message: "error" };
-    //     }
-    //     await this.knex
-    //         .insert({
-    //             company_name: company,
-    //             about: about,
-    //             industry: industry,
-    //             website: website,
-    //             email: email,
-    //             company_size: size,
-    //             phone: phone,
-    //             location: location,
-    //             user_id: 1,
-    //             logo: "2"
-    //         })
-    //         .into("company")
-    //         .returning("id");
+      if (company) {
+        return company;
+      } else {
+        throw new Error("User not found");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
 
-    //      return { result: true };
-    // }
-
-    async getUserDetails(userInform: any) {
-        try {
-          const user = await this.knex("users")
-            .select("*")
-            .where((builder) => {
-              builder.where({ github_id: userInform }).orWhere({ email: userInform });
-            })
-            .first();
+  async edit(company: any, about: any, industry: any, website: any, email: any, size: any, phone: any, location: any, id: number) {
+    const Company = {
+      company_name: company,
+      about: about,
+      industry: industry,
+      website: website,
+      email: email,
+      company_size: size,
+      phone: phone,
+      location: location,
+      user_id: id,
       
-          if (user) {
-            return user;
-          } else {
-            throw new Error("User not found");
-          }
-        } catch (error) {
-          throw error;
-        }
-      }
+    }
+    const existingCompany = await this.knex<any>("company").where("user_id", id).first();
 
-      async edit(company: string, about: string, industry: string, website: string, email: string, size: string, phone: string, location: string, id: number)
-      {
-          const companyForm = await this.knex<any>("company").where("company_name", company).first();
-  
-          if (companyForm) {
-              return { result: false, message: "error" };
-          }
-          await this.knex
-              .insert({
-                  company_name: company,
-                  about: about,
-                  industry: industry,
-                  website: website,
-                  email: email,
-                  company_size: size,
-                  phone: phone,
-                  location: location,
-                  user_id: id,
-                  logo: "2"
-              })
-              .into("company")
-              .returning("id");
-  
-           return { result: true };
+    if (existingCompany) {
+      await this.knex("company")
+        .where("user_id", id)
+        .update(Company);
+
+      return { result: true, message: "Company updated successfully" };
+    } else {
+      await this.knex
+        .insert(Company)
+        .into("company")
+        .returning("id");
+
+      return { result: true, message: "Company inserted successfully" };
+    }
+  }
+
+  async image(file: any, id: number) {
+    const image = {
+      logo: file,
+    }
+    const existingCompany = await this.knex<any>("company").where("user_id", id).first();
+
+    if (existingCompany) {
+      await this.knex("company")
+        .where("user_id", id)
+        .update(image);
+
+      return { result: true, message: "Company updated successfully" };
+    } else {
+      await this.knex
+        .insert(image)
+        .into("company")
+
+      return { result: true, message: "Company inserted successfully" };
+    }
+  }
+
+  async getJob(id: number, page: number, pageSize: number = 4) {
+    try {
+      const company = await this.knex("company")
+        .select("id", "user_id")
+        .where("user_id", id)
+        .first();
+
+      if (company) {
+        const offset = (page - 1) * pageSize;
+
+        const jobs = await this.knex("jobs")
+          .select("*")
+          .where("company_id", company.id)
+          .limit(pageSize)
+          .offset(offset);
+
+        return jobs;
+      } else {
+        throw new Error("Company not found for the given user");
       }
-    
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async application(id: number, app: number, pageSize: number = 4) {
+    try {
+      const company = await this.knex("company")
+        .select("id", "user_id")
+        .where("user_id", id)
+        .first();
+  
+      if (company) {
+        const offset = (app - 1) * pageSize;
+  
+        const jobs = await this.knex("jobs")
+          .select("*")
+          .where("company_id", company.id)
+  
+        if (jobs && jobs.length > 0) {
+          const jobIds = jobs.map((job) => job.id); 
+          const applications = await this.knex("job_applications")
+            .select("*")
+            .whereIn("job_id", jobIds)
+            .limit(pageSize)
+            .offset(offset);
+  
+          return applications;}
+
+        return
+
+      }else {
+        throw new Error("Company not found for the given user");
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+
 
 }
+
+
+
+
+
+// async edit(company: any, about: any, industry: any, website: any, email: any, size: any, phone: any, location: any, id: number) {
+//   const Company = {
+//     company_name: company,
+//     about: about,
+//     industry: industry,
+//     website: website,
+//     email: email,
+//     company_size: size,
+//     phone: phone,
+//     location: location,
+//     user_id: id,
+//     logo: file,
+//   }
+//   const existingCompany = await this.knex<any>("company").where("user_id", id).first();
+
+//   if (existingCompany) {
+//     await this.knex("company")
+//       .where("user_id", id)
+//       .update(Company);
+
+//     return { result: true, message: "Company updated successfully" };
+//   } else {
+//     await this.knex
+//       .insert(Company)
+//       .into("company")
+//       .returning("id");
+
+//     return { result: true, message: "Company inserted successfully" };
+//   }
+// }

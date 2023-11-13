@@ -30,14 +30,6 @@
 
     <div class="container-fluid" id="big-container">
 
-        <div class="container" id="social">
-            <form>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-dark" id="employer-login-button"><i
-                            class="fa-brands fa-github"></i> Log in with GitHub</button>
-                </div>
-            </form>
-        </div>
 
         <div class="container" id="local">
             <form action="/signin" method="POST" id="signin-panel">
@@ -51,7 +43,13 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Login</button>
+                <button type="button" class="btn btn-dark" id="employer-login-button"><i
+                    class="fa-brands fa-github"></i>Login with GitHub</button>
             </form>
+            <div class="container" id="social">
+            
+            
+        </div>
             <div class="m-3 text-center">
                 <h6>Not a member?
                     <a href="employerSignup.html" target="_parent">Signup</a>

@@ -115,8 +115,11 @@ body {
     border: solid 1px #BA68C8
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+}
 
-
-#imageInput {
-    display: none;
-  }
+#companyLogo {
+    
+}

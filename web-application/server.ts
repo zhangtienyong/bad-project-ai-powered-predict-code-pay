@@ -59,6 +59,8 @@ app.use(express.static(path.join(__dirname, "developer")))
 app.use(express.static(path.join(__dirname, "developer", "html"), { extensions: ["html"] }));
 
 
+app.use(express.static(path.join(__dirname, "uploads")))
+
 // 5. 404 handler
 app.use((_req, res) => {
   res.sendFile(path.join(__dirname, "public", "html", "404.html"));
