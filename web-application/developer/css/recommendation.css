@@ -5,7 +5,7 @@ body {
 }
 
 /* Navbar */
-.nav-tab {
+.nav-tab, .footer-tab {
     width: 100%;
     height: 8px;
     background-color: #00e5b7;
@@ -70,4 +70,40 @@ body {
 
 .font-page {
     color: #ffffff;
+}
+
+.custom-margin-top {
+    margin-top: 24px;
+}
+
+.custom-margin-bottom {
+    margin-bottom: 24px;
+}
+
+.card .steps ul {
+    list-style: none;
+    padding: 24px 0px 0px 24px;
+}
+
+.card .steps ul li {
+    display: block;
+}
+
+.card-img-top {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin: auto;
+    display: block;
+    margin-top: 24px;
+}
+
+/* Footer */
+footer {
+    background-color: #1e293b;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    padding: 30px;
 }
