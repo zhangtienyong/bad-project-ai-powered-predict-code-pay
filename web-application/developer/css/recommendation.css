@@ -89,14 +89,21 @@ body {
     display: block;
 }
 
-.card-img-top {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    margin: auto;
-    display: block;
-    margin-top: 24px;
+.custom-card-top {
+    border-top: 4px solid #00e5b7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.custom-card-top-select {
+    border-top: 4px solid #00e5b7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.custom-card-top-select:hover {
+    transform: scale(1.05);
+}
+
 
 /* Footer */
 footer {

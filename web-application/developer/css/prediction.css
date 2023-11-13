@@ -86,6 +86,10 @@ body {
     background-color: #bdbfc1;
 }
 
+.custom-card-nocolor {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Footer */
 footer {
     background-color: #1e293b;
