@@ -1,219 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PredictCodePay - Dashboard For Employer Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PredictCodePay - Dashboard For Employer Page</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="../images/favicon.png" type="image/png">
+  <!-- Favicon -->
+  <link rel="icon" href="../images/favicon.png" type="image/png">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="correct-integrity-value-goes-here" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="correct-integrity-value-goes-here" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/employer_dashboard.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/employer_dashboard.css">
 </head>
+
 <body>
-    <header>
-        <!-- Navbar -->
-        <div class="nav-tab"></div>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/">
-                <img src="../images/machine-learning.png" width="30" height="30" class="d-inline-block align-top" alt="Logo-Image">
-                Predict <span class="code-pay">Code Pay</span>
-              </a>
-                <button class="navbar-toggler" type="button" 
-                    data-toggle="collapse" data-target="#navbarNavAltMarkup" 
-                    aria-controls="navbarNavAltMarkup" 
-                    aria-expanded="false" 
-                    aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/">Home</a>
-                    <a class="nav-item nav-link" href="/jobposting">Job Posting</a>
-                    <a class="nav-item nav-link" href="/jobboards">Job Boards</a>
-                    <a class="nav-item nav-link active" href="/dashboard/employer">Dashboard For Employer<span class="sr-only">(current)</span></a>
-                  </div>
-                  <button class="btn btn-outline-danger signout" onclick="window.location.href= '/logout'">Sign out</button>
-                </div>
-            </div>
-          </nav>
-    </header>
-
-
-    <!-- main -->
-
-    <div class="container">
-      <div class="row">
-          <div class="col">
-              <img id="companyLogo" src="../images/logo.jpg" class="logo" alt="Logo-Image">
+  <header>
+    <!-- Navbar -->
+    <div class="nav-tab"></div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="../images/machine-learning.png" width="30" height="30" class="d-inline-block align-top"
+            alt="Logo-Image">
+          Predict <span class="code-pay">Code Pay</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link" href="/jobposting">Job Posting</a>
+            <a class="nav-item nav-link" href="/jobboards">Job Boards</a>
+            <a class="nav-item nav-link active" href="/dashboard/employer">Dashboard For Employer<span
+                class="sr-only">(current)</span></a>
           </div>
-          <div class="col-6">
-              <div class="card">
-                  <div class="card-body">
-                      <blockquote class="blockquote mb-0">
-                          <p id="companyName">Company Name</p>
-                          <p id="about">About</p>
-                          <p id="industry">Industry</p>
-                          <p id="website">Website</p>
-                          <p id="email">Email</p>
-                          <p id="companySize">Company Size</p>
-                          <p id="phone">Phone</p>
-                          <p id="location">Location</p>
-                      </blockquote>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-    <div class="col-1">
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  company data
-</button>
+          <button class="btn btn-outline-danger signout" onclick="window.location.href= '/logout'">Sign out</button>
         </div>
-  </div>
-</div>
-
-<div class="job-container">
-          
-           
-</div>
-
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
+      </div>
     </nav>
+  </header>
 
+
+  <!-- main -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <img id="companyLogo" src="../images/logo.jpg" class="logo" alt="Logo-Image"/>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p id="companyName">Company Name</p>
+              <p id="about">About</p>
+              <p id="industry">Industry</p>
+              <p id="website">Website</p>
+              <p id="email">Email</p>
+              <p id="companySize">Company Size</p>
+              <p id="phone">Phone</p>
+              <p id="location">Location</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            edit company
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  <div>
     <ul class="list-group">
-      <li class="list-group-item">
-        <div>Job Applications</div>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Accepted</button>
-        <button type="button" class="btn btn-success">Rejected</button>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Accepted</button>
-        <button type="button" class="btn btn-success">Rejected</button>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Accepted</button>
-        <button type="button" class="btn btn-success">Rejected</button>
-      </li>
-      <li class="list-group-item">
-        <div>Job title, Job date</div>
-        <button type="button" class="btn btn-success">Accepted</button>
-        <button type="button" class="btn btn-success">Rejected</button>
-      </li>
-    </ul>
+    <li class="list-group-item">
+    <div>Job Posted</div>
+    </li>
+  </div>
+
+  <div class="job-container">
+  </div>
 
   <nav aria-label="Page navigation">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" onclick="loadPreviousPage()" href="#">Previous</a></li>
       <li class="page-item"><a class="page-link" href="#">1</a></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      <li class="page-item"><a class="page-link" onclick="loadNextPage()" href="#">Next</a></li>
+    </ul>
+  </nav>
+
+  <div>
+  <ul class="list-group">
+    <li class="list-group-item">
+    <div>Job Applications</div>
+    </li>
+  </div>
+
+  <div class="application-container">
+  </div>
+
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" onclick="loadPreviousApp()" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" onclick="loadNextApp()" href="#">Next</a></li>
     </ul>
   </nav>
 
 
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Settings</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="settingsForm" action="submit.php" method="post">
-        <div class="container rounded bg-white mt-5 mb-5">
-          <div class="row">
-              <div class="col-md-3 border-right">
-                  <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="../images/logo.jpg"></div>
-              </div>
-              <div class="col-md-5 border-right">
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Settings</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="settingsForm" action="submit.php" method="post">
+            <div class="container rounded bg-white mt-5 mb-5">
+              <div class="row">
+                <div class="col-md-3 border-right">
+                  <div class="d-flex flex-column align-items-center text-center p-3 py-5" id="modalLogo"><img
+                      class="rounded-circle mt-5" width="150px" src="../images/logo.jpg"></div>
+                </div>
+                <div class="col-md-5 border-right">
                   <div class="p-3 py-5">
-                      <div class="d-flex justify-content-between align-items-center mb-3" id="userName">
-                          <h4 class="text-right">UserName</h4>
-                      </div>
-                      
-                      <div class="row mt-3">
-                          <div class="col-md-12"><label class="labels">Company</label><input type="text" class="form-control" name="company" placeholder="Company name" required ></div>
-                          <div class="col-md-12"><label class="labels">About</label><input type="text" class="form-control" name="about" placeholder="About" required></div>
-                          <div class="col-md-12"><label class="labels">Industry</label><input type="text" class="form-control" name="industry" placeholder="Industry" required ></div>
-                          <div class="col-md-12"><label class="labels">Website</label><input type="text" class="form-control" name="website" placeholder="Website" required ></div>
-                          <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" name="email" placeholder="Email" required></div>
-                          <div class="col-md-12"><label class="labels">Company Size</label><input type="text" class="form-control" name="size" placeholder="Company Size" required></div>
-                          <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control" name="phone" placeholder="Phone" required></div>
-                          <div class="col-md-12"><label class="labels">Location</label><input type="text" class="form-control" name="location" placeholder="Location" required></div>
-                      </div>
-                      
-                      
+                    <div class="d-flex justify-content-between align-items-center mb-3" id="userName">
+                      <h4 class="text-right">Company</h4>
+                    </div>
+
+                    <div class="row mt-3">
+                      <div class="col-md-12"><label class="labels">Company</label><input type="text"
+                          class="form-control" name="company" placeholder="Company name" required></div>
+                      <div class="col-md-12"><label class="labels">About</label><input type="text" class="form-control"
+                          name="about" placeholder="About" required></div>
+                      <div class="col-md-12"><label class="labels">Industry</label><input type="text"
+                          class="form-control" name="industry" placeholder="Industry" required></div>
+                      <div class="col-md-12"><label class="labels">Website</label><input type="text"
+                          class="form-control" name="website" placeholder="Website" required></div>
+                      <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
+                          name="email" placeholder="Email" required></div>
+                      <div class="col-md-12"><label class="labels">Company Size</label><input type="text"
+                          class="form-control" name="size" placeholder="Company Size" required></div>
+                      <div class="col-md-12"><label class="labels">Phone</label><input type="text" class="form-control"
+                          name="phone" placeholder="Phone" required></div>
+                      <div class="col-md-12"><label class="labels">Location</label><input type="text"
+                          class="form-control" name="location" placeholder="Location" required></div>
+                    </div>
+
+
                   </div>
-              </div>
-              <div class="col-md-4">
-                  <div class="p-3 py-5">
-                      <div class="d-flex justify-content-between align-items-center experience"><span>Image</span></div>
-                      <div>
-                        <input type="file" name="image" id="">
-                    </div>     
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" form="settingsForm" class="btn btn-primary">Save changes</button>
                   </div>
+                </div>
+          </form>
+
+          <div class="col-md-4">
+            <form id="settingsImage" action="submit.php" method="post">
+              <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Image</span></div>
+                <div>
+                  <input type="file" name="image" id="">
+                  <button type="submit" form="settingsImage" class="btn btn-primary">Save changes</button>
+                </div>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" form="settingsForm" class="btn btn-primary">Save changes</button>
-          </div>
-      </div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  </div>
+  </div>
+  </div>
 
 
+  <!-- Bootstrap and Custom JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
 
-    <!-- Bootstrap and Custom JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-    <!-- Custom JavaScript -->
-    <script src="../javascript/employer_dashboard.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="../javascript/employer_dashboard.js"></script>
 </body>
+
 </html>
 
 
 <template id="job-template">
-  <ul class="list-group">
-    <li class="list-group-item">
-      <div>Job Posted</div>
-    </li>
     <li class="list-group-item">
       <div class="job-title">Job title, Job date</div>
       <button type="button" class="btn btn-success">Edit</button>
-      <button type="button" class="btn btn-success">Delete</button>
+      <button type="button" class="btn btn-danger">Delete</button>
+    </li>
+</template>
+
+<template id="application-template">
+    <li class="list-group-item">
+      <div class="application-title">Job title, Job date</div>
+      <button type="button" class="btn btn-info">Download CV</button>
+      <button type="button" class="btn btn-success">Accepted</button>
+      <button type="button" class="btn btn-danger">Rejected</button>
     </li>
 </template>
