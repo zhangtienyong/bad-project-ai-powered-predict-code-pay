@@ -8,7 +8,7 @@ window.onload = async () => {
 async function listSkills() {
     const resp = await fetch("/jobposting");
     const skills = await resp.json();
-    console.log(skills);
+    // console.log(skills);
     const programming_language_skills = skills.result.programming_language_skills
     const database_skills = skills.result.database_skills
     const cloud_platform_skills = skills.result.cloud_platform_skills
@@ -61,10 +61,51 @@ async function jobPosting() {
             const job_description = document.querySelector("#jobDescription").value;
             const responsibilities = document.querySelector("#responsibilities").value;
             const qualifications = document.querySelector("#qualifications").value;
-            const programming_language_skills = document.querySelector('#programmingLanguage').value
-            const database_skills = document.querySelector('#database').value
-            const cloud_platform_skills = document.querySelector('#cloudPlatform').value
-            const web_framework_skills = document.querySelector('#webFramework').value
+
+            let programmingLanguage_checkedItemValues = []
+            const listItemElements = document.querySelectorAll('#programmingLanguage-item');
+            listItemElements.forEach((item) => {
+                if (item.classList.contains('checked1')) {
+                    const programmingLanguage_checkedItemValue = item.querySelector('.programmingLanguage-item-text').textContent;
+                    programmingLanguage_checkedItemValues.push(programmingLanguage_checkedItemValue);                 
+                }
+            });
+            console.log(programmingLanguage_checkedItemValues);
+            const programming_language_skills= programmingLanguage_checkedItemValues;
+
+            let database_checkedItemValues = []
+            const listItemElements2 = document.querySelectorAll('#database-item');
+            listItemElements2.forEach((item) => {
+                if (item.classList.contains('checked2')) {
+                    const database_checkedItemValue = item.querySelector('.database-item-text').textContent;
+                    database_checkedItemValues.push(database_checkedItemValue);
+                }
+            });
+            console.log(database_checkedItemValues);
+            const database_skills= database_checkedItemValues;
+
+            let cloud_platform_checkedItemValues = [];
+            const listItemElements3 = document.querySelectorAll('#cloudPlatform-item');
+            listItemElements3.forEach((item) => {
+                if (item.classList.contains('checked3')) {
+                    const cloud_platform_checkedItemValue = item.querySelector('.cloudPlatform-item-text').textContent;
+                    cloud_platform_checkedItemValues.push(cloud_platform_checkedItemValue);
+                }
+            });
+            console.log(cloud_platform_checkedItemValues);
+            const cloud_platform_skills= cloud_platform_checkedItemValues;
+
+            let web_framework_checkedItemValues = [];
+            const listItemElements4 = document.querySelectorAll('#webFramework-item');
+            listItemElements4.forEach((item) => {
+                if (item.classList.contains('checked4')) {
+                    const web_framework_checkedItemValue = item.querySelector('.webFramework-item-text').textContent;
+                    web_framework_checkedItemValues.push(web_framework_checkedItemValue);
+                }
+            });
+            console.log(web_framework_checkedItemValues);   
+            const web_framework_skills= web_framework_checkedItemValues;
+
 
 
             const res = await fetch("/jobposting", {
@@ -90,7 +131,7 @@ async function jobPosting() {
             let json = await res.json();
             console.log(json);
 
-            if (res.status == 400) {
+            if (res.status == 500) {
                 Swal.fire("Failed to post a job!");
             } else {
                 Swal.fire("You Posted a Job!", "Success");
@@ -108,9 +149,9 @@ async function multiSelect() {
 
     items1.forEach(item1 => {
         item1.addEventListener("click", () => {
-            item1.classList.toggle("checked-1");
+            item1.classList.toggle("checked1");
 
-            let checked1 = document.querySelectorAll(".checked-1"),
+            let checked1 = document.querySelectorAll(".checked1"),
                 btnText1 = selectBtn1.querySelector(".btn-text");
 
             if (checked1 && checked1.length > 0) {
@@ -130,9 +171,9 @@ async function multiSelect() {
 
     items2.forEach(item2 => {
         item2.addEventListener("click", () => {
-            item2.classList.toggle("checked-2");
+            item2.classList.toggle("checked2");
 
-            let checked2 = document.querySelectorAll(".checked-2"),
+            let checked2 = document.querySelectorAll(".checked2"),
                 btnText2 = selectBtn2.querySelector(".btn-text");
 
             if (checked2 && checked2.length > 0) {
@@ -152,9 +193,9 @@ async function multiSelect() {
 
     items3.forEach(item3 => {
         item3.addEventListener("click", () => {
-            item3.classList.toggle("checked-3");
+            item3.classList.toggle("checked3");
 
-            let checked3 = document.querySelectorAll(".checked-3"),
+            let checked3 = document.querySelectorAll(".checked3"),
                 btnText3 = selectBtn3.querySelector(".btn-text");
 
             if (checked3 && checked3.length > 0) {
@@ -174,9 +215,9 @@ async function multiSelect() {
 
     items4.forEach(item4 => {
         item4.addEventListener("click", () => {
-            item4.classList.toggle("checked-4");
+            item4.classList.toggle("checked4");
 
-            let checked4 = document.querySelectorAll(".checked-4"),
+            let checked4 = document.querySelectorAll(".checked4"),
                 btnText4 = selectBtn4.querySelector(".btn-text");
 
             if (checked4 && checked4.length > 0) {
