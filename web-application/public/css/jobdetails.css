@@ -58,3 +58,12 @@ body {
     font-weight: bold;
 }
 
+.card-img-top {
+    width: 30%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
