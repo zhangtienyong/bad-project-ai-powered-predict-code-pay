@@ -1,59 +1,42 @@
 from sanic import Sanic
 from sanic.response import json
-from pydantic import BaseModel
+import numpy as np
+import pickle
 
-app = Sanic(__name__)
+app = Sanic(name="predict_code_pay")
 
-# Define salary prediction input schema using Pydantic Base Model
-class SalaryPredictionInput(BaseModel):
-    YearsCode: int
-    YearsCodePro: int
-    EdLevel: str
-    LearnCode: str
-    Country: str
-    DevType: str
-    Age: float
-    LanguageHaveWorkedWith: str
-    DatabaseHaveWorkedWith: str
-    WebframeHaveWorkedWith: str
-    PlatformHaveWorkedWith: str
+# Load the model and encoders
+with open('saved_steps.pkl', 'rb') as file:
+    data = pickle.load(file)
 
-# Define skill recommendation input schema using Pydantic Base Model
-class SkillRecommendationInput(BaseModel):
-    LanguageHaveWorkedWith: str
-    DatabaseHaveWorkedWith: str
-    WebframeHaveWorkedWith: str
-    PlatformHaveWorkedWith: str
+regressor_loaded = data["model"]
+label_country = data["label_country"]
+label_education = data["label_education"]
+country_map = data.get("country_map", {})  # Assuming it's defined in your saved_steps.pkl
 
-# API endpoint for testing purposes json response
-@app.route('/api/endpoint', methods=['GET'])
-async def api_endpoint(request):
-    return json({'message': 'Hi, Predict Code Pay!'})
+# Function to transform JSON input into the format expected by the model
+def transform_json_input(json_input):
+    country = json_input['Country']
+    ed_level = json_input['EdLevel']
+    years_code_pro = json_input['YearsCodePro']
 
-# API endpoint for salary prediction
+    # Ensure that the country encoder is used consistently
+    # Transform country and education columns separately
+    country = country_map.get(country, 'Other')
+    country = label_country.transform([country])[0]
+    ed_level = label_education.transform([ed_level])[0]
+    return np.array([[country, ed_level, years_code_pro]])
+
 @app.route('/api/salary', methods=['POST'])
-async def api_salary(request):
-    data = SalaryPredictionInput(**request.json)
-    prediction = 50000
-    
-    # Convert SalaryPredictionInput object to dictionary
-    data_dict = data.dict()
-    return json({'predicted_salary': prediction, 'input_data': data_dict})
-
-# API endpoint for skill recommendation
-@app.route('/api/skill', methods=['POST'])
-async def api_skill(request):
-    data = SkillRecommendationInput(**request.json)
-
-    skill_1 = ['Elixir', 'PostgreSQL', 'Phoenix', 'Heroku']
-    skill_2 = ['Python', 'Django', 'AWS', 'RESTful APIs']
-    skill_3 = ['JavaScript', 'React', 'Node.js', 'MongoDB']
-
-    # Convert SkillRecommendationInput object to dictionary
-    data_dict = data.dict()
-
-    return json({'recommended_skills_1': skill_1, 'recommended_skills_2': skill_2, 'recommended_skills_3': skill_3, 'input_data': data_dict})
-
+async def predict_salary(request):
+    try:
+        json_input_from_client = request.json
+        X_new = transform_json_input(json_input_from_client)
+        y_pred_new = regressor_loaded.predict(X_new.reshape(1, -1))
+        predicted_salary = y_pred_new[0]
+        return json({"PredictedSalary": predicted_salary})
+    except Exception as e:
+        return json({"error": str(e)})
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000)
+    app.run(host='0.0.0.0', port=8000)
