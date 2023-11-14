@@ -2,207 +2,207 @@
   "skills": [
     {
       "name": "HTML CSS",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "JavaScript",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Python",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Bash Shell",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Go",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "PHP",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Ruby",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "SQL",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "TypeScript",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Ada",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Clojure",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Elixir",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Java",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Lisp",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "OCaml",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Raku",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Scala",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Swift",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Zig",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Rust",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "C#",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "PowerShell",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "C++",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Kotlin",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Solidity",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "C",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Perl",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Dart",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Haskell",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Assembly",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Delphi",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "R",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Lua",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "MATLAB",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "VBA",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Visual Basic (.Net)",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Julia",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "F#",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Groovy",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "APL",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Objective-C",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "GDScript",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Crystal",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Cobol",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Fortran",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Prolog",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Erlang",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Apex",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "SAS",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Nim",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Flow",
-      "types": "programming_language"
+      "types": "language"
     },
     {
       "name": "Supabase",
@@ -334,231 +334,231 @@
     },
     {
       "name": "Next.js",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "React",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Remix",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Vue.js",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Node.js",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Ruby on Rails",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "WordPress",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Express",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Gatsby",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "NestJS",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Angular",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "AngularJS",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "jQuery",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Phoenix",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Solid.js",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Svelte",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "ASP.NET CORE",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Flask",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Elm",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Nuxt.js",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Fastify",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Spring Boot",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Laravel",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "FastAPI",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Symfony",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Django",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Deno",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "ASP.NET",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Blazor",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "CodeIgniter",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Drupal",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Qwik",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Play Framework",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Lit",
-      "types": "web_framework"
+      "types": "webframework"
     },
     {
       "name": "Amazon Web Services (AWS)",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Netlify",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Vercel",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Google Cloud",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "OpenStack",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "VMware",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Vultr",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Cloudflare",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Heroku",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Firebase",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Digital Ocean",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Fly.io",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Microsoft Azure",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Render",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Hetzner",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "OpenShift",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "OVH",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Managed Hosting",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Oracle Cloud Infrastructure (OCI)",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Linode, now Akamai",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Colocation",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "Scaleway",
-      "types": "cloud_platform"
+      "types": "platform"
     },
     {
       "name": "IBM Cloud Or Watson",
-      "types": "cloud_platform"
+      "types": "platform"
     }
   ]
 }

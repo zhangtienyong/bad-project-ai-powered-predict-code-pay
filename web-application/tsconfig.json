@@ -14,9 +14,8 @@
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "rootDir": "./src"
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["node_modules", "build", "scripts", "index.js", "*/**/index.js"]
 }
