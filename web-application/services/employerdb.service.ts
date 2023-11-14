@@ -155,7 +155,6 @@ export default class EmployerDbService {
     }
   }
   
-
   async rejected_job(Title: number, user_id: number) {
     try {
       const status = { status: "rejected" };
@@ -177,7 +176,6 @@ export default class EmployerDbService {
     }
   }
   
-
   async delete_job(Title: number, user_id: number) {
     try {
       const existingJob = await this.knex("jobs").where("id", Title).first();

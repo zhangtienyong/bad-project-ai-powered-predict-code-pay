@@ -116,7 +116,6 @@ export default class EmployerDbController {
     
                 if (userId !== undefined) {
                     const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
-                    console.log(page);
                     const result = await this.employerDbService.getJob(userId,page);
                     // Handle the retrieved user details as needed
                     

@@ -52,7 +52,7 @@
         <h4 class="font-page">Job Boards</h4>
       </div>
     </div>
-    <section class="container custom-margin-top">
+    <!-- <section class="container custom-margin-top">
       <div class="row">
         <div class="col card custom-card">
           <img src="../images/company.png" alt="Company 1 Logo">
@@ -137,7 +137,24 @@
           <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
       </nav>
+    </section> -->
+      
+
+    <section class="container custom-margin-top">
+      <div class="job-container">  
+      </div>
     </section>
+
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" onclick="loadPreviousPage()" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" onclick="changePage(1)" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" onclick="changePage(2)" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" onclick="changePage(3)" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" onclick="loadNextPage()" href="#">Next</a></li>
+      </ul>
+    </nav>
+
     <div class="footer-tab custom-margin-top"></div>
     <footer>
       © 2023 Predict Code Pay. All rights reserved.
@@ -152,3 +169,17 @@
     <script src="../javascript/jobboards.js"></script>
 </body>
 </html>
+
+
+<template id="JOB-template">
+      <div class="card custom-card">
+        <img class="image" src="../images/company.png" alt="Company 1 Logo">
+        <div class="company"><h3>Company</h3></div>
+        <div class="title"><p>Job Position: Job title </p></div>
+        <div class="type"><p>Employment Type</p></div>
+        <div class="place"><p>Work Place</p></div>
+        <button class="btn btn-outline-primary">View Details</button>
+</template>
+
+
+

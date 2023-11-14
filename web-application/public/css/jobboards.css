@@ -122,3 +122,42 @@ footer {
     font-weight: bold;
     padding: 30px;
 }
+
+.job-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+  }
+  
+  .custom-card {
+    width: calc(25% - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .title, .type, .place {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .company {
+    font-size: 24px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .btn-outline-primary{
+   margin: 10px;
+  }
+
+  .image {
+    width: 100%;
+  }
