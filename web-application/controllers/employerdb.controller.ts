@@ -157,72 +157,68 @@ export default class EmployerDbController {
         }
     };
 
+    accepted_job = async (req: Request, res: Response) => {
+        if (req.session.user) {
+            const Session = req.session.user;
+            const { Title } = req.body; 
+            try {
+                if (Session.user_id !== undefined) {
+                    await this.employerDbService.accepted_job(Title, Session.user_id);
+                    res.status(200).json({ message: "successful" });
+                } else {
+                    res.status(400).json({ error: "Fail!" });
+                }
+            } catch (err) {
+                console.error("Error", err);
+                res.status(500).json({ error: "error" });
+            }
+        } else {
+            res.status(401).json({ error: "User not authenticated" });
+        }
+    };
 
+    rejected_job = async (req: Request, res: Response) => {
+        if (req.session.user) {
+            const Session = req.session.user;
+            const { Title } = req.body; 
+            try {
+                if (Session.user_id !== undefined) {
+                    await this.employerDbService.rejected_job(Title, Session.user_id);
+                    res.status(200).json({ message: "successful" });
+                } else {
+                    res.status(400).json({ error: "Fail!" });
+                }
+            } catch (err) {
+                console.error("Error", err);
+                res.status(500).json({ error: "error" });
+            }
+        } else {
+            res.status(401).json({ error: "User not authenticated" });
+        }
+    };
+    
+    delete_job = async (req: Request, res: Response) => {
+        if (req.session.user) {
+            const Session = req.session.user;
+            const { Title } = req.body;
+            console.log(Title) 
+            try {
+                if (Session.user_id !== undefined) {
+                    await this.employerDbService.delete_job(Title, Session.user_id);
+                    res.status(200).json({ message: "successful" });
+                } else {
+                    res.status(400).json({ error: "Fail!" });
+                }
+            } catch (err) {
+                console.error("Error", err);
+                res.status(500).json({ error: "error" });
+            }
+        } else {
+            res.status(401).json({ error: "User not authenticated" });
+        }
+    };
 
-
-}
-
-                    
-
-                    
-// edit = async (req: Request, res: Response) => {
-//     try {
-//         if (req.session.user) {
-//             const Session = req.session.user;
-
-//             if (Session.user_id !== undefined) {
-//                 const form = formidable({
-//                     uploadDir,
-//                     maxFiles: 1,
-//                     maxFileSize: 1024 ** 2 * 200,
-//                     filter: (part) => part.mimetype?.startsWith("image/") ?? false,
-//                     filename: (_originalName, _originalExt, part) => {
-//                         const fieldName = part.name;
-//                         const timestamp = Date.now();
-//                         const ext = part.mimetype?.split("/").pop();
-//                         return `${fieldName}-${timestamp}.${ext}`;
-//                     },
-//                 });
-
-//                 const { fields, files } = await new Promise<{ fields: formidable.Fields, files: formidable.Files }>((resolve, reject) => {
-//                     form.parse(req, (err, fields, files) => {
-//                         if (err) {
-//                             reject(err);
-//                         } else {
-//                             resolve({ fields, files });
-//                         }
-//                     });
-//                 });
-
-//                 // Check if files.image is an array
-//                 const fileArray = files.image as formidable.File[];
-//                 const file = Array.isArray(fileArray) ? fileArray[0]?.newFilename : undefined;
-                
-
-//                 const company = fields.company
-//                 const about = fields.about 
-//                 const industry = fields.industry 
-//                 const website = fields.website 
-//                 const email = fields.email 
-//                 const size = fields.size 
-//                 const phone = fields.phone 
-//                 const location = fields.location
-
-//                 await this.employerDbService.edit(company, about, industry, website, email, size, phone, location, Session.user_id, file);
-
-//                 res.status(200).json({ message: "successful" });
-//             } else {
-//                 res.status(400).json({ error: "user_id is undefined" });
-//             }
-//         } else {
-//             res.status(401).json({ error: "User not authenticated" });
-//         }
-//     } catch (err) {
-//         console.error("Error", err);
-//         res.status(500).json({ error: "error" });
-//     }
-// };
-                    
+}           
 
 
     

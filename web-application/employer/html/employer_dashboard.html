@@ -216,17 +216,19 @@
 
 <template id="job-template">
     <li class="list-group-item">
+      <div class="job-id" style="display: none"></div>
       <div class="job-title">Job title, Job date</div>
       <button type="button" class="btn btn-success">Edit</button>
-      <button type="button" class="btn btn-danger">Delete</button>
+      <button type="button" class="btn btn-danger" onclick="deleteJob(this)">Delete</button>
     </li>
 </template>
 
 <template id="application-template">
     <li class="list-group-item">
+      <div class="application-id" style="display: none"></div>
       <div class="application-title">Job title, Job date</div>
       <button type="button" class="btn btn-info">Download CV</button>
-      <button type="button" class="btn btn-success">Accepted</button>
-      <button type="button" class="btn btn-danger">Rejected</button>
+      <button type="button" class="btn btn-success"  onclick="handleAcceptClick(this)">Accepted</button>
+      <button type="button" class="btn btn-danger"   onclick="handleRejectedClick(this)">Rejected</button>
     </li>
 </template>

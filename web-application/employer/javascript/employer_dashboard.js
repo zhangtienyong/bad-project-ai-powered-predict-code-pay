@@ -1,8 +1,8 @@
 window.onload = () => {
   updateCompanyDetails();
   initJob();
-  edit_company();
-  edit_image();
+  editCompany();
+  editImage();
   initApplication()
 };
 
@@ -11,12 +11,12 @@ let applicationPage = 1;
 
 async function initJob(page) {
   const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set('page', currentPage);
-      currentUrl.searchParams.set('app', applicationPage);
-      window.history.replaceState({}, '', currentUrl.href);
-      // window.location.href = currentUrl.href;
+  currentUrl.searchParams.set('page', currentPage);
+  currentUrl.searchParams.set('app', applicationPage);
+  window.history.replaceState({}, '', currentUrl.href);
+  // window.location.href = currentUrl.href;
   const res = await fetch(`/dashboard/employer/job?page=${page}`);
-  const jobs = await res.json(); 
+  const jobs = await res.json();
   console.log(jobs);
 
   const productContainerEle = document.querySelector(".job-container");
@@ -25,6 +25,7 @@ async function initJob(page) {
 
   for (const job of jobs) {
     const jobClone = templateEle.content.cloneNode(true);
+    jobClone.querySelector(".job-id").textContent = job.id
     jobClone.querySelector(".job-title").textContent = `${job.job_title}, ${job.created_at}`
     productContainerEle.appendChild(jobClone);
   }
@@ -32,10 +33,10 @@ async function initJob(page) {
 
 async function initApplication(app) {
   const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set('page', currentPage);
-      currentUrl.searchParams.set('app', applicationPage);
-      window.history.replaceState({}, '', currentUrl.href);
-      // window.location.href = currentUrl.href;
+  currentUrl.searchParams.set('page', currentPage);
+  currentUrl.searchParams.set('app', applicationPage);
+  window.history.replaceState({}, '', currentUrl.href);
+  // window.location.href = currentUrl.href;
   const res = await fetch(`/dashboard/employer/application?app=${app}`);
   const apps = await res.json();
   console.log(apps);
@@ -45,42 +46,43 @@ async function initApplication(app) {
   productContainerEle.innerHTML = '';
 
   for (const app of apps) {
-    const jobClone = templateEle.content.cloneNode(true);
-    jobClone.querySelector(".application-title").textContent = `${app.status}, ${app.created_at}`
-    productContainerEle.appendChild(jobClone);
-}
+    const AppClone = templateEle.content.cloneNode(true);
+    AppClone.querySelector(".application-id").textContent = app.id
+    AppClone.querySelector(".application-title").textContent = `Application ID:  ${app.id}   Job ID:  ${app.job_id}    Developer ID:  ${app.user_id} updated_at: ${app.updated_at}   Status:  ${app.status}`
+    productContainerEle.appendChild(AppClone);
+  }
 }
 
 async function updateCompanyDetails() {
   try {
-      const res = await fetch("/dashboard/employer/company/details", {
-          method: "GET",
-      });
+    const res = await fetch("/dashboard/employer/company/details", {
+      method: "GET",
+    });
 
-      if (res.ok) {
-          const data = await res.json();
-          console.log(data)
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data)
 
-          // Update HTML elements with company details
-          document.getElementById("modalLogo").src = data.logo
-          document.getElementById("companyLogo").src = data.logo
-          document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
-          document.getElementById("about").innerText = "About:" + data.about;
-          document.getElementById("industry").innerText = "Industry:" + data.industry;
-          document.getElementById("website").innerText = "Company Website:" + data.website;
-          document.getElementById("email").innerText = "Email:" + data.email;
-          document.getElementById("companySize").innerText = "Company Size:" + data.company_size;
-          document.getElementById("phone").innerText = "Phone:" + data.phone;
-          document.getElementById("location").innerText = "Location:" + data.location;
-      } else {
-          console.error('Error:', res.status);
-      }
+      // Update HTML elements with company details
+      document.getElementById("modalLogo").src = data.logo
+      document.getElementById("companyLogo").src = data.logo
+      document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
+      document.getElementById("about").innerText = "About:" + data.about;
+      document.getElementById("industry").innerText = "Industry:" + data.industry;
+      document.getElementById("website").innerText = "Company Website:" + data.website;
+      document.getElementById("email").innerText = "Email:" + data.email;
+      document.getElementById("companySize").innerText = "Company Size:" + data.company_size;
+      document.getElementById("phone").innerText = "Phone:" + data.phone;
+      document.getElementById("location").innerText = "Location:" + data.location;
+    } else {
+      console.error('Error:', res.status);
+    }
   } catch (error) {
-      console.error('Fetch Error:', error);
+    console.error('Fetch Error:', error);
   }
 }
 
-async function edit_image() {
+async function editImage() {
   document.querySelector("#settingsImage").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -89,21 +91,21 @@ async function edit_image() {
     const res = await fetch("/dashboard/employer/logo", {
       method: "POST",
       body:
-      formData 
-    });   
+        formData
+    });
 
 
     let json = await res.json();
     console.log(json)
     if (res.ok) {
-             res.end
-           } else {
-             console.error("Server returned an error.");
-           }
-         });
+      res.end
+    } else {
+      console.error("Server returned an error.");
+    }
+  });
 }
 
-async function edit_company() {
+async function editCompany() {
   document.querySelector("#settingsForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -136,8 +138,7 @@ async function edit_company() {
     form.reset();
 
     if (res.ok) {
-      const data = await res.json();
-      console.log(data);
+      await res.json();
     } else {
       console.error("Server returned an error.");
     }
@@ -147,19 +148,18 @@ async function edit_company() {
 async function getUserInfo(user) {
   try {
     const response = await fetch("/userInform", {
-        method: "get",
+      method: "get",
     });
 
     if (response.ok) {
-               
+      await res.json();
     } else {
-        
-       
+      console.error('Error:', res.status);
+
     }
-} catch (error) {
+  } catch (error) {
     console.error("Error:", error);
-    Swal.fire("Emm...", "Something went wrong!", "error");
-}
+  }
 }
 
 function loadNextPage() {
@@ -187,6 +187,82 @@ function loadPreviousApp() {
   }
 }
 
+async function handleAcceptClick(button) {
+  const listItem = button.closest('.list-group-item');
+  const TitleElement = listItem.querySelector('.application-id');
+  const Title = parseFloat(TitleElement.textContent.trim());
 
+try {
+  const response = await fetch("/dashboard/employer/accepted_job", {
+    method: "POST",
+    body: JSON.stringify({ Title }), 
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+      if (response.ok) {
+        await response.json();
+        initApplication()
+      } 
+      else {
+      console.error('Error:', res.status);
+  
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }  
+}
 
+async function handleRejectedClick(button) {
+  const listItem = button.closest('.list-group-item');
+  const TitleElement = listItem.querySelector('.application-id');
+  const Title = parseFloat(TitleElement.textContent.trim());
 
+try {
+  const response = await fetch("/dashboard/employer/rejected_job", {
+    method: "POST",
+    body: JSON.stringify({ Title }), 
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+      if (response.ok) {
+        await response.json();
+        initApplication()
+      } 
+      else {
+      console.error('Error:', res.status);
+  
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }  
+}
+
+async function deleteJob(button){
+  const listItem = button.closest('.list-group-item');
+  const TitleElement = listItem.querySelector('.job-id');
+  const Title = parseFloat(TitleElement.textContent.trim());
+  console.log(Title);
+
+try {
+  const response = await fetch("/dashboard/employer/delete_job", {
+    method: "DELETE",
+    body: JSON.stringify({ Title }), 
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+      if (response.ok) {
+        await response.json();
+        initJob()
+        initApplication();
+      } 
+      else {
+      console.error('Error:', res.status);
+  
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }  
+}

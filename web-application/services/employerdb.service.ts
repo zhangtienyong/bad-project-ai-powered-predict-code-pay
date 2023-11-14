@@ -32,7 +32,7 @@ export default class EmployerDbService {
       phone: phone,
       location: location,
       user_id: id,
-      
+
     }
     const existingCompany = await this.knex<any>("company").where("user_id", id).first();
 
@@ -104,69 +104,99 @@ export default class EmployerDbService {
         .select("id", "user_id")
         .where("user_id", id)
         .first();
-  
+
       if (company) {
         const offset = (app - 1) * pageSize;
-  
+
         const jobs = await this.knex("jobs")
           .select("*")
           .where("company_id", company.id)
-  
+
         if (jobs && jobs.length > 0) {
-          const jobIds = jobs.map((job) => job.id); 
+          const jobIds = jobs.map((job) => job.id);
           const applications = await this.knex("job_applications")
             .select("*")
             .whereIn("job_id", jobIds)
+            .where("status", "Pending")
             .limit(pageSize)
             .offset(offset);
-  
-          return applications;}
+
+          return applications;
+        }
 
         return
 
-      }else {
+      } else {
         throw new Error("Company not found for the given user");
       }
     } catch (error) {
       throw error;
     }
   }
+
+  async accepted_job(Title: number, user_id: number) {
+    try {
+      const status = { status: "accepted" };
+  
+      const existingApplication = await this.knex("job_applications").where("id", Title).first();
+  
+      if (existingApplication) {
+        await this.knex("job_applications")
+          .where("id", Title)
+          .update(status);
+  
+        return { message: "Job application successfully accepted." };
+      } else {
+        return { error: "Job application not found." };
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return { error: "An error occurred while accepting the job application." };
+    }
+  }
   
 
+  async rejected_job(Title: number, user_id: number) {
+    try {
+      const status = { status: "rejected" };
+  
+      const existingApplication = await this.knex("job_applications").where("id", Title).first();
+  
+      if (existingApplication) {
+        await this.knex("job_applications")
+          .where("id", Title)
+          .update(status);
+  
+        return { message: "Job application successfully rejected." };
+      } else {
+        return { error: "Job application not found." };
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return { error: "An error occurred while rejecting the job application." };
+    }
+  }
+  
+
+  async delete_job(Title: number, user_id: number) {
+    try {
+      const existingJob = await this.knex("jobs").where("id", Title).first();
+  
+      if (existingJob) {
+        await this.knex("jobs")
+          .where("id", Title)
+          .delete();
+  
+        return { message: "Job successfully deleted." };
+      } else {
+        return { error: "Job not found." };
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return { error: "An error occurred while deleting the job." };
+    }
+  }
+  
 
 }
 
-
-
-
-
-// async edit(company: any, about: any, industry: any, website: any, email: any, size: any, phone: any, location: any, id: number) {
-//   const Company = {
-//     company_name: company,
-//     about: about,
-//     industry: industry,
-//     website: website,
-//     email: email,
-//     company_size: size,
-//     phone: phone,
-//     location: location,
-//     user_id: id,
-//     logo: file,
-//   }
-//   const existingCompany = await this.knex<any>("company").where("user_id", id).first();
-
-//   if (existingCompany) {
-//     await this.knex("company")
-//       .where("user_id", id)
-//       .update(Company);
-
-//     return { result: true, message: "Company updated successfully" };
-//   } else {
-//     await this.knex
-//       .insert(Company)
-//       .into("company")
-//       .returning("id");
-
-//     return { result: true, message: "Company inserted successfully" };
-//   }
-// }
