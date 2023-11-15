@@ -60,7 +60,7 @@ export default class AuthController {
       if (!username || !email || !password || !password_repeated || !role) {
         res
           .status(400)
-          .json({ success: false, message: "missing email, password, or role" });
+          .json({ success: false, message: "missing email, username, password, or role" });
         return;
       }
 
