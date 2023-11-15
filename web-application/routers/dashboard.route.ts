@@ -23,6 +23,7 @@ dashboardRoutes.get("/employer/application", employerDbController.application)
 dashboardRoutes.post("/employer/accepted_job", employerDbController.accepted_job)
 dashboardRoutes.post("/employer/rejected_job", employerDbController.rejected_job)
 dashboardRoutes.delete("/employer/delete_job", employerDbController.delete_job)
+dashboardRoutes.post("/employer/editJob",employerDbController.editJob);
 
 
 

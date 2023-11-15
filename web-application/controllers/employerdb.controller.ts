@@ -84,6 +84,27 @@ export default class EmployerDbController {
         }
     };
 
+    editJob = async (req: Request, res: Response) => {
+        if (req.session.user) {
+            const Session = req.session.user;
+            const { jobId, title, place, type, description, level, responsibilities, qualifications } = req.body;
+
+            try {
+                if (Session.user_id !== undefined) {
+                    await this.employerDbService.editJob(jobId, title, place, type, description, level, responsibilities, qualifications );
+                    res.status(200).json({ message: "successful" });
+                } else {
+                    res.status(400).json({ error: "user_id is undefined" });
+                }
+            } catch (err) {
+                console.error("Error", err);
+                res.status(500).json({ error: "error" });
+            }
+        } else {
+            res.status(401).json({ error: "User not authenticated" });
+        }
+    };
+
     getUserDetails = async (req: Request, res: Response) => {
         const user = req.session.user;
 

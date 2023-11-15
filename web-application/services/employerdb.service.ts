@@ -52,6 +52,24 @@ export default class EmployerDbService {
     }
   }
 
+  async editJob(jobId: any, title: any, place: any, type: any, description: any, level: any, responsibilities: any, qualifications: any) {
+    const Job = {
+      job_title: title,
+      work_place: place,
+      employment_type: type,
+      job_description: description,
+      experience_level: level,
+      responsibilities: responsibilities,
+      qualifications: qualifications,
+
+    }   
+      await this.knex("jobs")
+        .where("id", jobId)
+        .update(Job);
+
+      return { result: true, message: "Job updated successfully" };
+  }
+
   async image(file: any, id: number) {
     const image = {
       logo: file,

@@ -3,7 +3,8 @@ window.onload = () => {
   initJob();
   editCompany();
   editImage();
-  initApplication()
+  editJob();
+  initApplication();
 };
 
 let currentPage = 1;
@@ -17,7 +18,6 @@ async function initJob(page) {
   // window.location.href = currentUrl.href;
   const res = await fetch(`/dashboard/employer/job?page=${page}`);
   const jobs = await res.json();
-  console.log(jobs);
 
   const productContainerEle = document.querySelector(".job-container");
   const templateEle = document.querySelector("#job-template");
@@ -39,7 +39,6 @@ async function initApplication(app) {
   // window.location.href = currentUrl.href;
   const res = await fetch(`/dashboard/employer/application?app=${app}`);
   const apps = await res.json();
-  console.log(apps);
 
   const productContainerEle = document.querySelector(".application-container");
   const templateEle = document.querySelector("#application-template");
@@ -64,7 +63,7 @@ async function updateCompanyDetails() {
       console.log(data)
 
       // Update HTML elements with company details
-      document.getElementById("modalLogo").src = data.logo
+      document.getElementById("modalImage").src = data.logo
       document.getElementById("companyLogo").src = data.logo
       document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
       document.getElementById("about").innerText = "About:" + data.about;
@@ -138,8 +137,53 @@ async function editCompany() {
     form.reset();
 
     if (res.ok) {
+      Swal.fire("Success!");
       await res.json();
     } else {
+      Swal.fire("Fail!");
+      console.error("Server returned an error.");
+    }
+  });
+}
+
+async function editJob() {
+  document.querySelector("#jobForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const id = document.querySelector("#jobId")
+    const form = e.target;
+    const title = form.title.value;
+    const place = form.place.value;
+    const type = form.type.value;
+    const description = form.description.value;
+    const level = form.level.value;
+    const responsibilities = form.responsibilities.value;
+    const qualifications = form.qualifications.value;
+    const jobId = id.textContent
+
+    const res = await fetch("/dashboard/employer/editJob", {
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        place,
+        type,
+        description,
+        level,
+        responsibilities,
+        qualifications,
+        jobId
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    form.reset();
+
+    if (res.ok) {
+      Swal.fire("Success!");
+      await res.json();
+    } else {
+      Swal.fire("Fail!");
       console.error("Server returned an error.");
     }
   });
@@ -172,6 +216,16 @@ function loadPreviousPage() {
     currentPage--;
     initJob(currentPage);
   }
+}
+
+function changePage(pageNumber) {
+  currentPage = pageNumber;
+  initJob(currentPage);
+}
+
+function changeAppPage(pageNumber) {
+  applicationPage = pageNumber;
+  initApplication(applicationPage);
 }
 
 function loadNextApp() {
@@ -239,11 +293,18 @@ try {
     }  
 }
 
+async function getId(button) {
+  const listItem = button.closest('.list-group-item');
+  const TitleElement = listItem.querySelector('.job-id');
+  const Title = parseFloat(TitleElement.textContent.trim());
+  const id = document.querySelector("#jobId")
+  id.textContent = Title;
+}
+
 async function deleteJob(button){
   const listItem = button.closest('.list-group-item');
   const TitleElement = listItem.querySelector('.job-id');
   const Title = parseFloat(TitleElement.textContent.trim());
-  console.log(Title);
 
 try {
   const response = await fetch("/dashboard/employer/delete_job", {

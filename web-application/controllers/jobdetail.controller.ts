@@ -52,7 +52,11 @@ export default class JobDetailController {
                 console.log(fields);
                 console.log(files);
                 
-                const filename= "xxx.pdf"
+                const file=files.upload
+                const newFilename = `${Date.now()}-${file}`;
+
+                const filename= newFilename
+                console.log(filename);
                 const jobId = + req.query.job_id!
                 const applyUser = req.session.user
                 const userId = applyUser?.user_id!
