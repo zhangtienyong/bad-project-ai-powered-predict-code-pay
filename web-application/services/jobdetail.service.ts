@@ -48,7 +48,7 @@ export default class JobDetailService {
                     job_id: jobId,
                     user_id: userId,
                     cv_pdf: filename,
-                    status: "pending"
+                    status: "Pending"
                 })
             return { result: true };
         } catch (error) {
