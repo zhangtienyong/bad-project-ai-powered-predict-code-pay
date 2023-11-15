@@ -43,20 +43,20 @@ export default class JobDetailController {
                 },
             });
 
+
             form.parse(req, async (err, fields, files) => {
                 if (err) {
                     res.status(400).json({ message: "cannot upload file" });
                     return;
                 }
-
                 
                 const filename = (files.cvUpload as formidable.File)?.newFilename;
-                console.log(filename);
-
-
+       
                 const jobId = + req.query.job_id!
+                console.log(jobId);
                 const applyUser = req.session.user
                 const userId = applyUser?.user_id!
+                console.log(userId)
                 await this.jobDetailService.applyJob(filename, jobId, userId);
 
                 res.json({ success: true, message: "success" });

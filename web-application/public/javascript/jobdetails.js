@@ -1,14 +1,14 @@
 window.onload = async () => {
     const searchParams = new URLSearchParams(location.search);
-    const id = searchParams.get("job_id");
+    const job_id = searchParams.get("job_id");
  
-    getJobDetail(id)
-    applyJob()
+    getJobDetail(job_id)
+    applyJob(job_id)
 };
 
-async function getJobDetail(id){
+async function getJobDetail(job_id){
   
-    const resp = await fetch(`/jobdetail?job_id=${id}`); 
+    const resp = await fetch(`/jobdetail?job_id=${job_id}`); 
     const job_detail = await resp.json();
     // const job_id = job_detail.result.job[0].id;
     // const company_id = job_detail.result.job[0].company_id;
@@ -72,15 +72,19 @@ async function getJobDetail(id){
 
 }
 
-async function applyJob(){
+async function applyJob(job_id){
   document.querySelector("#apply-form").addEventListener("submit", async(e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
 
-    const res = await fetch("/apply", {
+
+    const res = await fetch(`/apply?job_id=${job_id}`, {
       method: "POST",
-      body: formData
+      body: 
+      formData,
+   
+      
     });
 
     const result = await res.json()
