@@ -30,7 +30,7 @@ def transform_json_input(json_input):
         'EdLevel': ed_level,
         'YearsCodePro': years_code_pro
     }
-
+# Prediction Model
 @app.route('/api/salary', methods=['POST'])
 async def predict_salary(request):
     try:
