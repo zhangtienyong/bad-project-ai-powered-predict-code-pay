@@ -55,8 +55,8 @@
 
   <div class="container">
     <div class="row">
-      <div class="col">
-        <img id="companyLogo" src="../images/logo.jpg" class="logo" alt="Logo-Image"/>
+      <div class="col-4 d-flex justify-content-end">
+        <img id="companyLogo" src="../images/logo.jpg" class="logo" alt="Logo-Image" />
       </div>
       <div class="col-6">
         <div class="card">
@@ -74,17 +74,17 @@
           </div>
         </div>
       </div>
-        <div class="col-1">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-            edit company
-          </button>
-        </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+          edit company
+        </button>
       </div>
     </div>
+  </div>
   
   <div>
     <ul class="list-group">
-    <li class="list-group-item">
+    <li class="list-group-item" >
     <div>Job Posted</div>
     </li>
   </div>
@@ -95,16 +95,16 @@
   <nav aria-label="Page navigation">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" onclick="loadPreviousPage()" href="#">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" onclick="changePage(1)" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" onclick="changePage(2)" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" onclick="changePage(3)" href="#">3</a></li>
       <li class="page-item"><a class="page-link" onclick="loadNextPage()" href="#">Next</a></li>
     </ul>
   </nav>
 
   <div>
   <ul class="list-group">
-    <li class="list-group-item">
+    <li class="list-group-item" >
     <div>Job Applications</div>
     </li>
   </div>
@@ -115,9 +115,9 @@
   <nav aria-label="Page navigation">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" onclick="loadPreviousApp()" href="#">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" onclick="changeAppPage(1)" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" onclick="changeAppPage(2)" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" onclick="changeAppPage(3)" href="#">3</a></li>
       <li class="page-item"><a class="page-link" onclick="loadNextApp()" href="#">Next</a></li>
     </ul>
   </nav>
@@ -139,7 +139,7 @@
               <div class="row">
                 <div class="col-md-3 border-right">
                   <div class="d-flex flex-column align-items-center text-center p-3 py-5" id="modalLogo"><img
-                      class="rounded-circle mt-5" width="150px" src="../images/logo.jpg"></div>
+                      class="rounded-circle mt-5" id="modalImage" width="150px" src="../images/logo.jpg"></div>
                 </div>
                 <div class="col-md-5 border-right">
                   <div class="p-3 py-5">
@@ -194,8 +194,53 @@
   </div>
   </div>
 
+  <div class="modal fade" id="jobModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit your job</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="jobForm" action="submit.php" method="post">
+          <div class="container rounded bg-white mt-5 mb-5">
+                  <div class="row mt-3">
+                    <div class="col-md-12" id="jobId" style="display: none"><label class="labels">Job ID</label></div>
+                    <div class="col-md-12"><label class="labels">Job title</label><input type="text"
+                        class="form-control" name="title" placeholder="title" required></div>
+                    <div class="col-md-12"><label class="labels">Work place</label><input type="text" class="form-control"
+                        name="place" placeholder="place" required></div>
+                    <div class="col-md-12"><label class="labels">employment type</label><input type="text"
+                        class="form-control" name="type" placeholder="type" required></div>
+                    <div class="col-md-12"><label class="labels">job description</label><input type="text"
+                        class="form-control" name="description" placeholder="description" required></div>
+                    <div class="col-md-12"><label class="labels">experience_level</label><input type="text" class="form-control"
+                        name="level" placeholder="level" required></div>
+                    <div class="col-md-12"><label class="labels">responsibilities </label><input type="text"
+                        class="form-control" name="responsibilities" placeholder="responsibilities" required></div>
+                    <div class="col-md-12"><label class="labels">qualifications</label><input type="text" class="form-control"
+                        name="qualifications" placeholder="qualifications" required></div>
+       
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" form="jobForm" class="btn btn-primary">submit</button>
+                </div>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+      
+
 
   <!-- Bootstrap and Custom JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -215,16 +260,18 @@
 
 
 <template id="job-template">
-    <li class="list-group-item">
+    <li class="list-group-item" >
       <div class="job-id" style="display: none"></div>
       <div class="job-title">Job title, Job date</div>
-      <button type="button" class="btn btn-success">Edit</button>
+      <button type="button" class="btn btn-success" onclick="getId(this)" data-toggle="modal" data-target="#jobModal">
+        Edit
+      </button>
       <button type="button" class="btn btn-danger" onclick="deleteJob(this)">Delete</button>
     </li>
 </template>
 
 <template id="application-template">
-    <li class="list-group-item">
+    <li class="list-group-item" >
       <div class="application-id" style="display: none"></div>
       <div class="application-title">Job title, Job date</div>
       <button type="button" class="btn btn-info">Download CV</button>

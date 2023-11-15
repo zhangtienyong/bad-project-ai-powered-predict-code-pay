@@ -125,5 +125,14 @@ body {
     height: 405px;
 }
 
+.list-group-item {
+    border-bottom: 3px solid rgb(118, 185, 230)
+  }
+
+  blockquote p {
+    border-bottom: 1px solid #000;   
+    padding-bottom: 2px; 
+  }
+
 
 
