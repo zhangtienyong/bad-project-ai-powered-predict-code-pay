@@ -32,25 +32,9 @@ async function jobDetails(button) {
   const listItem = button.closest('.custom-card');
   const IDElement = listItem.querySelector('.id');
   const ID = parseFloat(IDElement.textContent.trim());
-  console.log(ID)
+  console.log(ID);
+  window.location.href = `http://localhost:8080/jobdetail.html?job_id=${ID}#`
 
-// try {
-//   const response = await fetch("/dashboard/employer/accepted_job", {
-//     method: "POST",
-//     body: JSON.stringify({ ID }), 
-//     headers: {
-//       "Content-type": "application/json",
-//     },
-//   });
-//       if (response.ok) {
-//         await response.json();
-//       } 
-//       else {
-//       console.error('Error:', res.status);
-//       }
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }  
 }
 
 function loadNextPage() {
