@@ -83,6 +83,8 @@ async function applyJob(){
       body: formData
     });
 
+    const result = await res.json()
+    console.log(result);
     if (res.ok) {
       Swal.fire(
           'Apply successfully!',            

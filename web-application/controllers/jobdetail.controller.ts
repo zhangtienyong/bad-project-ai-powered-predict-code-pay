@@ -49,14 +49,11 @@ export default class JobDetailController {
                     return;
                 }
 
-                console.log(fields);
-                console.log(files);
                 
-                const file=files.upload
-                const newFilename = `${Date.now()}-${file}`;
-
-                const filename= newFilename
+                const filename = (files.cvUpload as formidable.File)?.newFilename;
                 console.log(filename);
+
+
                 const jobId = + req.query.job_id!
                 const applyUser = req.session.user
                 const userId = applyUser?.user_id!
