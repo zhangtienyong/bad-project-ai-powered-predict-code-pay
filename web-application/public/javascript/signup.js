@@ -47,7 +47,7 @@ async function signup() {
           Swal.fire("OOPS!", "Missing name, email or password", "Failed");
         } else if (res.status == 406) {
           Swal.fire("OOPS!", "Wrong repeated password", "Failed");
-        } else if (res.status == 409) {
+        } else if (res.status == 401) {
           Swal.fire("OOPS!", "Email already exists", "Failed");
         } else if (res.status == 500) {
           Swal.fire("OOPS!", "An error occurred during signup", "Failed");
