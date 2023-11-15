@@ -213,6 +213,24 @@ export default class EmployerDbService {
     }
   }
   
+  async downloadCV(Title: number) {
+    try {
+      const existingApplication = await this.knex("job_applications").where("id", Title).first();
+  
+      if (existingApplication) {
+       const cv_pdf = await this.knex("job_applications")
+          .where("id", Title)
+          .select("cv_pdf")
 
+  
+        return cv_pdf;
+      } else {
+        return { error: "Application not found." };
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return { error: "An error occurred while download CV." };
+    }
+  }
 }
 

@@ -60,6 +60,7 @@ app.use(express.static(path.join(__dirname, "developer", "html"), { extensions: 
 
 
 app.use(express.static(path.join(__dirname, "uploads")))
+app.use(express.static(path.join(__dirname, "CVs")))
 
 // 5. 404 handler
 app.use((_req, res) => {

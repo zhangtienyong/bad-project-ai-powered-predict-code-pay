@@ -40,7 +40,6 @@ export default class EmployerDbController {
                         });
                     });
 
-                    // Check if files.image is an array
                     console.log(fields.company)
                     // const fileArray = files.image as formidable.File[];
                     // const file = Array.isArray(fileArray) ? fileArray[0]?.newFilename : undefined;
@@ -238,11 +237,30 @@ export default class EmployerDbController {
         }
     };
 
-    downloadCV = async(req: Request, res: Response) => {
+    downloadCV = async (req: Request, res: Response) => {
+        const { Title } = req.body;
+        try {
+            const cv_pdf = await this.employerDbService.downloadCV(Title);
+    
+            if (Array.isArray(cv_pdf) && cv_pdf.length > 0 && cv_pdf[0].cv_pdf) {
+                const filename = cv_pdf[0].cv_pdf; 
+                console.log(filename);
+                res.download(`CVs/${filename}`);
+            } else if ('error' in cv_pdf) {
+                console.error('Error:', cv_pdf.error);
+                res.status(500).json({ error: cv_pdf.error });
+            } else {
+                console.error('Filename not found in the retrieved data');
+                res.status(500).json({ error: 'Filename not found' });
+            }
+        } catch (err) {
+            console.error("Error", err);
+            res.status(500).json({ error: "Fail" });
+        }
+    }; 
+    
 
-    }
-
-}           
+}
 
 
     

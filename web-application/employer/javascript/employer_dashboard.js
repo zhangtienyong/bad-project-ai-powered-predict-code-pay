@@ -327,3 +327,45 @@ try {
       console.error("Error:", error);
     }  
 }
+
+async function downloadCV(button) {
+  const listItem = button.closest('.list-group-item');
+  const TitleElement = listItem.querySelector('.application-id');
+  const Title = parseFloat(TitleElement.textContent.trim());
+
+  try {
+    const response = await fetch("/dashboard/employer/downloadCV", {
+      method: "POST",
+      body: JSON.stringify({ Title }), 
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    
+    if (response.ok) {
+      // Convert the response to blob data
+      const blob = await response.blob();
+      
+      // Create a temporary anchor element
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      
+      // Set the filename for the downloaded file
+      const contentDisposition = response.headers.get('Content-Disposition');
+      const filenameMatch = contentDisposition && contentDisposition.match(/filename="(.+)"/);
+      const filename = filenameMatch ? filenameMatch[1] : 'download';
+      a.download = filename;
+
+      // Append the anchor to the body and trigger the click event
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } else {
+      console.error('Error:', response.status);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }  
+}
