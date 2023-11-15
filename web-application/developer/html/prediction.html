@@ -49,131 +49,116 @@
     </header>
     <section class="page-tab">
       <div class="container">
-        <h4 class="font-page">Predicting Salaries</h4>
+        <h5 class="font-page">Predicting Salaries</h5>
       </div>
     </section>
+    <div class="head">
+      <h3 class="title">Developer Informations</h3>
+      <p>A brief overview of what makes our system predict the salary of a software developer based on features.</p>
+    </div>
     <section class="feature-dev-predict container custom-margin-top">
-      <div class="row">
-        <div class="col-4">
-          <div class="card d-flex align-items-center justify-content-center custom-card-nocolor" style="height: 80px;">
-            <h5 class="card-title">Developer Details</h5>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="card custom-card-nocolor">
-            <div class="card-body">
-              <h5 class="card-title">Inputting information</h5>
-              <form>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="codeYears">Years of coding experience</label>
-                    <input type="number" class="form-control" id="codeYears" pattern="\d+" title="Please enter only numbers">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="codeYearsPro">Years of professional</label>
-                    <input type="number" class="form-control" id="codeYearsPro" pattern="\d+" title="Please enter only numbers">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="edl">Education Level</label>
-                  <select name="education_level" id="education_level">
-                    <option selected>Select your higher level.</option>
-                    <option>Less than a Bachelors</option>
-                    <option>Bachelor’s degree</option>
-                    <option>Master’s degree</option>
-                    <option>Post grad</option>
-                </select>
-                </div>
-                <div class="form-group">
-                  <label for="learn">Learning Source</label>
-                  <select id="inputLearn" class="form-control">
-                    <option selected>Select Learning Methods.</option>
-                    <option>Coding Bootcamp</option>
-                    <option>School (i.e., University, College, etc)</option>
-                    <option>Friend or family member</option>
-                    <option>Online Courses or Certification</option>
-                    <option>Books / Physical media</option>
-                    <option>Colleague</option>
-                    <option>On the job training</option>
-                    <option>Hackathons (virtual or in-person)</option>
-                    <option>Other online resources (e.g., videos, blogs)</option>
-                  </select>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="inputCountry">Country</label>
-                    <input type="text" class="form-control" id="inputCountry" list="countriesList">
-                    <datalist id="countriesList"></datalist>
-                </div>
-                  <div class="form-group col-md-5">
-                    <label for="inputDeveloper">Developer Type</label>
-                    <input type="text" class="form-control" id="inputDeveloper" list="developersList">
-                    <datalist id="developersList"></datalist>
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label for="inputAge">Age</label>
-                    <input type="number" class="form-control" id="inputAge" pattern="\d+" title="Please enter only numbers">
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputLanguage">Programming Language</label>
-                    <input type="text" class="form-control" id="inputLanguage" list="languagesList">
-                    <datalist id="languagesList"></datalist>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputDatabase">Database</label>
-                    <input type="text" class="form-control" id="inputDatabase" list="databasesList">
-                    <datalist id="databasesList"></datalist>                  
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputWebFramework">Web Framework</label>
-                    <input type="text" class="form-control" id="inputWebFramework" list="webFrameworksList">
-                    <datalist id="webFrameworksList"></datalist>                  
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputCloudPlatform">Cloud Platform</label>
-                    <input type="text" class="form-control" id="inputCloudPlatform" list="cloudPlatformsList">
-                    <datalist id="cloudPlatformsList"></datalist>                  
-                  </div>
-                </div>
-                <div class="form-group">
-                  <small id="datashare" class="form-text text-muted">We'll never share your data with anyone else.</small>
-                </div>
-                <!-- <a href="#" class="btn btn-outline-primary">Go Prediction</a> -->
-                <button type="button" class="btn btn-outline-primary" id="goPredictionBtn">Go Prediction</button>
-              </form>              
+      <div class="card custom-card-nocolor">
+        <div class="card-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="codeYears">Years of coding experience</label>
+                <input type="number" class="form-control" id="codeYears" pattern="\d+" title="Please enter only numbers">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="codeYearsPro">Years of professional</label>
+                <input type="number" class="form-control" id="codeYearsPro" pattern="\d+" title="Please enter only numbers">
+              </div>
             </div>
-          </div>
+            <div class="form-group">
+              <label for="edl">Education Level</label>
+              <select id="inputEdl" class="form-control">
+                <option selected>Select your higher level.</option>
+                <option>Less than a Bachelors</option>
+                <option>Bachelor degree </option>
+                <option>Master degree</option>
+                <option>Post grad</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="learn">Learning Source</label>
+              <select id="inputLearn" class="form-control">
+                <option selected>Select Learning Methods.</option>
+                <option>Coding Bootcamp</option>
+                <option>School (i.e., University, College, etc)</option>
+                <option>Friend or family member</option>
+                <option>Online Courses or Certification</option>
+                <option>Books / Physical media</option>
+                <option>Colleague</option>
+                <option>On the job training</option>
+                <option>Hackathons (virtual or in-person)</option>
+                <option>Other online resources (e.g., videos, blogs)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputCountry">Country</label>
+                <input type="text" class="form-control" id="inputCountry" list="countriesList">
+                <datalist id="countriesList"></datalist>
+            </div>
+              <div class="form-group col-md-5">
+                <label for="inputDeveloper">Developer Type</label>
+                <input type="text" class="form-control" id="inputDeveloper" list="developersList">
+                <datalist id="developersList"></datalist>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputAge">Age</label>
+                <input type="number" class="form-control" id="inputAge" pattern="\d+" title="Please enter only numbers">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputLanguage">Programming Language</label>
+                <input type="text" class="form-control" id="inputLanguage" list="languagesList">
+                <datalist id="languagesList"></datalist>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputDatabase">Database</label>
+                <input type="text" class="form-control" id="inputDatabase" list="databasesList">
+                <datalist id="databasesList"></datalist>                  
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputWebFramework">Web Framework</label>
+                <input type="text" class="form-control" id="inputWebFramework" list="webFrameworksList">
+                <datalist id="webFrameworksList"></datalist>                  
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputCloudPlatform">Cloud Platform</label>
+                <input type="text" class="form-control" id="inputCloudPlatform" list="cloudPlatformsList">
+                <datalist id="cloudPlatformsList"></datalist>                  
+              </div>
+            </div>
+            <div class="form-group">
+              <small id="datashare" class="form-text text-muted">We'll never share your data with anyone else.</small>
+            </div>
+            <!-- <a href="#" class="btn btn-outline-primary">Go Prediction</a> -->
+            <button type="button" class="btn btn-outline-primary" id="goPredictionBtn">Go Prediction</button>
+          </form>              
         </div>
       </div>
     </section>
     <section class="feature-dev-predict container custom-margin-top custom-margin-bottom">
-      <div class="row">
-        <div class="col-4">
-          <div class="card d-flex align-items-center justify-content-center custom-card-nocolor" style="height: 80px;">
-            <h5 class="card-title">Salaries Prediction Result</h5>
+      <div class="card custom-card-nocolor">
+        <div class="card-body">
+          <h5>Salaries Prediction Result</h5>
+          <div class="alert alert-info text-center">
+            <h2><span class="badge badge-success">HKD 50,000</span></h2>
           </div>
-        </div>
-        <div class="col-8">
-          <div class="card custom-card-nocolor">
-            <div class="card-body">
-              <h5>Result of Predicting</h5>
-              <div class="alert alert-info text-center">
-                <h2><span class="badge badge-success">HKD 50,000</span></h2>
-              </div>
-              <a href="/recommendation" class="btn btn-outline-primary">Go Improve Your Skills</a>
-            </div>
-          </div>
+          <a href="/recommendation" class="btn btn-outline-primary">Go Improve Your Skills</a>
         </div>
       </div>
+      </div>
     </section>
-    <div class="footer-tab"></div>
     <footer>
-      © 2023 Predict Code Pay. All rights reserved.
-    </footer>
+        © 2023 Predict Code Pay. All rights reserved.
+    </footer>  
   
     <!-- Bootstrap and Custom JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

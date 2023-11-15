@@ -2,6 +2,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Navbar */
@@ -156,6 +159,8 @@ body {
 
 /* Footer */
 footer {
+    border-top:8px solid #00e5b7;
+    margin-top:auto;
     background-color: #1e293b;
     color: #ffffff;
     padding: 10px;
