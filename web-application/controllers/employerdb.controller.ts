@@ -42,9 +42,9 @@ export default class EmployerDbController {
 
                     // Check if files.image is an array
                     console.log(fields.company)
-                    const fileArray = files.image as formidable.File[];
-                    const file = Array.isArray(fileArray) ? fileArray[0]?.newFilename : undefined;
-                    
+                    // const fileArray = files.image as formidable.File[];
+                    // const file = Array.isArray(fileArray) ? fileArray[0]?.newFilename : undefined;
+                    const file = (files.image as formidable.File)?.newFilename;
 
 
                     await this.employerDbService.image(file, Session.user_id);
@@ -237,6 +237,10 @@ export default class EmployerDbController {
             res.status(401).json({ error: "User not authenticated" });
         }
     };
+
+    downloadCV = async(req: Request, res: Response) => {
+
+    }
 
 }           
 
