@@ -33,7 +33,7 @@ venv/
 
 
 # Ignore the saved_steps.pkl file
-saved_steps.pkl
+
 
 # Ignore compiled files
 *.pyc
