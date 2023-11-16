@@ -14,5 +14,6 @@ jobBoardsRoutes.get("/", (req: Request, res: Response) => {
 });
 
 jobBoardsRoutes.get("/initJobBoard", jobBoardsController.initJobBoard)
+jobBoardsRoutes.get("/role", jobBoardsController.getRole)
 
 export default jobBoardsRoutes;

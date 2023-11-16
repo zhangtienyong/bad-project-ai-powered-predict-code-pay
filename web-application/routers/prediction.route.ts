@@ -13,6 +13,8 @@ predictionRoutes.get("/", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../developer/html/prediction.html"));
 });
 
-predictionRoutes.post("/devdata",predictionController.devDataPosting);
-
 export default predictionRoutes;
+
+predictionRoutes.post("/devdata",predictionController.devDataPosting);
+predictionRoutes.get("/salary", predictionController.getSalary);
+

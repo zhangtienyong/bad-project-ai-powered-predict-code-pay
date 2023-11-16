@@ -1,5 +1,6 @@
 window.onload = () => {
   initJobBoard()
+  changeNavBar()
 };
 
 let currentPage = 1;
@@ -52,4 +53,36 @@ function loadPreviousPage() {
 function changePage(pageNumber) {
   currentPage = pageNumber;
   initJobBoard(currentPage);
+}
+
+async function changeNavBar() {
+
+  const res = await fetch("/jobboards/role")
+  const role = await res.json();
+
+  function updateNavLink(userRole) {
+    const navLink = document.querySelector('#nav');
+    const navLink2 = document.querySelector('#nav2');
+    const navLink3 = document.querySelector('#nav3');
+
+    if (userRole === 'developer') {
+      navLink.href = '/dashboard/developer';
+      navLink.textContent = 'Dashboard For Developer';
+      navLink2.href = '/prediction'
+      navLink2.textContent = 'Predicting Dev Salaries'
+      navLink3.href = '/recommendation'
+      navLink3.textContent = 'Skill Enhancement'
+
+    } else if (userRole === 'employer') {
+      navLink.href = '/dashboard/employer';
+      navLink.textContent = 'Dashboard For Employer';
+      navLink2.href = '/jobposting';
+      navLink2.textContent = 'Job Posting';
+    }
+
+
+  }
+
+
+  updateNavLink(role);
 }

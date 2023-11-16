@@ -6,7 +6,7 @@ window.onload = async () => {
 }
 
 async function listSkills() {
-    const resp = await fetch("/jobposting");
+    const resp = await fetch("/jobposting/skills");
     const skills = await resp.json();
     // console.log(skills);
     const programming_language_skills = skills.result.programming_language_skills

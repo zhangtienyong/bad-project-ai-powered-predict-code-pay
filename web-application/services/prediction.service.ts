@@ -1,5 +1,4 @@
 import { Knex } from "knex";
-// import fetch from 'node-fetch';
 
 export default class PredictionService {
     constructor(private knex: Knex) { }

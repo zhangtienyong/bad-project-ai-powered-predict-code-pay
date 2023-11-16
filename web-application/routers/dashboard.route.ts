@@ -18,7 +18,7 @@ dashboardRoutes.get("/developer", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../developer/html/developer_dashboard.html"));
 });
 dashboardRoutes.get("/employer", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../public/html/employer_dashboard.html"));
+    res.sendFile(path.join(__dirname, "../employer/html/employer_dashboard.html"));
 });
 dashboardRoutes.post("/employer/company",employerDbController.edit);
 dashboardRoutes.post("/employer/logo",employerDbController.image);

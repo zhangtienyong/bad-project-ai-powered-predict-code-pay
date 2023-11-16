@@ -25,8 +25,21 @@ export default class JobBoardsController {
         }
     };
 
-
-
+    getRole=  async (req: Request, res: Response) => {
+        if (req.session.user) {
+            const Session = req.session.user
+            try {
+                const role = Session.role
+                    return res.json(role);
+                
+            } catch (err) {
+                console.error("Error", err);
+                return res.status(500).json({ error: "error" });
+            }
+        } else {
+            return res.status(401).json({ error: "User not authenticated" });
+        }
+    }
 }
 
 
