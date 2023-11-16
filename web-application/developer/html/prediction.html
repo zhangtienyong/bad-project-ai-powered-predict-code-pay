@@ -59,7 +59,7 @@
     <section class="feature-dev-predict container custom-margin-top">
       <div class="card custom-card-top">
         <div class="card-body">
-          <form id="predictionForm">
+          <form id="predictionForm" action="/prediction/devdata" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCountry"> 
@@ -169,7 +169,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary" id="goPredictionBtn">Go Prediction</button>
+              <button type="submit" class="btn btn-primary" id="goPredictionBtn">Go Prediction</button>
             </div>
           </form>              
         </div>
@@ -183,7 +183,7 @@
             <span class="icon-text-spacing">Salaries Prediction Result</span>   
           </h6>
           <div class="alert alert-info text-center">
-            <h1 class="result"><i class="fa-solid fa-wallet"></i><span class="result-text-spacing">HKD 86295.20053255418</span></h1>
+            <h1 class="result"><i class="fa-solid fa-wallet"></i><span class="result-text-spacing" id="salary">HKD 0</span></h1>
           </div>
           <div class="text-right">
             <a href="/recommendation" class="textarrow">Go Improve Your Skills <i class="fa-solid fa-arrow-right"></i></a>

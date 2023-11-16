@@ -31,7 +31,7 @@ employee_callback = async (req: Request, res: Response) => {
 
 try {
     const response = await fetch('https://github.com/login/oauth/access_token', opts);
-    const data = await response.json();
+    const data: any = await response.json();
     console.log(data);
     const token = data.access_token;
     global.accessToken = token;
@@ -62,7 +62,7 @@ employer_callback = async (req: Request, res: Response) => {
 
 try {
     const response = await fetch('https://github.com/login/oauth/access_token', opts);
-    const data = await response.json();
+    const data: any = await response.json();
     console.log(data);
     const token = data.access_token;
     global.accessToken = token;
@@ -92,7 +92,7 @@ employee_user_data = async (req: Request, res: Response) => {
         });
 
         if (response.status === 200) {
-        const userData = await response.json();
+        const userData: any = await response.json();
         const github_username = userData.login;
         const github_id = userData.id;
         const github_token = token;
@@ -139,7 +139,7 @@ employer_user_data = async (req: Request, res: Response) => {
         });
 
         if (response.status === 200) {
-        const userData = await response.json();
+        const userData: any = await response.json();
         const github_username = userData.login;
         const github_id = userData.id;
         const github_token = token;

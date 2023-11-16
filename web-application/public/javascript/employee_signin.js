@@ -7,11 +7,9 @@ employeeLoginButton.addEventListener('click', async () => {
         });
 
         if (response.status === 200) {
-            
-            Swal.fire("Already logged in!!!");
-        } else {
-            
             window.location.href = '/signin/employee';
+        } else {
+            Swal.fire("Already logged in!!!");
         }
     } catch (error) {
         console.error("Error:", error);

@@ -518,11 +518,10 @@ cloudPlatformInput.addEventListener('input', (event) => {
 
 // Log input data to the web console when the form is submitted
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form');
-    const goPredictionBtn = document.getElementById('goPredictionBtn');
+    // const goPredictionBtn = document.getElementById('goPredictionBtn');
     const predictionForm = document.getElementById('predictionForm');
 
-    goPredictionBtn.addEventListener('click', async (event) => {
+    predictionForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const codeYears = document.getElementById('codeYears').value;
@@ -549,25 +548,53 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Web Framework:', inputWebFramework);
         console.log('Cloud Platform:', inputCloudPlatform);
 
-        // You can add further processing or send the data to a server here
         const formData = new FormData(predictionForm);
+
         try {
             const response = await fetch('/prediction/devdata', {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify({
+                    years_of_coding: codeYears,
+                    years_of_employment: codeYearsPro,
+                    education_level: edl,
+                    learning_source: inputLearn,
+                    country: inputCountry,
+                    developer_type: inputDeveloper,
+                    age: inputAge,
+                    language: inputLanguage,
+                    database: inputDatabase,
+                    webframework: inputWebFramework,
+                    platform: inputCloudPlatform
+                }),
+                headers: {
+                    "content-type": "application/json",
+                }
             });
-
+            
             if (response.ok) {
                 console.log('Data sent successfully');
-                predictionForm.reset();
+                window.location.reload();
             } else {
                 console.log('Data sent failed');
             }
         } catch (error) {
             console.error('Error:', error);
         }
-        // Reset the form if needed
-        form.reset();
     });
 });
 
+window.onload = async () => {
+
+    getSalary();
+
+}
+
+
+async function getSalary() {
+    const resp = await fetch ("/prediction/salary");
+    const salaryInfo = await resp.json();
+    const salary = salaryInfo.result[0].predicted_salary;
+    console.log(salary);
+    document.querySelector("#salary").innerHTML = `HKD ${salary} `;
+
+}
