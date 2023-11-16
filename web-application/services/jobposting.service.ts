@@ -9,7 +9,7 @@ export default class JobPostingService {
             const programming_language_skills = await this.knex
                 .select("name")
                 .from("skills")
-                .where("types", "programming_language")
+                .where("types", "language")
 
             const database_skills = await this.knex
                 .select("name")
@@ -19,12 +19,12 @@ export default class JobPostingService {
             const web_framework_skills = await this.knex
                 .select("name")
                 .from("skills")
-                .where("types", "web_framework")
+                .where("types", "webframework")
 
             const cloud_platform_skills = await this.knex
                 .select("name")
                 .from("skills")
-                .where("types", "cloud_platform")
+                .where("types", "platform")
 
             return { programming_language_skills, database_skills, web_framework_skills, cloud_platform_skills };
 
