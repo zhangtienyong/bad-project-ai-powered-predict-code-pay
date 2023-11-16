@@ -281,11 +281,11 @@ export async function seed(knex: Knex): Promise<void> {
         const skills = await trx("skills").insert([
             {
                 name: "aaa",
-                types: "programming_language",
+                types: "language",
             },
             {
                 name: "bbb",
-                types: "programming_language",
+                types: "language",
             },
             {
                 name: "ccc",
@@ -297,19 +297,19 @@ export async function seed(knex: Knex): Promise<void> {
             },
             {
                 name: "eee",
-                types: "web_framework",
+                types: "webframework",
             },
             {
                 name: "bbb",
-                types: "web_framework",
+                types: "webframework",
             },
             {
                 name: "fff",
-                types: "cloud_platform",
+                types: "platform",
             },
             {
                 name: "ggg",
-                types: "cloud_platform",
+                types: "platform",
             }
         ]).returning("id");
 

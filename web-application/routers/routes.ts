@@ -8,8 +8,8 @@ import jobBoardsRoutes from "./jobboards.route";
 import dashboardRoutes from "./dashboard.route";
 import signInRoutes from "./signin.route";
 import { jobDetailRoutes } from "./jobdetail.route";
-// import { isDeveloperLoggedInApi, isEmployerLoggedInApi, isLoggedInApi } from "../guard";
-
+// import { isDeveloperLoggedInApi} from "../guard";
+// , isEmployerLoggedInApi, isLoggedInApi 
 export const apiRoutes = Router();
 
 apiRoutes.use("/", authRoutes);
