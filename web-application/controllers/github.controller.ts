@@ -10,7 +10,7 @@ employee = async (req:Request, res:Response)  => {
 }
 
 employer = async (req:Request, res:Response)  => { 
-    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYER_CLIENT_ID}`);
+    res.redirect(`http://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYER_CLIENT_ID}`);
 }
 
 employee_callback = async (req: Request, res: Response) => {
