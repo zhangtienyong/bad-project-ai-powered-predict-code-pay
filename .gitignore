@@ -10,3 +10,5 @@ node_modules
 .env
 .vscode/
 *.pdf
+machine-learning-models/cosine_sim.pkl
+machine-learning-models/user_combined_df.pkl

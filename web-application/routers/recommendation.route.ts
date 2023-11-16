@@ -17,6 +17,6 @@ recommendationRoutes.get("/", (req: Request, res: Response) => {
 });
 
 
-
-// jobPostingRoutes.get("/jobposting/skills", jobPostingController.getSkills);
 recommendationRoutes.get("/recommendation/salary", recommendationController.getSalary)
+
+recommendationRoutes.get("/recommendation", recommendationController.recommendation)

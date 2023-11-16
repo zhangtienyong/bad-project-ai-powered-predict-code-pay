@@ -18,4 +18,20 @@ export default class RecommendationController {
             res.status(500).json({ message: "internal server error" });
         }
     }
+
+
+    recommendation = async (req: Request, res: Response) => {
+
+        try {
+            const user = req.session.user
+            const userId = user?.user_id!
+
+            const result = await this.recommendationService.recommendation(userId)
+
+            res.status(200).json({ ... result })
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).json({ message: "internal server error" });
+        }
+    }
 }
