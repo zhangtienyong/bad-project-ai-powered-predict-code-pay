@@ -19,15 +19,15 @@ async function initJob(page) {
   const res = await fetch(`/dashboard/employer/job?page=${page}`);
   const jobs = await res.json();
 
-  const productContainerEle = document.querySelector(".job-container");
+  const jobContainerEle = document.querySelector(".job-container");
   const templateEle = document.querySelector("#job-template");
-  productContainerEle.innerHTML = '';
+  jobContainerEle.innerHTML = '';
 
   for (const job of jobs) {
     const jobClone = templateEle.content.cloneNode(true);
     jobClone.querySelector(".job-id").textContent = job.id
     jobClone.querySelector(".job-title").textContent = `${job.job_title}, ${job.created_at}`
-    productContainerEle.appendChild(jobClone);
+    jobContainerEle.appendChild(jobClone);
   }
 }
 
@@ -40,15 +40,15 @@ async function initApplication(app) {
   const res = await fetch(`/dashboard/employer/application?app=${app}`);
   const apps = await res.json();
 
-  const productContainerEle = document.querySelector(".application-container");
+  const applicationContainerEle = document.querySelector(".application-container");
   const templateEle = document.querySelector("#application-template");
-  productContainerEle.innerHTML = '';
+  applicationContainerEle.innerHTML = '';
 
   for (const app of apps) {
     const AppClone = templateEle.content.cloneNode(true);
     AppClone.querySelector(".application-id").textContent = app.id
     AppClone.querySelector(".application-title").textContent = `Application ID:  ${app.id}   Job ID:  ${app.job_id}    Developer ID:  ${app.user_id} updated_at: ${app.updated_at}   Status:  ${app.status}`
-    productContainerEle.appendChild(AppClone);
+    applicationContainerEle.appendChild(AppClone);
   }
 }
 
@@ -343,22 +343,22 @@ async function downloadCV(button) {
     });
     
     if (response.ok) {
-      // Convert the response to blob data
+
       const blob = await response.blob();
       
-      // Create a temporary anchor element
+
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = url;
       
-      // Set the filename for the downloaded file
+
       const contentDisposition = response.headers.get('Content-Disposition');
       const filenameMatch = contentDisposition && contentDisposition.match(/filename="(.+)"/);
       const filename = filenameMatch ? filenameMatch[1] : 'download';
       a.download = filename;
 
-      // Append the anchor to the body and trigger the click event
+
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);

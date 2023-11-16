@@ -1,11 +1,16 @@
 import { Request, Response, Router } from "express";
 import EmployerDbService from "../services/employerdb.service";
 import EmployerDbController from "../controllers/employerdb.controller";
+import DeveloperDbService from "../services/developerdb.service";
+import DeveloperDbController from "../controllers/developerdb.controller";
 import { knex } from "../db"
 import path from "path";
 
 const employerDbService = new EmployerDbService(knex);
 const employerDbController = new EmployerDbController(employerDbService);
+const developerDbService = new DeveloperDbService(knex);
+const developerDbController = new DeveloperDbController(developerDbService);
+
 
 const dashboardRoutes = Router();
 
@@ -25,6 +30,8 @@ dashboardRoutes.post("/employer/rejected_job", employerDbController.rejected_job
 dashboardRoutes.delete("/employer/delete_job", employerDbController.delete_job)
 dashboardRoutes.post("/employer/editJob",employerDbController.editJob);
 dashboardRoutes.post("/employer/downloadCV",employerDbController.downloadCV);
+dashboardRoutes.get("/developer/application", developerDbController.application)
+// dashboardRoutes.get("/developer/skill", developerDbController.matchingSkills)
 
 
 
