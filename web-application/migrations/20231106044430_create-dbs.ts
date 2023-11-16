@@ -47,6 +47,7 @@ export async function up(knex: Knex): Promise<void> {
         table.string("programming_language_recommendation").notNullable();
         table.string("web_framework_recommendation").notNullable();
         table.string("cloud_platform_recommendation").notNullable();
+        table.string("database_recommendation").notNullable();
         table.timestamps(false, true);
     });
 

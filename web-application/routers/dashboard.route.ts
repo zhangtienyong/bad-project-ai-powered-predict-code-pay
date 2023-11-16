@@ -31,6 +31,7 @@ dashboardRoutes.delete("/employer/delete_job", employerDbController.delete_job)
 dashboardRoutes.post("/employer/editJob",employerDbController.editJob);
 dashboardRoutes.post("/employer/downloadCV",employerDbController.downloadCV);
 dashboardRoutes.get("/developer/application", developerDbController.application)
+dashboardRoutes.get("/developer/info", developerDbController.getDeveloperInfo)
 // dashboardRoutes.get("/developer/skill", developerDbController.matchingSkills)
 
 

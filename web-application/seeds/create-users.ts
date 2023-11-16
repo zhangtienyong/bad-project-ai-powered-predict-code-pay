@@ -41,16 +41,7 @@ export async function seed(knex: Knex): Promise<void> {
 
         // Generate random data for 'developer_data' table
         const developer_data = await trx('developer_data').insert([
-            {
-                user_id: aaa.id,
-                education_level: "aaa",
-                country: "aaa",
-                years_of_coding: 999,
-                years_of_employment: 999,
-                learning_source: "aaa",
-                developer_type: "aaa",
-                age: 999,
-            },
+           
             {
                 user_id: bbb.id,
                 education_level: "aaa",
@@ -81,6 +72,7 @@ export async function seed(knex: Knex): Promise<void> {
                 programming_language_recommendation: "aaa",
                 web_framework_recommendation: "aaa",
                 cloud_platform_recommendation: "aaa",
+                database_recommendation: "aaa",
             },
         ]).returning("id");
 
