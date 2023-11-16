@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1f5f9;
+}
+
+/* Navbar */
+.nav-tab {
+    width: 100%;
+    height: 8px;
+    background-color: #00e5b7;
+}
+
+.navbar {
+    margin: 24px 8px 0px;
+    padding: 16px 32px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.nav-item.nav-link.active {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+}
+
+.btn-outline-danger.signout {
+    font-weight: bold;
+    color: #fa6154;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-brand .code-pay {
+    color: #828587;
+    font-weight: lighter;
+}
+
+.navbar-nav a {
+    font-weight: bold;
+}
+
+.btn-outline-light.signin {
+    font-weight: bold;
+    color: #a3a7a9;
+}
+
+.btn-primary.signup {
+    font-weight: bold;
+}
+
+.card-img-top {
+    width: 30%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+

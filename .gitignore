@@ -1,0 +1,14 @@
+# Ignore node_modules directory
+node_modules
+
+# Ignore .DS_Store files (macOS specific)
+**/.DS_Store
+
+# Ignore log files
+*.log
+node_modules
+.env
+.vscode/
+*.pdf
+machine-learning-models/cosine_sim.pkl
+machine-learning-models/user_combined_df.pkl

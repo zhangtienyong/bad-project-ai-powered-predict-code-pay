@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f1f5f9;
+}
+
+/* Navbar */
+.nav-tab {
+    width: 100%;
+    height: 8px;
+    background-color: #00e5b7;
+}
+
+.navbar {
+    margin: 24px 8px 0px;
+    padding: 16px 32px;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.nav-item.nav-link.active {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+}
+
+.btn-outline-danger.signout {
+    font-weight: bold;
+    color: #fa6154;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-brand .code-pay {
+    color: #828587;
+    font-weight: lighter;
+}
+
+.navbar-nav a {
+    font-weight: bold;
+}
+
+.btn-outline-light.signin {
+    font-weight: bold;
+    color: #a3a7a9;
+}
+
+.btn-primary.signup {
+    font-weight: bold;
+}
+
+/* Main */
+.card-body{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.logo{ 
+    width: auto;
+    height: 100%;
+}
+
+
+
+
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+#companyLogo {
+    width: 475px;
+    height: 405px;
+}
+
+.list-group-item {
+    border-bottom: 3px solid rgb(118, 185, 230)
+  }
+
+  blockquote p {
+    border-bottom: 1px solid #000;   
+    padding-bottom: 2px; 
+  }
+
+
+
