@@ -53,8 +53,9 @@ async function initApplication(app) {
 //     }
 // }
 
-try {
-    const res = await fetch("/dashboard/developer//details", {
+async function updateCompanyDetails() {
+  try {
+    const res = await fetch("/dashboard/employer/company/details", {
       method: "GET",
     });
 
@@ -62,6 +63,7 @@ try {
       const data = await res.json();
       console.log(data)
 
+      // Update HTML elements with company details
       document.getElementById("modalImage").src = data.logo
       document.getElementById("companyLogo").src = data.logo
       document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
@@ -78,6 +80,7 @@ try {
   } catch (error) {
     console.error('Fetch Error:', error);
   }
+}
 
 function loadNextApp() {
     applicationPage++;
