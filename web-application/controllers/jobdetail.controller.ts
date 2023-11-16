@@ -14,6 +14,7 @@ export default class JobDetailController {
             const company = job_detail.company
             const job = job_detail.jobs
             const skills = job_detail.skills
+            console.log(skills)
 
 
             res.status(200).json({ result: { company, job, skills } })

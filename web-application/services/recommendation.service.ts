@@ -32,11 +32,7 @@ export default class RecommendationService {
             .where("user_id", userId)
 
         const developer_type = developer[0].developer_type
-
-        //   const recommendations = await this.knex
-        //     .select("*")
-        //     .from("skill_recommendations")
-        //     .where("data_id", developer[0].id)
+        const developer_id = developer[0].id
 
         type Skill = { id: number; name: string; types: string }
         const skillMapping = (await this.knex<Skill>("skills")).reduce((mapping, row) => mapping.set(row.id, { name: row.name, types: row.types }), new Map<number, Omit<Skill, "id">>);
@@ -78,14 +74,40 @@ export default class RecommendationService {
         });
 
         interface ApiResponse {
-            "Language": string;
-            "Database": string;
-            "Platform": string;
-            "Webframe": string;
-        }
-        const apiData = await apiResponse.json() as ApiResponse;
-        console.log('API Response:', apiData);
-        
-        return { language, database, platform, webframe }
+            RecommendedSkills: RecommendedSkills;
+          }
+          
+          interface RecommendedSkills {
+            LanguageWantToWorkWith: string[];
+            DatabaseWantToWorkWith: string[];
+            PlatformWantToWorkWith: string[];
+            WebframeWantToWorkWith: string[];
+          }
+        const apiData: { RecommendedSkills: RecommendedSkills } = await apiResponse.json() as ApiResponse;
+        console.log(apiData);
+
+        // Extracted recommendation data
+        const recommendationData = {
+            data_id: developer_id,
+            programming_language_recommendation: apiData.RecommendedSkills.LanguageWantToWorkWith[0]?.split(';')[0] || '',
+            web_framework_recommendation: apiData.RecommendedSkills.DatabaseWantToWorkWith[0]?.split(';')[0] || '',
+            cloud_platform_recommendation: apiData.RecommendedSkills.PlatformWantToWorkWith[0] || '',
+            database_recommendation: apiData.RecommendedSkills.WebframeWantToWorkWith[0]?.split(';')[0] || '',
+        };
+
+        console.log(recommendationData);
+
+        const insert_recommendation_skill = await this.knex
+        .insert({
+            data_id: recommendationData.data_id,
+            programming_language_recommendation: recommendationData.programming_language_recommendation,
+            web_framework_recommendation: recommendationData.web_framework_recommendation,
+            cloud_platform_recommendation: recommendationData.cloud_platform_recommendation,
+            database_recommendation: recommendationData.database_recommendation,
+        })
+        .into("skill_recommendations")
+        .returning("id");
+
+    console.log("Recommendation Skill ID:", insert_recommendation_skill[0]);
     }
 }

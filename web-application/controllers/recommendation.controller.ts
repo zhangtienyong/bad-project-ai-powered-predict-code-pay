@@ -28,7 +28,7 @@ export default class RecommendationController {
 
             const result = await this.recommendationService.recommendation(userId)
 
-            res.status(200).json({ ... result })
+            res.status(200).json({ result })
         } catch (err) {
             console.error(err.message);
             res.status(500).json({ message: "internal server error" });

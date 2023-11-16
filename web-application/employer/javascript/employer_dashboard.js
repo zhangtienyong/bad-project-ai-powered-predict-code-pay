@@ -63,8 +63,9 @@ async function updateCompanyDetails() {
       console.log(data)
 
       // Update HTML elements with company details
-      document.getElementById("modalImage").src = data.logo
-      document.getElementById("companyLogo").src = data.logo
+      console.log(data.logo)
+      document.getElementById("modalImage").src = `../${data.logo}`
+      document.getElementById("companyLogo").src = `../${data.logo}`
       document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
       document.getElementById("about").innerText = "About:" + data.about;
       document.getElementById("industry").innerText = "Industry:" + data.industry;
