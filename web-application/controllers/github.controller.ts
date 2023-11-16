@@ -117,8 +117,7 @@ employee_user_data = async (req: Request, res: Response) => {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' }); 
     }
-
-           
+     
 
 };
 
