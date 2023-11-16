@@ -10,7 +10,6 @@ employeeLoginButton.addEventListener('click', async () => {
             
             Swal.fire("Already logged in!!!");
         } else {
-            
             window.location.href = '/signin/employer';
         }
     } catch (error) {
