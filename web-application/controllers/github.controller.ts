@@ -10,7 +10,7 @@ employee = async (req:Request, res:Response)  => {
 }
 
 employer = async (req:Request, res:Response)  => { 
-    res.redirect(`http://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYER_CLIENT_ID}`);
+    res.redirect(`https://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYER_CLIENT_ID}`);
 }
 
 employee_callback = async (req: Request, res: Response) => {
@@ -50,7 +50,7 @@ employer_callback = async (req: Request, res: Response) => {
         client_id: process.env.EMPLOYER_CLIENT_ID,
         client_secret: process.env.EMPLOYER_CLIENT_SECRET,
         code,
-        redirect_uri: `https://predictcodepay.me:${process.env.PORT}/signin/employer_callback`
+        redirect_uri: `http://predictcodepay.me:${process.env.PORT}/signin/employer_callback`
     };
 
     const opts = {
