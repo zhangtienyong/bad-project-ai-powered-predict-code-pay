@@ -9,7 +9,7 @@ import jobBoardsRoutes from "./jobboards.route";
 import dashboardRoutes from "./dashboard.route";
 import signInRoutes from "./signin.route";
 import { jobDetailRoutes } from "./jobdetail.route";
-// import { isDeveloperLoggedInApi} from "../guard";
+// import { isDeveloperLoggedInApi, isEmployerLoggedInApi} from "../guard";
 // , isEmployerLoggedInApi, isLoggedInApi 
 export const apiRoutes = Router();
 
@@ -18,7 +18,7 @@ apiRoutes.use("/signin", signInRoutes);
 apiRoutes.use("/", homeRoutes);
 apiRoutes.use("/prediction", predictionRoutes);
 apiRoutes.use("/", recommendationRoutes);
-apiRoutes.use("/", jobPostingRoutes);
+apiRoutes.use("/",jobPostingRoutes);
 apiRoutes.use("/jobboards", jobBoardsRoutes);
 apiRoutes.use("/dashboard", dashboardRoutes);
 apiRoutes.use("/", jobDetailRoutes);

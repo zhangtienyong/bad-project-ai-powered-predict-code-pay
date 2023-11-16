@@ -17,7 +17,7 @@ const githubController = new GithubController(githubService)
 dotenv.config();
 
 signInRoutes.get("/", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../public/html/signin.html"));
+    res.sendFile(path.join(__dirname, "../public/html/employer_signin.html"));
 });
 
 signInRoutes.get('/employee', githubController.employee);

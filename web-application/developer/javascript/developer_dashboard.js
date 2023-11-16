@@ -54,34 +54,34 @@ async function initApplication(app) {
 //     }
 // }
 
-async function updateCompanyDetails() {
-  try {
-    const res = await fetch("/dashboard/employer/company/details", {
-      method: "GET",
-    });
+// async function updateCompanyDetails() {
+//   try {
+//     const res = await fetch("/dashboard/employer/company/details", {
+//       method: "GET",
+//     });
 
-    if (res.ok) {
-      const data = await res.json();
-      console.log(data)
+//     if (res.ok) {
+//       const data = await res.json();
+//       console.log(data)
 
-      // Update HTML elements with company details
-      document.getElementById("modalImage").src = data.logo
-      document.getElementById("companyLogo").src = data.logo
-      document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
-      document.getElementById("about").innerText = "About:" + data.about;
-      document.getElementById("industry").innerText = "Industry:" + data.industry;
-      document.getElementById("website").innerText = "Company Website:" + data.website;
-      document.getElementById("email").innerText = "Email:" + data.email;
-      document.getElementById("companySize").innerText = "Company Size:" + data.company_size;
-      document.getElementById("phone").innerText = "Phone:" + data.phone;
-      document.getElementById("location").innerText = "Location:" + data.location;
-    } else {
-      console.error('Error:', res.status);
-    }
-  } catch (error) {
-    console.error('Fetch Error:', error);
-  }
-}
+//       // Update HTML elements with company details
+//       document.getElementById("modalImage").src = data.logo
+//       document.getElementById("companyLogo").src = data.logo
+//       document.getElementById("companyName").innerText = "Company Name:" + data.company_name;
+//       document.getElementById("about").innerText = "About:" + data.about;
+//       document.getElementById("industry").innerText = "Industry:" + data.industry;
+//       document.getElementById("website").innerText = "Company Website:" + data.website;
+//       document.getElementById("email").innerText = "Email:" + data.email;
+//       document.getElementById("companySize").innerText = "Company Size:" + data.company_size;
+//       document.getElementById("phone").innerText = "Phone:" + data.phone;
+//       document.getElementById("location").innerText = "Location:" + data.location;
+//     } else {
+//       console.error('Error:', res.status);
+//     }
+//   } catch (error) {
+//     console.error('Fetch Error:', error);
+//   }
+// }
 
 function loadNextApp() {
   applicationPage++;

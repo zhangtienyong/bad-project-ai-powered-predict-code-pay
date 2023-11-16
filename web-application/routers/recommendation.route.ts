@@ -19,4 +19,4 @@ recommendationRoutes.get("/", (req: Request, res: Response) => {
 
 recommendationRoutes.get("/recommendation/salary", recommendationController.getSalary)
 
-recommendationRoutes.get("/recommendation", recommendationController.recommendation)
+recommendationRoutes.post("/recommendation", recommendationController.recommendation)

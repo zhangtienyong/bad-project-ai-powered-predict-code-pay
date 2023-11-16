@@ -58,10 +58,15 @@ async function getJobDetail(job_id) {
     return matchingSkills;
   }
 
-  const programmingLanguages = getSkillsByType("programming_language");
+  const programmingLanguages = getSkillsByType("language");
   const databases = getSkillsByType("database");
-  const cloudPlatforms = getSkillsByType("cloud_platform");
-  const webFrameworks = getSkillsByType("web_framework");
+  const cloudPlatforms = getSkillsByType("platform");
+  const webFrameworks = getSkillsByType("webframework");
+
+  console.log(programmingLanguages);
+  console.log(databases);
+  console.log(cloudPlatforms);
+  console.log(webFrameworks);
 
   document.querySelector("#programmingLanguage").innerHTML = programmingLanguages.join(", ");
   document.querySelector("#database").innerHTML = databases.join(", ");
