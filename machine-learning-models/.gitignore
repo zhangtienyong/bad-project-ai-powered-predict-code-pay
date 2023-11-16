@@ -31,9 +31,5 @@ venv/
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-
-# Ignore the saved_steps.pkl file
-saved_steps.pkl
-
 # Ignore compiled files
 *.pyc
