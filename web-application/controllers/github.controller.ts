@@ -19,7 +19,7 @@ employee_callback = async (req: Request, res: Response) => {
         client_id: process.env.EMPLOYEE_CLIENT_ID,
         client_secret: process.env.EMPLOYEE_CLIENT_SECRET,
         code,
-        redirect_uri: `https://predictcodepay.me:${process.env.PORT}/signin/employee_callback`
+        redirect_uri: `http://predictcodepay.me:${process.env.PORT}/signin/employee_callback`
     };
 
     const opts = {
