@@ -28,9 +28,9 @@ window.onload = () => {
         let json = await res.json();
         if (res.ok) {
           if (json.session.role === "developer") {
-            window.location.href = "http://localhost:8080/developer_dashboard.html";
+            window.location.href = "https://predictcodepay.me/developer_dashboard.html";
           } else if (json.session.role === "employer") {
-            window.location.href = "http://localhost:8080/employer_dashboard.html";
+            window.location.href = "https://predictcodepay.me/employer_dashboard.html";
           }
         } else {
           if (res.status === 401) {
