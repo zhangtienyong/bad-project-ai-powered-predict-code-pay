@@ -520,13 +520,14 @@ cloudPlatformInput.addEventListener('input', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     const goPredictionBtn = document.getElementById('goPredictionBtn');
+    const predictionForm = document.getElementById('predictionForm');
 
-    goPredictionBtn.addEventListener('click', event => {
+    goPredictionBtn.addEventListener('click', async (event) => {
         event.preventDefault();
 
         const codeYears = document.getElementById('codeYears').value;
         const codeYearsPro = document.getElementById('codeYearsPro').value;
-        const edl = document.getElementById('edl').value;
+        const edl = document.getElementById('inputEdl').value;
         const inputLearn = document.getElementById('inputLearn').value;
         const inputCountry = document.getElementById('inputCountry').value;
         const inputDeveloper = document.getElementById('inputDeveloper').value;
@@ -549,7 +550,24 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Cloud Platform:', inputCloudPlatform);
 
         // You can add further processing or send the data to a server here
+        const formData = new FormData(predictionForm);
+        try {
+            const response = await fetch('/prediction/devdata', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                console.log('Data sent successfully');
+                predictionForm.reset();
+            } else {
+                console.log('Data sent failed');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
         // Reset the form if needed
         form.reset();
     });
 });
+

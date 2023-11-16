@@ -89,10 +89,74 @@ body {
     background-color: #bdbfc1;
 }
 
-.custom-card-nocolor {
+.custom-card-top {
+    border-top: 4px solid #00e5b7;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.head {
+    text-align: center;
+}
+
+.head h3 {
+    font-size: 32px;
+}
+
+.alert.alert-info {
+    background-color: #f1f5f9;
+    height: 240px;
+}
+
+/* Optional: Change text color for better contrast */
+.alert.alert-info h2 {
+    color: #333; /* Change text color to a suitable color */
+}
+
+.fa-wallet {
+    color: #7886d7
+}
+
+.result {
+    color: #312e81;
+    margin-top: 10%;
+}
+
+.fa-circle-dot {
+    color: #312e81;
+}
+
+.icon-text-spacing {
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.result-text-spacing {
+    margin-left: 12px;
+    font-weight: bold;
+}
+
+#codeYears,
+#codeYearsPro,
+#inputEdl,
+#inputLearn,
+#inputCountry,
+#inputDeveloper,
+#inputAge,
+#inputLanguage,
+#inputDatabase,
+#inputCloudPlatform,
+#inputWebFramework {
+    background-color: #f1f5f9;
+}
+
+.countries {
+    background-color: #7886d7;
+}
+
+.btn-primary {
+    background-color: #6366f1;
+    border-color: #6366f1;
+}
 /* Footer */
 footer {
     border-top:8px solid #00e5b7;

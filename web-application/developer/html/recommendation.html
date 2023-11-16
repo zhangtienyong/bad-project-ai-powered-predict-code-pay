@@ -56,22 +56,22 @@
 
     <div class="page-content custom-margin-top">
       <div class="container">
-        <div class="card mb-3 custom-card-top">
+        <div class="card card-info mb-3 custom-card-top">
           <div class="row g-0">
             <div class="col-md-4 text-center d-flex align-items-center">
               <img src="../images/recommendation.png" class="card-img-top mx-auto" alt="image" style="width: 180px; height: 180px; padding-top: 20px;">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Base on Your Information</h5>
+                <h5 class="card-title"><i class="fa-solid fa-circle-info"></i> <span class="icon-text-spacing">Base on Your Information</span></h5>
                 <p class="card-text">
                   Based on your preferred skills, whether you're a seasoned developer or just starting, our system caters to your unique aspirations.
                 </p>
-                <h5 class="card-title">Get Personalized Recommendations</h5>
+                <h5 class="card-title"><i class="fa-solid fa-star"></i> <span class="icon-text-spacing">Get Personalized Recommendations</span></h5>
                 <p class="card-text">
                   Our advanced content-based recommendation engine analyzes your choices and provides you with three personalized skill recommendations.
                 </p>
-                <h5 class="card-title">Dive into Learning</h5>
+                <h5 class="card-title"><i class="fa-solid fa-keyboard"></i> <span class="icon-text-spacing">Dive into Learning</span></h5>
                 <p class="card-text">
                   Explore detailed resources for your recommended skills. We provide curated choices from our dataset, ensuring you receive educational materials that fit your learning skill.                </p>
               </div>
@@ -81,11 +81,16 @@
       </div>
     </div>
     <div class="container">
-      <div class="card text-center custom-margin-top custom-margin-bottom custom-card-top">
+      <div class="card card-recommend text-center custom-margin-top custom-margin-bottom custom-card-top">
         <div class="card-body">
-          <h5 class="card-title">Start Your Learning Journey Today!</h5>
+          <h5 class="card-title">
+            <span class="icon-text-spacing">Base on Your Prediction</span>
+              <i class="fa-solid fa-coins"></i>
+            <span class="icon-text-spacing">86295.20053255418 HKD</span>
+          </h5>
           <p class="card-text">Elevate your skills, boost your career, and stay competitive in the dynamic tech landscape.</p>
-          <a href="#" class="btn btn-outline-primary">Go Recommendation</a>
+          <!-- <a href="#" class="btn btn-outline-primary">Go Recommendation</a> -->
+          <button type="button" class="btn btn-primary" id="goPredictionBtn">Go Recommendation</button>
         </div>
       </div>
     </div>
@@ -93,7 +98,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card custom-card-top-select">
-            <div class="card-header">
+            <div class="card-header featured">
               Featured: 1
             </div>
             <ul class="list-group list-group-flush">
@@ -102,15 +107,15 @@
               <li class="list-group-item">Phoenix</li>
               <li class="list-group-item">Amazon Web Services (AWS)</li>
             </ul>
-            <div class="card-footer">
-              <button type="button" class="btn btn-outline-primary">Select</button>
+            <div class="card-footer btn-featured ">
+              <button type="button" class="btn btn-primary">Select</button>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card custom-card-top-select">
-            <div class="card-header">
-              Featured: 1
+            <div class="card-header featured">
+              Featured: 2
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Elixir</li>
@@ -118,15 +123,15 @@
               <li class="list-group-item">Phoenix</li>
               <li class="list-group-item">Amazon Web Services (AWS)</li>
             </ul>
-            <div class="card-footer">
-              <button type="button" class="btn btn-outline-primary">Select</button>
+            <div class="card-footer btn-featured ">
+              <button type="button" class="btn btn-primary">Select</button>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card custom-card-top-select">
-            <div class="card-header">
-              Featured: 1
+            <div class="card-header featured">
+              Featured: 3
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Elixir</li>
@@ -134,8 +139,8 @@
               <li class="list-group-item">Phoenix</li>
               <li class="list-group-item">Amazon Web Services (AWS)</li>
             </ul>
-            <div class="card-footer">
-              <button type="button" class="btn btn-outline-primary">Select</button>
+            <div class="card-footer btn-featured">
+              <button type="button" class="btn btn-primary">Select</button>
             </div>
           </div>
         </div>

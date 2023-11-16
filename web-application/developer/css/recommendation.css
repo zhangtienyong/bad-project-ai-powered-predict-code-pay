@@ -107,6 +107,38 @@ body {
     transform: scale(1.05);
 }
 
+.btn-primary {
+    background-color: #6366f1;
+    border-color: #6366f1;
+}
+
+.list-group-item {
+    background-color: #f1f5f9;
+}
+
+.icon-text-spacing {
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.fa-coins {
+    margin-left: 10px;
+    margin-right: 2px;
+}
+
+.card-recommend, .card-info{
+    background-color: #f1f5f9;
+}
+
+.featured {
+    font-weight: bold;
+    background-color: #f1f5f9;
+}
+
+.btn-featured {
+    background-color: #f1f5f9;
+}
+
 /* Footer */
 footer {
     border-top:8px solid #00e5b7;

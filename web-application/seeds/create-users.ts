@@ -85,6 +85,7 @@ export async function seed(knex: Knex): Promise<void> {
         ]).returning("id");
 
         // Generate random data for 'company' table
+        
         const company = await trx('company').insert([
             {
                 user_id: aaa.id,
