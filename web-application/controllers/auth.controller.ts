@@ -60,7 +60,7 @@ export default class AuthController {
       if (!username || !email || !password || !password_repeated || !role) {
         res
           .status(400)
-          .json({ success: false, message: "missing name, email, password, or role" });
+          .json({ success: false, message: "missing email, username, password, or role" });
         return;
       }
 
@@ -71,7 +71,12 @@ export default class AuthController {
         return;
       }
       
-      await this.authService.signup(username, email, password, role);
+     const result = await this.authService.signup(username, email, password, role);
+     
+     if (!result.result) {
+        res.status(401).json({ error: "Email already exists" });
+        return;
+      }
 
       res.status(200).json({ message: "Signup successful" });
     } catch (error) {

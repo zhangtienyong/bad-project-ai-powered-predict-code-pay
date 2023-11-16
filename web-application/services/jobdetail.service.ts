@@ -43,6 +43,14 @@ export default class JobDetailService {
 
     async applyJob(filename: string, jobId: number, userId: number) {
         try {
+            const existingApplication = await this.knex("job_applications")
+                .where({ job_id: jobId, user_id: userId })
+                .first();
+
+            if (existingApplication) {
+                return { result: false, message: "You have already applied for this job" };
+            }
+
             await this.knex("job_applications")
                 .insert({
                     job_id: jobId,
@@ -50,7 +58,7 @@ export default class JobDetailService {
                     cv_pdf: filename,
                     status: "Pending"
                 })
-            return { result: true };
+            return { result: true, message: "Application submitted successfully" };
         } catch (error) {
             throw error;
         }

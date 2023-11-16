@@ -53,11 +53,15 @@ export default class JobDetailController {
                 const filename = (files.cvUpload as formidable.File)?.newFilename;
        
                 const jobId = + req.query.job_id!
-                console.log(jobId);
+  
                 const applyUser = req.session.user
                 const userId = applyUser?.user_id!
-                console.log(userId)
-                await this.jobDetailService.applyJob(filename, jobId, userId);
+
+                const result = await this.jobDetailService.applyJob(filename, jobId, userId);
+                if (!result.result){
+                    res.status(401).json({ message: result.message });
+                    return;
+                }
 
                 res.json({ success: true, message: "success" });
             });
