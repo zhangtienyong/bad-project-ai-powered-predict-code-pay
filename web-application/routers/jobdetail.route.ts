@@ -10,7 +10,6 @@ const jobDetailController = new JobDetailController(jobDetailService);
 
 export const jobDetailRoutes = express.Router();
 
-
 // jobDetailRoutes.get("/jobdetail", (req: Request, res: Response) => {
 //     res.sendFile(path.join(__dirname, "../public/html/jobdetail.html"));
 // });

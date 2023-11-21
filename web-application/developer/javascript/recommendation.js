@@ -1,30 +1,25 @@
 window.onload = async () => {
-
-    getSalary();
-    getRecommendation();
-}
-
+  getSalary();
+  getRecommendation();
+};
 
 async function getSalary() {
-    const resp = await fetch ("/recommendation/salary");
-    const salaryInfo = await resp.json();
-    const salary = salaryInfo.result[0].predicted_salary;
-    console.log(salary);
-    document.querySelector("#salary").innerHTML = `${salary} HKD`;
-
+  const resp = await fetch("/recommendation/salary");
+  const salaryInfo = await resp.json();
+  const salary = salaryInfo.result[0].predicted_salary;
+  console.log(salary);
+  document.querySelector("#salary").innerHTML = `${salary} HKD`;
 }
 
 async function getRecommendation() {
-    try{
-    const resp = await fetch ("/recommendation",{
-        method: "POST",
+  try {
+    const resp = await fetch("/recommendation", {
+      method: "POST",
     });
     if (resp.status == 200) {
-        console.log('Data sent successfully');
-        
+      console.log("Data sent successfully");
     }
-
-} catch (err) {
+  } catch (err) {
     console.log(err);
-}
+  }
 }

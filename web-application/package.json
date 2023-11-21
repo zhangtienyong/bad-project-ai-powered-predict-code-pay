@@ -26,7 +26,8 @@
     "node-fetch": "^2.6.9",
     "path": "^0.12.7",
     "pg": "^8.11.3",
-    "winston": "^3.11.0"
+    "winston": "^3.11.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",

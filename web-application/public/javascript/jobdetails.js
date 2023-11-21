@@ -2,12 +2,11 @@ window.onload = async () => {
   const searchParams = new URLSearchParams(location.search);
   const job_id = searchParams.get("job_id");
 
-  getJobDetail(job_id)
-  applyJob(job_id)
+  getJobDetail(job_id);
+  applyJob(job_id);
 };
 
 async function getJobDetail(job_id) {
-
   const resp = await fetch(`/jobdetail?job_id=${job_id}`);
   const job_detail = await resp.json();
   // const job_id = job_detail.result.job[0].id;
@@ -36,12 +35,24 @@ async function getJobDetail(job_id) {
   document.querySelector("#phone").innerHTML = `Phone: ${phone}`;
   document.querySelector("#location").innerHTML = `Location: ${location}`;
   document.querySelector("#jobTitle").innerHTML = `Job Title: ${job_title}`;
-  document.querySelector("#experienceLevel").innerHTML = `Experience Level: ${experience_level}`;
-  document.querySelector("#workPlaceType").innerHTML = `Work Place Type: ${work_place}`;
-  document.querySelector("#employmentType").innerHTML = `Employment Type: ${employment_type}`;
-  document.querySelector("#jobDescription").innerHTML = `Job Description: ${job_description}`;
-  document.querySelector("#responsibilities").innerHTML = `Responsibilities: ${responsibilities}`;
-  document.querySelector("#qualifications").innerHTML = `Qualifications: ${qualifications}`;
+  document.querySelector(
+    "#experienceLevel",
+  ).innerHTML = `Experience Level: ${experience_level}`;
+  document.querySelector(
+    "#workPlaceType",
+  ).innerHTML = `Work Place Type: ${work_place}`;
+  document.querySelector(
+    "#employmentType",
+  ).innerHTML = `Employment Type: ${employment_type}`;
+  document.querySelector(
+    "#jobDescription",
+  ).innerHTML = `Job Description: ${job_description}`;
+  document.querySelector(
+    "#responsibilities",
+  ).innerHTML = `Responsibilities: ${responsibilities}`;
+  document.querySelector(
+    "#qualifications",
+  ).innerHTML = `Qualifications: ${qualifications}`;
 
   function getSkillsByType(type) {
     const skills = job_detail.result.skills;
@@ -68,60 +79,39 @@ async function getJobDetail(job_id) {
   console.log(cloudPlatforms);
   console.log(webFrameworks);
 
-  document.querySelector("#programmingLanguage").innerHTML = programmingLanguages.join(", ");
+  document.querySelector("#programmingLanguage").innerHTML =
+    programmingLanguages.join(", ");
   document.querySelector("#database").innerHTML = databases.join(", ");
-  document.querySelector("#cloudPlatform").innerHTML = cloudPlatforms.join(", ");
+  document.querySelector("#cloudPlatform").innerHTML =
+    cloudPlatforms.join(", ");
   document.querySelector("#webFramework").innerHTML = webFrameworks.join(", ");
-
-
-
 }
 
 async function applyJob(job_id) {
-  document.querySelector("#apply-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+  document
+    .querySelector("#apply-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
 
+      const res = await fetch(`/apply?job_id=${job_id}`, {
+        method: "POST",
+        body: formData,
+      });
 
-    const res = await fetch(`/apply?job_id=${job_id}`, {
-      method: "POST",
-      body:
-        formData,
-
-
-    });
-
-    const result = await res.json()
-    console.log(result);
-    if (res.ok) {
-      Swal.fire(
-        'Apply successfully!',
-      )
-
-    } else {
-      if (res.status === 400) {
-        Swal.fire(
-          'Emm...',
-          'Cannot upload file!',
-          'Fail'
-        )
-      } else if (res.status === 401) {
-        Swal.fire(
-          'Emm...',
-          'You have already applied for this job!',
-          'Fail'
-        )
+      const result = await res.json();
+      console.log(result);
+      if (res.ok) {
+        Swal.fire("Apply successfully!");
       } else {
-        Swal.fire(
-          'Emm...',
-          'Something Wrong!',
-          'Fail'
-        )
+        if (res.status === 400) {
+          Swal.fire("Emm...", "Cannot upload file!", "Fail");
+        } else if (res.status === 401) {
+          Swal.fire("Emm...", "You have already applied for this job!", "Fail");
+        } else {
+          Swal.fire("Emm...", "Something Wrong!", "Fail");
+        }
       }
-    }
-
-
-  });
-
+    });
 }

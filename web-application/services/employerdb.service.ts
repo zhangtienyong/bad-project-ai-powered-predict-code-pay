@@ -1,8 +1,7 @@
 import { Knex } from "knex";
 
 export default class EmployerDbService {
-  constructor(private knex: Knex) { }
-
+  constructor(private knex: Knex) {}
 
   async getUserDetails(ID: any) {
     try {
@@ -21,7 +20,17 @@ export default class EmployerDbService {
     }
   }
 
-  async edit(company: any, about: any, industry: any, website: any, email: any, size: any, phone: any, location: any, id: number) {
+  async edit(
+    company: any,
+    about: any,
+    industry: any,
+    website: any,
+    email: any,
+    size: any,
+    phone: any,
+    location: any,
+    id: number,
+  ) {
     const Company = {
       company_name: company,
       about: about,
@@ -32,27 +41,32 @@ export default class EmployerDbService {
       phone: phone,
       location: location,
       user_id: id,
-
-    }
-    const existingCompany = await this.knex<any>("company").where("user_id", id).first();
+    };
+    const existingCompany = await this.knex<any>("company")
+      .where("user_id", id)
+      .first();
 
     if (existingCompany) {
-      await this.knex("company")
-        .where("user_id", id)
-        .update(Company);
+      await this.knex("company").where("user_id", id).update(Company);
 
       return { result: true, message: "Company updated successfully" };
     } else {
-      await this.knex
-        .insert(Company)
-        .into("company")
-        .returning("id");
+      await this.knex.insert(Company).into("company").returning("id");
 
       return { result: true, message: "Company inserted successfully" };
     }
   }
 
-  async editJob(jobId: any, title: any, place: any, type: any, description: any, level: any, responsibilities: any, qualifications: any) {
+  async editJob(
+    jobId: any,
+    title: any,
+    place: any,
+    type: any,
+    description: any,
+    level: any,
+    responsibilities: any,
+    qualifications: any,
+  ) {
     const Job = {
       job_title: title,
       work_place: place,
@@ -61,31 +75,26 @@ export default class EmployerDbService {
       experience_level: level,
       responsibilities: responsibilities,
       qualifications: qualifications,
+    };
+    await this.knex("jobs").where("id", jobId).update(Job);
 
-    }   
-      await this.knex("jobs")
-        .where("id", jobId)
-        .update(Job);
-
-      return { result: true, message: "Job updated successfully" };
+    return { result: true, message: "Job updated successfully" };
   }
 
   async image(file: any, id: number) {
     const image = {
       logo: file,
-    }
-    const existingCompany = await this.knex<any>("company").where("user_id", id).first();
+    };
+    const existingCompany = await this.knex<any>("company")
+      .where("user_id", id)
+      .first();
 
     if (existingCompany) {
-      await this.knex("company")
-        .where("user_id", id)
-        .update(image);
+      await this.knex("company").where("user_id", id).update(image);
 
       return { result: true, message: "Company updated successfully" };
     } else {
-      await this.knex
-        .insert(image)
-        .into("company")
+      await this.knex.insert(image).into("company");
 
       return { result: true, message: "Company inserted successfully" };
     }
@@ -128,7 +137,7 @@ export default class EmployerDbService {
 
         const jobs = await this.knex("jobs")
           .select("*")
-          .where("company_id", company.id)
+          .where("company_id", company.id);
 
         if (jobs && jobs.length > 0) {
           const jobIds = jobs.map((job) => job.id);
@@ -142,8 +151,7 @@ export default class EmployerDbService {
           return applications;
         }
 
-        return
-
+        return;
       } else {
         throw new Error("Company not found for the given user");
       }
@@ -155,54 +163,56 @@ export default class EmployerDbService {
   async accepted_job(Title: number, user_id: number) {
     try {
       const status = { status: "accepted" };
-  
-      const existingApplication = await this.knex("job_applications").where("id", Title).first();
-  
+
+      const existingApplication = await this.knex("job_applications")
+        .where("id", Title)
+        .first();
+
       if (existingApplication) {
-        await this.knex("job_applications")
-          .where("id", Title)
-          .update(status);
-  
+        await this.knex("job_applications").where("id", Title).update(status);
+
         return { message: "Job application successfully accepted." };
       } else {
         return { error: "Job application not found." };
       }
     } catch (error) {
       console.error("Error:", error);
-      return { error: "An error occurred while accepting the job application." };
+      return {
+        error: "An error occurred while accepting the job application.",
+      };
     }
   }
-  
+
   async rejected_job(Title: number, user_id: number) {
     try {
       const status = { status: "rejected" };
-  
-      const existingApplication = await this.knex("job_applications").where("id", Title).first();
-  
+
+      const existingApplication = await this.knex("job_applications")
+        .where("id", Title)
+        .first();
+
       if (existingApplication) {
-        await this.knex("job_applications")
-          .where("id", Title)
-          .update(status);
-  
+        await this.knex("job_applications").where("id", Title).update(status);
+
         return { message: "Job application successfully rejected." };
       } else {
         return { error: "Job application not found." };
       }
     } catch (error) {
       console.error("Error:", error);
-      return { error: "An error occurred while rejecting the job application." };
+      return {
+        error: "An error occurred while rejecting the job application.",
+      };
     }
   }
-  
+
   async delete_job(Title: number, user_id: number) {
     try {
       const existingJob = await this.knex("jobs").where("id", Title).first();
-  
+
       if (existingJob) {
-        await this.knex("jobs")
-          .where("id", Title)
-          .delete();
-  
+        await this.knex("jobs").where("id", Title).delete();
+
         return { message: "Job successfully deleted." };
       } else {
         return { error: "Job not found." };
@@ -212,17 +222,18 @@ export default class EmployerDbService {
       return { error: "An error occurred while deleting the job." };
     }
   }
-  
+
   async downloadCV(Title: number) {
     try {
-      const existingApplication = await this.knex("job_applications").where("id", Title).first();
-  
-      if (existingApplication) {
-       const cv_pdf = await this.knex("job_applications")
-          .where("id", Title)
-          .select("cv_pdf")
+      const existingApplication = await this.knex("job_applications")
+        .where("id", Title)
+        .first();
 
-  
+      if (existingApplication) {
+        const cv_pdf = await this.knex("job_applications")
+          .where("id", Title)
+          .select("cv_pdf");
+
         return cv_pdf;
       } else {
         return { error: "Application not found." };
@@ -233,4 +244,3 @@ export default class EmployerDbService {
     }
   }
 }
-

@@ -10,11 +10,10 @@ const predictionController = new PredictionController(predictionService);
 const predictionRoutes = Router();
 
 predictionRoutes.get("/", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../developer/html/prediction.html"));
+  res.sendFile(path.join(__dirname, "../developer/html/prediction.html"));
 });
 
 export default predictionRoutes;
 
-predictionRoutes.post("/devdata",predictionController.devDataPosting);
+predictionRoutes.post("/devdata", predictionController.devDataPosting);
 predictionRoutes.get("/salary", predictionController.getSalary);
-

@@ -7,13 +7,7 @@ export async function hashPassword(plainPassword: string) {
   return hash;
 }
 
-export async function checkPassword(options: {
-  plainPassword: string;
-  hashedPassword: string;
-}) {
-  const isMatched: boolean = await bcrypt.compare(
-    options.plainPassword,
-    options.hashedPassword,
-  );
+export async function checkPassword(options: { plainPassword: string; hashedPassword: string }) {
+  const isMatched: boolean = await bcrypt.compare(options.plainPassword, options.hashedPassword);
   return isMatched;
 }
