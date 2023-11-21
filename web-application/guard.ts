@@ -50,3 +50,19 @@ export const isDeveloperLoggedInApi = (req: Request, res: Response, next: NextFu
 
   res.status(401).json({ message: "Unauthorized" });
 };
+
+export const createIsLoggedInApiV2 =
+  (roles: ("employer" | "developer")[]) => (req: Request, res: Response, next: NextFunction) => {
+    for (const role of roles) {
+      if (req.session.user?.role === role) {
+        next();
+        return;
+      }
+    }
+
+    res.status(401).json({ message: "Unauthorized" });
+  };
+
+// const isLoggedInApiV2 = createIsLoggedInApiV2(["employer"]);
+// const isLoggedInApiV2 = createIsLoggedInApiV2(["developer"]);
+// const isLoggedInApiV2 = createIsLoggedInApiV2(["developer", "employer"]);

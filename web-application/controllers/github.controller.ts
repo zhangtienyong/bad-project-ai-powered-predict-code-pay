@@ -6,13 +6,13 @@ export default class GithubController {
 
   employee = async (req: Request, res: Response) => {
     res.redirect(
-      `https://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYEE_CLIENT_ID}`,
+      `https://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYEE_CLIENT_ID}`
     );
   };
 
   employer = async (req: Request, res: Response) => {
     res.redirect(
-      `https://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYER_CLIENT_ID}`,
+      `https://github.com/login/oauth/authorize?client_id=${process.env.EMPLOYER_CLIENT_ID}`
     );
   };
 
@@ -36,15 +36,11 @@ export default class GithubController {
     console.log(opts);
 
     try {
-      const response = await fetch(
-        "https://github.com/login/oauth/access_token",
-        opts,
-      );
+      const response = await fetch("https://github.com/login/oauth/access_token", opts);
       const data: any = await response.json();
       console.log(data);
       const token = data.access_token;
       global.accessToken = token;
-      // res.redirect(`/?token=${token}`);
       res.redirect(`/signin/employee_user_data?token=${token}`);
       // return token;
     } catch (error) {
@@ -73,10 +69,7 @@ export default class GithubController {
     console.log(opts);
 
     try {
-      const response = await fetch(
-        "https://github.com/login/oauth/access_token",
-        opts,
-      );
+      const response = await fetch("https://github.com/login/oauth/access_token", opts);
       const data: any = await response.json();
       console.log(data);
       const token = data.access_token;
@@ -111,11 +104,7 @@ export default class GithubController {
         const github_username = userData.login;
         const github_id = userData.id;
         const github_token = token;
-        await this.githubService.employee_user_data(
-          github_username,
-          github_id,
-          github_token,
-        );
+        await this.githubService.employee_user_data(github_username, github_id, github_token);
         const githubUserData = {
           github_id: userData.id,
           user_id: userData.id,
@@ -156,11 +145,7 @@ export default class GithubController {
         const github_username = userData.login;
         const github_id = userData.id;
         const github_token = token;
-        await this.githubService.employer_user_data(
-          github_username,
-          github_id,
-          github_token,
-        );
+        await this.githubService.employer_user_data(github_username, github_id, github_token);
         const githubUserData = {
           github_id: userData.id,
           user_id: userData.id,

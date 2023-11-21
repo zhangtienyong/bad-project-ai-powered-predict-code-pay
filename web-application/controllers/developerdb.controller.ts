@@ -27,21 +27,11 @@ export default class DeveloperDbController {
 
   application = async (req: Request, res: Response) => {
     try {
-      if (req.session.user) {
-        const userId = req.session.user.user_id;
+      const userId = req.session.user!.user_id;
+      const app = req.query.app ? parseInt(req.query.app as string, 10) : 1;
+      const result = await this.developerDbService.application(userId, app);
 
-        if (userId !== undefined) {
-          const app = req.query.app ? parseInt(req.query.app as string, 10) : 1;
-          console.log(app);
-          const result = await this.developerDbService.application(userId, app);
-
-          return res.json(result);
-        } else {
-          return res.status(400).json({ error: "User ID is undefined" });
-        }
-      } else {
-        return res.status(401).json({ error: "User not authenticated" });
-      }
+      return res.json(result);
     } catch (error) {
       console.error("Error", error);
       return res.status(500).json({ error: "Internal Server Error" });
@@ -51,8 +41,7 @@ export default class DeveloperDbController {
   getDeveloperInfo = async (req: Request, res: Response) => {
     try {
       const userId = req.session.user?.user_id!;
-      const developerInfo =
-        await this.developerDbService.getDeveloperInfo(userId);
+      const developerInfo = await this.developerDbService.getDeveloperInfo(userId);
       // const recommendations = developerInfo.recommendations
       // const developer = developerInfo.developer
       // const developer_skills = developerInfo.developer_skills

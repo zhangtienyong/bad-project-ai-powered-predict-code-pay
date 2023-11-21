@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import AuthService from "../services/auth.service";
 import { LoginSchema } from "../schemas/auth.schema";
+import { BadRequestError } from "../utils/error";
 
 export default class AuthController {
   constructor(private authService: AuthService) {}
@@ -8,15 +9,9 @@ export default class AuthController {
   login = async (req: Request, res: Response) => {
     const schemaResult = LoginSchema.safeParse(req.body);
     if (!schemaResult.success) {
-      res.status(400).json({ error: "invalid input" });
-      return;
+      throw new BadRequestError("invalid input");
     }
-    const result = await this.authService.login(schemaResult.data);
-
-    if (!result.result) {
-      res.status(401).json({ error: "Wrong Username/Password" });
-      return;
-    }
+    const user = await this.authService.login(schemaResult.data);
 
     if (req.session.user) {
       res.status(403).json({ error: "Already logged in" });
@@ -24,13 +19,13 @@ export default class AuthController {
     }
 
     req.session.user = {
-      email: result.user?.email!,
-      user_id: result.user?.id,
-      github_id: result.user?.github_id!,
-      github_username: result.user?.github_username!,
-      role: result.user?.role!,
+      email: user.email,
+      user_id: user.id,
+      github_id: user.github_id,
+      github_username: user.github_username,
+      role: user.role,
     };
-    console.log(req.session.user);
+
     res.json({
       success: true,
       message: "login success",

@@ -19,18 +19,17 @@ app.use(
     cookie: {
       maxAge: 30 * 60 * 1000,
     },
-  }),
+  })
 );
 
 declare module "express-session" {
   interface SessionData {
-    // user id
     user: {
       email?: string;
-      user_id?: number;
-      github_id?: string;
-      github_username?: string;
-      role?: string;
+      user_id: number;
+      github_id?: string | null;
+      github_username?: string | null;
+      role: string;
     };
   }
 }
@@ -45,21 +44,21 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   express.static(path.join(__dirname, "public", "html"), {
     extensions: ["html"],
-  }),
+  })
 );
 
 //uncomment below line to serve static files from the root of the project after finish the rest of the features
 // app.use("/employer", isEmployerLoggedIn, express.static(path.join(__dirname, "employer")));
 // app.use(
 //   "/employer",
-//   isEmployerLoggedIn,
+//   createIsLoggedInApiV2(["employer"]),
 //   express.static(path.join(__dirname, "employer", "html"), { extensions: ["html"] })
 // );
 
 // app.use("/developer", isDeveloperLoggedIn, express.static(path.join(__dirname, "developer")));
 // app.use(
 //   "/developer",
-//   isDeveloperLoggedIn,
+//   createIsLoggedInApiV2(["developer"]),
 //   express.static(path.join(__dirname, "developer", "html"), { extensions: ["html"] })
 // );
 
@@ -67,14 +66,14 @@ app.use(express.static(path.join(__dirname, "employer")));
 app.use(
   express.static(path.join(__dirname, "employer", "html"), {
     extensions: ["html"],
-  }),
+  })
 );
 
 app.use(express.static(path.join(__dirname, "developer")));
 app.use(
   express.static(path.join(__dirname, "developer", "html"), {
     extensions: ["html"],
-  }),
+  })
 );
 
 app.use(express.static(path.join(__dirname, "uploads")));
