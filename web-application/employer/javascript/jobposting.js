@@ -1,8 +1,24 @@
 window.onload = async () => {
+  listSkillsV2();
   await listSkills();
   jobPosting();
   multiSelect();
 };
+
+async function listSkillsV2() {
+  const resp = await fetch("/jobposting/skillsv2");
+  const skills = await resp.json();
+  const skillMapping = skills.reduce((acc, cur) => {
+    console.log(acc);
+    const data = { id: cur.id, name: cur.name };
+    if (acc.has(cur.types)) {
+      acc.get(cur.types).push(data);
+    } else {
+      acc.set(cur.types, [data]);
+    }
+    return acc;
+  }, new Map());
+}
 
 async function listSkills() {
   const resp = await fetch("/jobposting/skills");
@@ -26,8 +42,7 @@ async function listSkills() {
   const listEle2 = document.querySelector("#list-database");
   for (const database_skill of database_skills) {
     const listClone2 = listEle2.content.cloneNode(true);
-    listClone2.querySelector(".database-item-text").textContent =
-      database_skill;
+    listClone2.querySelector(".database-item-text").textContent = database_skill;
     selectEle2.appendChild(listClone2);
   }
 
@@ -35,8 +50,7 @@ async function listSkills() {
   const listEle3 = document.querySelector("#list-cloudPlatform");
   for (const cloud_platform_skill of cloud_platform_skills) {
     const listClone3 = listEle3.content.cloneNode(true);
-    listClone3.querySelector(".cloudPlatform-item-text").textContent =
-      cloud_platform_skill;
+    listClone3.querySelector(".cloudPlatform-item-text").textContent = cloud_platform_skill;
     selectEle3.appendChild(listClone3);
   }
 
@@ -44,115 +58,100 @@ async function listSkills() {
   const listEle4 = document.querySelector("#list-webFramework");
   for (const web_framework_skill of web_framework_skills) {
     const listClone4 = listEle4.content.cloneNode(true);
-    listClone4.querySelector(".webFramework-item-text").textContent =
-      web_framework_skill;
+    listClone4.querySelector(".webFramework-item-text").textContent = web_framework_skill;
     selectEle4.appendChild(listClone4);
   }
 }
 
 async function jobPosting() {
-  document
-    .querySelector("#jobposting")
-    .addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const job_title = document.querySelector("#jobTitle").value;
-      const experience_level = document.querySelector("#experienceLevel").value;
-      const work_place = document.querySelector("#workPlace").value;
-      const employment_type = document.querySelector("#employmentType").value;
-      const job_description = document.querySelector("#jobDescription").value;
-      const responsibilities =
-        document.querySelector("#responsibilities").value;
-      const qualifications = document.querySelector("#qualifications").value;
+  document.querySelector("#jobposting").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const job_title = document.querySelector("#jobTitle").value;
+    const experience_level = document.querySelector("#experienceLevel").value;
+    const work_place = document.querySelector("#workPlace").value;
+    const employment_type = document.querySelector("#employmentType").value;
+    const job_description = document.querySelector("#jobDescription").value;
+    const responsibilities = document.querySelector("#responsibilities").value;
+    const qualifications = document.querySelector("#qualifications").value;
 
-      let programmingLanguage_checkedItemValues = [];
-      const listItemElements = document.querySelectorAll(
-        "#programmingLanguage-item",
-      );
-      listItemElements.forEach((item) => {
-        if (item.classList.contains("checked1")) {
-          const programmingLanguage_checkedItemValue = item.querySelector(
-            ".programmingLanguage-item-text",
-          ).textContent;
-          programmingLanguage_checkedItemValues.push(
-            programmingLanguage_checkedItemValue,
-          );
-        }
-      });
-      console.log(programmingLanguage_checkedItemValues);
-      const programming_language_skills = programmingLanguage_checkedItemValues;
-
-      let database_checkedItemValues = [];
-      const listItemElements2 = document.querySelectorAll("#database-item");
-      listItemElements2.forEach((item) => {
-        if (item.classList.contains("checked2")) {
-          const database_checkedItemValue = item.querySelector(
-            ".database-item-text",
-          ).textContent;
-          database_checkedItemValues.push(database_checkedItemValue);
-        }
-      });
-      console.log(database_checkedItemValues);
-      const database_skills = database_checkedItemValues;
-
-      let cloud_platform_checkedItemValues = [];
-      const listItemElements3 = document.querySelectorAll(
-        "#cloudPlatform-item",
-      );
-      listItemElements3.forEach((item) => {
-        if (item.classList.contains("checked3")) {
-          const cloud_platform_checkedItemValue = item.querySelector(
-            ".cloudPlatform-item-text",
-          ).textContent;
-          cloud_platform_checkedItemValues.push(
-            cloud_platform_checkedItemValue,
-          );
-        }
-      });
-      console.log(cloud_platform_checkedItemValues);
-      const cloud_platform_skills = cloud_platform_checkedItemValues;
-
-      let web_framework_checkedItemValues = [];
-      const listItemElements4 = document.querySelectorAll("#webFramework-item");
-      listItemElements4.forEach((item) => {
-        if (item.classList.contains("checked4")) {
-          const web_framework_checkedItemValue = item.querySelector(
-            ".webFramework-item-text",
-          ).textContent;
-          web_framework_checkedItemValues.push(web_framework_checkedItemValue);
-        }
-      });
-      console.log(web_framework_checkedItemValues);
-      const web_framework_skills = web_framework_checkedItemValues;
-
-      const res = await fetch("/jobposting", {
-        method: "POST",
-        body: JSON.stringify({
-          job_title,
-          experience_level,
-          work_place,
-          employment_type,
-          job_description,
-          responsibilities,
-          qualifications,
-          programming_language_skills,
-          database_skills,
-          cloud_platform_skills,
-          web_framework_skills,
-        }),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-
-      let json = await res.json();
-      console.log(json);
-
-      if (res.status == 500) {
-        Swal.fire("Failed to post a job!");
-      } else {
-        Swal.fire("You Posted a Job!", "Success");
+    let programmingLanguage_checkedItemValues = [];
+    const listItemElements = document.querySelectorAll("#programmingLanguage-item");
+    listItemElements.forEach((item) => {
+      if (item.classList.contains("checked1")) {
+        const programmingLanguage_checkedItemValue = item.querySelector(
+          ".programmingLanguage-item-text"
+        ).textContent;
+        programmingLanguage_checkedItemValues.push(programmingLanguage_checkedItemValue);
       }
     });
+    console.log(programmingLanguage_checkedItemValues);
+    const programming_language_skills = programmingLanguage_checkedItemValues;
+
+    let database_checkedItemValues = [];
+    const listItemElements2 = document.querySelectorAll("#database-item");
+    listItemElements2.forEach((item) => {
+      if (item.classList.contains("checked2")) {
+        const database_checkedItemValue = item.querySelector(".database-item-text").textContent;
+        database_checkedItemValues.push(database_checkedItemValue);
+      }
+    });
+    console.log(database_checkedItemValues);
+    const database_skills = database_checkedItemValues;
+
+    let cloud_platform_checkedItemValues = [];
+    const listItemElements3 = document.querySelectorAll("#cloudPlatform-item");
+    listItemElements3.forEach((item) => {
+      if (item.classList.contains("checked3")) {
+        const cloud_platform_checkedItemValue = item.querySelector(
+          ".cloudPlatform-item-text"
+        ).textContent;
+        cloud_platform_checkedItemValues.push(cloud_platform_checkedItemValue);
+      }
+    });
+    console.log(cloud_platform_checkedItemValues);
+    const cloud_platform_skills = cloud_platform_checkedItemValues;
+
+    let web_framework_checkedItemValues = [];
+    const listItemElements4 = document.querySelectorAll("#webFramework-item");
+    listItemElements4.forEach((item) => {
+      if (item.classList.contains("checked4")) {
+        const web_framework_checkedItemValue =
+          item.querySelector(".webFramework-item-text").textContent;
+        web_framework_checkedItemValues.push(web_framework_checkedItemValue);
+      }
+    });
+    console.log(web_framework_checkedItemValues);
+    const web_framework_skills = web_framework_checkedItemValues;
+
+    const res = await fetch("/jobposting", {
+      method: "POST",
+      body: JSON.stringify({
+        job_title,
+        experience_level,
+        work_place,
+        employment_type,
+        job_description,
+        responsibilities,
+        qualifications,
+        programming_language_skills,
+        database_skills,
+        cloud_platform_skills,
+        web_framework_skills,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    let json = await res.json();
+    console.log(json);
+
+    if (res.status == 500) {
+      Swal.fire("Failed to post a job!");
+    } else {
+      Swal.fire("You Posted a Job!", "Success");
+    }
+  });
 }
 
 async function multiSelect() {

@@ -15,4 +15,5 @@ jobPostingRoutes.get("/jobposting", (req: Request, res: Response) => {
 });
 
 jobPostingRoutes.get("/jobposting/skills", jobPostingController.getSkills);
+jobPostingRoutes.get("/jobposting/skillsv2", jobPostingController.getSkillsV2);
 jobPostingRoutes.post("/jobposting", jobPostingController.jobPosting);

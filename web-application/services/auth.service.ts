@@ -9,7 +9,7 @@ export default class AuthService {
 
   async login({ email, password }: LoginSchemaT) {
     const user = await this.knex<Users>("users").where("email", email).first();
-
+    console.log(user);
     if (
       !user ||
       !(await checkPassword({
@@ -19,6 +19,7 @@ export default class AuthService {
     ) {
       throw new BadRequestError("invalid email/password");
     }
+    console.log("checked");
     return user;
   }
 

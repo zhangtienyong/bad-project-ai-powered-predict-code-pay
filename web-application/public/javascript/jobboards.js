@@ -22,15 +22,9 @@ async function initJobBoard(page) {
     jobBoardClone.querySelector(".image").src = jobBoard.logo;
     jobBoardClone.querySelector(".id").textContent = jobBoard.id;
     jobBoardClone.querySelector(".company").textContent = jobBoard.company_name;
-    jobBoardClone.querySelector(
-      ".title",
-    ).textContent = `Job Position: ${jobBoard.job_title}`;
-    jobBoardClone.querySelector(
-      ".type",
-    ).textContent = `Type: ${jobBoard.employment_type}`;
-    jobBoardClone.querySelector(
-      ".place",
-    ).textContent = `Work place: ${jobBoard.work_place}`;
+    jobBoardClone.querySelector(".title").textContent = `Job Position: ${jobBoard.job_title}`;
+    jobBoardClone.querySelector(".type").textContent = `Type: ${jobBoard.employment_type}`;
+    jobBoardClone.querySelector(".place").textContent = `Work place: ${jobBoard.work_place}`;
     jobBoardContainerEle.appendChild(jobBoardClone);
   }
 }
@@ -81,6 +75,7 @@ async function changeNavBar() {
       navLink.textContent = "Dashboard For Employer";
       navLink2.href = "/jobposting";
       navLink2.textContent = "Job Posting";
+      navLink3.classList.add("nav-display-none");
     }
   }
 

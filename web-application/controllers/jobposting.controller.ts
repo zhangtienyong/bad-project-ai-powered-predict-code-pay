@@ -8,15 +8,10 @@ export default class JobPostingController {
     try {
       const skills = await this.jobPostingService.getSkills();
 
-      const programming_language_skills =
-        skills.programming_language_skills.map((sk) => sk.name);
+      const programming_language_skills = skills.programming_language_skills.map((sk) => sk.name);
       const database_skills = skills.database_skills.map((sk) => sk.name);
-      const web_framework_skills = skills.web_framework_skills.map(
-        (sk) => sk.name,
-      );
-      const cloud_platform_skills = skills.cloud_platform_skills.map(
-        (sk) => sk.name,
-      );
+      const web_framework_skills = skills.web_framework_skills.map((sk) => sk.name);
+      const cloud_platform_skills = skills.cloud_platform_skills.map((sk) => sk.name);
 
       res.status(200).json({
         result: {
@@ -30,6 +25,24 @@ export default class JobPostingController {
       console.error(err.message);
       res.status(500).json({ message: "internal server error" });
     }
+  };
+
+  queryToStringArr = (
+    query: any // string | QueryString.ParsedQs | string[] | QueryString.ParsedQs[] | undefined
+  ) => {
+    if (typeof query === "undefined") {
+      return query;
+    }
+    if (Array.isArray(query)) {
+      return query;
+    } else {
+      return [query];
+    }
+  };
+
+  getSkillsV2 = async (req: Request, res: Response) => {
+    const types = this.queryToStringArr(req.query.type);
+    res.json(await this.jobPostingService.getSkillsV2(types));
   };
 
   jobPosting = async (req: Request, res: Response) => {
@@ -63,7 +76,7 @@ export default class JobPostingController {
         programming_language_skills,
         database_skills,
         cloud_platform_skills,
-        web_framework_skills,
+        web_framework_skills
       );
       res.json({ success: true, message: "Job posting successful" });
     } catch (err) {

@@ -4,36 +4,39 @@ export default class JobPostingService {
   constructor(private knex: Knex) {}
 
   async getSkills() {
-    try {
-      const programming_language_skills = await this.knex
-        .select("name")
-        .from("skills")
-        .where("types", "language");
+    const programming_language_skills = await this.knex
+      .select("name")
+      .from("skills")
+      .where("types", "language");
 
-      const database_skills = await this.knex
-        .select("name")
-        .from("skills")
-        .where("types", "database");
+    const database_skills = await this.knex
+      .select("name")
+      .from("skills")
+      .where("types", "database");
 
-      const web_framework_skills = await this.knex
-        .select("name")
-        .from("skills")
-        .where("types", "webframework");
+    const web_framework_skills = await this.knex
+      .select("name")
+      .from("skills")
+      .where("types", "webframework");
 
-      const cloud_platform_skills = await this.knex
-        .select("name")
-        .from("skills")
-        .where("types", "platform");
+    const cloud_platform_skills = await this.knex
+      .select("name")
+      .from("skills")
+      .where("types", "platform");
 
-      return {
-        programming_language_skills,
-        database_skills,
-        web_framework_skills,
-        cloud_platform_skills,
-      };
-    } catch (err) {
-      throw err;
-    }
+    return {
+      programming_language_skills,
+      database_skills,
+      web_framework_skills,
+      cloud_platform_skills,
+    };
+  }
+
+  async getSkillsV2(types?: string[]) {
+    const query = this.knex("skills");
+    if (types) query.whereIn("types", types);
+    const result = await query;
+    return result;
   }
 
   async jobPosting(
@@ -48,7 +51,7 @@ export default class JobPostingService {
     programming_language_skills: string,
     database_skills: string,
     cloud_platform_skills: string,
-    web_framework_skills: string,
+    web_framework_skills: string
   ) {
     try {
       const company_id_Info = await this.knex
